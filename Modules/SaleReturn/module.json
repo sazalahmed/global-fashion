@@ -1,0 +1,11 @@
+{
+    "name": "SaleReturn",
+    "alias": "salereturn",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SaleReturn\\Providers\\SaleReturnServiceProvider"
+    ],
+    "files": []
+}

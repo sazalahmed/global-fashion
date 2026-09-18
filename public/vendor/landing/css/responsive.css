@@ -1,0 +1,1720 @@
+@media (min-width: 1400px) {
+
+    .shoes_single_product {
+        height: 245px;
+    }
+
+}
+
+@media (min-width: 1200px) and (max-width: 1399.99px) {
+
+    /*===================================
+     T-SHIRT PAGE START
+    ===================================*/
+
+    .tshirt_single_product {
+        height: 410px;
+    }
+
+    .tshirt_single_review {
+        height: 270px;
+    }
+
+    .billing_orders_product li .product .text {
+        width: 62%;
+    }
+
+    /*===================================
+     T-SHIRT PAGE END
+    ===================================*/
+
+
+    /*===================================
+     SHOES PAGE START
+    ===================================*/
+
+    .shoes_single_product {
+        height: 210px;
+    }
+
+    .shoes_details_img {
+        height: 440px;
+        margin-left: 0;
+    }
+
+    .shoes_details_three .shoes_details_img {
+        margin-right: 0;
+    }
+
+    /*===================================
+     SHOES PAGE END
+    ===================================*/
+
+
+    /*===================================
+     FERFUME PAGE START
+    ===================================*/
+
+    .perfume_single_pakage h6 {
+        font-size: 20px;
+    }
+
+    .perfume_single_pakage p {
+        font-size: 16px;
+        margin-top: 25px;
+    }
+
+    .perfume_about_details_img {
+        height: 420px;
+    }
+
+    /*===================================
+     FERFUME PAGE END
+    ===================================*/
+
+
+    /*===================================
+     BEAUTY PRODUCT START
+    ===================================*/
+
+    .beauty_banner_text h1 {
+        font-size: 42px;
+        line-height: 58px;
+    }
+
+    .beauty_banner_img {
+        height: 360px;
+    }
+
+    .beauty_product .tshirt_single_product {
+        height: 420px;
+    }
+
+    .beauty_video_ifrem iframe {
+        height: 400px;
+    }
+
+    .beauty_benefits_img {
+        height: 400px;
+    }
+
+    /*===================================
+     BEAUTY PRODUCT END
+    ===================================*/
+
+
+    /*===================================
+     FASHON PAGE START
+    ===================================*/
+
+    .fashon_banner_img {
+        height: 600px;
+    }
+
+    .fashon_banner_img::after {
+        right: -66px;
+        width: 600px;
+        height: 600px;
+    }
+
+    .fashon_product .tshirt_single_product {
+        height: 450px !important;
+    }
+
+    .fashon_benefits_img {
+        height: 500px;
+    }
+
+    /*===================================
+     FASHON PAGE END
+    ===================================*/
+
+}
+
+@media (min-width: 992px) and (max-width: 1199.99px) {
+
+    /*===================================
+     T-SHIRT PAGE START
+    ===================================*/
+
+    .tshirt_banner_img .img {
+        width: 440px;
+        height: 440px;
+    }
+
+    .tshirt_single_product {
+        height: 370px;
+    }
+
+    .tshirt_single_review {
+        height: 340px;
+    }
+
+    .product_select_details .text {
+        width: 65%;
+    }
+
+    .billing_orders_product li .product .text {
+        width: 60%;
+    }
+
+    /*===================================
+     T-SHIRT PAGE END
+    ===================================*/
+
+
+    /*===================================
+     SHOES PAGE START
+    ===================================*/
+
+    .shoes_banner {
+        padding: 65px 0px 80px;
+    }
+
+    .shoes_banner_text h1,
+    .shoes_banner_text h1 span {
+        font-size: 28px;
+    }
+
+    .shoes_single_product {
+        height: 400px;
+    }
+
+    .shoes_details_img {
+        height: 400px;
+        margin-left: 0;
+    }
+
+    .shoes_details_three .shoes_details_img {
+        margin-right: 0;
+    }
+
+    .shoes_heading h2 {
+        font-size: 34px;
+    }
+
+    /*===================================
+     SHOES PAGE END
+    ===================================*/
+
+
+    /*===================================
+     FERFUME PAGE START
+    ===================================*/
+
+    .perfume_banner_text h4 {
+        font-size: 26px;
+    }
+
+    .perfume_banner_text h1,
+    .perfume_banner_text h1 span {
+        font-size: 42px;
+    }
+
+    .perfume_banner_text h5,
+    .perfume_banner_text h5 span {
+        font-size: 36px;
+    }
+
+    .perfume_btn {
+        font-size: 20px;
+        padding: 12px 40px 10px;
+    }
+
+    .perfume_heading h2 {
+        font-size: 36px;
+    }
+
+    .perfume_about_details {
+        padding: 60px 75px 60px 75px;
+    }
+
+    .perfume_about_details_img {
+        height: 480px;
+    }
+
+    .perfume_about_details_text ul li {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+    .perfume_product_bottom h4 {
+        font-size: 30px;
+    }
+
+    /*===================================
+     FERFUME PAGE END
+    ===================================*/
+
+
+    /*===================================
+     BEAUTY PRODUCT START
+    ===================================*/
+
+    .beauty_banner_text h1 {
+        font-size: 40px;
+        line-height: 55px;
+    }
+
+    .beauty_banner_text h6,
+    .beauty_banner_text h6 span {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .beauty_banner_text h3 {
+        font-size: 24px;
+    }
+
+    .beauty_banner_img {
+        height: 370px;
+    }
+
+    .beauty_product .tshirt_single_product {
+        height: 350px;
+    }
+
+    .beauty_video_ifrem iframe {
+        height: 500px;
+    }
+
+    .beauty_benefits_img {
+        height: 450px;
+    }
+
+    /*===================================
+     BEAUTY PRODUCT END
+    ===================================*/
+
+
+    /*===================================
+     FASHON PAGE START
+    ===================================*/
+
+    .fashon_banner_text h1 {
+        font-size: 40px;
+        line-height: 52px;
+    }
+
+    .fashon_banner_text h6,
+    .fashon_banner_text h6 span {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .fashon_banner_text ul {
+        gap: 10px;
+    }
+
+    .fashon_banner_text ul li {
+        font-size: 16px;
+        padding-left: 30px;
+    }
+
+    .fashon_btn {
+        font-size: 16px;
+        padding: 13px 25px 10px 25px;
+    }
+
+    .fashon_banner_img {
+        height: 500px;
+    }
+
+    .fashon_banner_img::after {
+        right: -48px;
+        width: 500px;
+        height: 500px;
+    }
+
+    .fashon_product .tshirt_single_product {
+        height: 400px !important;
+    }
+
+    .fashon_heading h2 {
+        font-size: 36px;
+    }
+
+    .fashon_benefits_img {
+        height: 460px;
+    }
+
+    .fashon_benefits_text ul li {
+        font-size: 16px;
+        margin-top: 12px;
+    }
+
+    /*===================================
+     FASHON PAGE END
+    ===================================*/
+
+}
+
+@media (min-width: 768px) and (max-width: 991.99px) {
+
+    /*===================================
+     T-SHIRT PAGE START
+    ===================================*/
+
+    .tshirt_banner {
+        padding: 30px 0px 80px 0px;
+    }
+
+    .tshirt_banner_logo a {
+        width: 200px;
+        height: 65px;
+    }
+
+    .tshirt_banner_text h1,
+    .tshirt_banner_text h1 span {
+        font-size: 36px;
+        line-height: 45px;
+    }
+
+    .tshirt_banner_area {
+        margin-top: 55px;
+    }
+
+    .tshirt_banner_text p {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .tshirt_banner_text a {
+        margin-top: 20px;
+    }
+
+    .tshirt_banner_img .img {
+        margin-left: 0;
+        margin-top: 40px;
+    }
+
+    .tshirt_btn {
+        font-size: 16px;
+        padding: 15px 25px 12px;
+    }
+
+    .tshirt_single_product {
+        height: 420px;
+    }
+
+    .tshirt_product {
+        padding-top: 80px;
+    }
+
+    .tshirt_heading h2 {
+        font-size: 30px;
+        line-height: 45px;
+    }
+
+    .tshirt_heading p {
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .tshirt_video {
+        margin-top: 110px;
+        margin-bottom: 80px;
+    }
+
+    .tshirt_video_ifram iframe {
+        height: 400px;
+    }
+
+    .tshirt_size {
+        padding: 70px 0px 80px;
+    }
+
+    .tshirt_faq {
+        margin: 70px 0px 80px;
+    }
+
+    .tshirt_faq_text .accordion-button {
+        font-size: 18px;
+    }
+
+    .tshirt_review {
+        padding: 70px 0px 120px 0px;
+    }
+
+    .tshirt_single_review {
+        height: 380px;
+    }
+
+    .billing_form {
+        margin-top: 70px;
+    }
+
+    .billing_details {
+        margin-right: 0;
+    }
+
+    .tshirt_copy_right {
+        margin-top: 70px;
+    }
+
+    .tshirt_copy_right_text p {
+        font-size: 16px;
+    }
+
+    /*===================================
+     T-SHIRT PAGE END
+    ===================================*/
+
+
+    /*===================================
+     SHOES PAGE START
+    ===================================*/
+
+    .shoes_banner {
+        padding: 65px 0px 80px;
+    }
+
+    .shoes_banner_text .logo {
+        width: 200px;
+        height: 65px;
+    }
+
+    .shoes_banner_text h2 {
+        padding: 16px 60px;
+    }
+
+    .shoes_banner_text h1,
+    .shoes_banner_text h1 span {
+        font-size: 28px;
+    }
+
+    .shoes_single_product {
+        height: 300px;
+    }
+
+    .shoes_details_img {
+        height: 300px;
+        margin-left: 0;
+    }
+
+    .shoes_details_three .shoes_details_img {
+        margin-right: 0;
+    }
+
+    .shoes_heading h2 {
+        font-size: 32px;
+    }
+
+    /*===================================
+     SHOES PAGE END
+    ===================================*/
+
+
+    /*===================================
+     FERFUME PAGE START
+    ===================================*/
+
+    .perfume_banner_text h4 {
+        font-size: 26px;
+    }
+
+    .perfume_banner_text h1,
+    .perfume_banner_text h1 span {
+        font-size: 36px;
+    }
+
+    .perfume_banner_text h5,
+    .perfume_banner_text h5 span {
+        font-size: 32px;
+    }
+
+    .perfume_btn {
+        font-size: 20px;
+        padding: 12px 30px 10px;
+    }
+
+    .perfume_banner_text .img {
+        width: 690px;
+        height: 540px;
+    }
+
+    .perfume_heading h2 {
+        font-size: 30px;
+    }
+
+    .perfume_single_pakage h6 {
+        font-size: 20px;
+    }
+
+    .perfume_single_pakage p {
+        font-size: 16px;
+        margin-top: 26px;
+    }
+
+    .perfume_about_details {
+        margin-top: 40px;
+        padding: 60px 20px 60px 20px;
+    }
+
+    .perfume_about_details_text ul li {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    .perfume_about_details_text ul li::after {
+        top: 8px;
+    }
+
+    .perfume_about_details_img {
+        height: 400px;
+    }
+
+    .perfume_price_details {
+        padding: 50px 50px 60px;
+    }
+
+    .perfume_price_details h5 {
+        font-size: 32px;
+    }
+
+    .perfume_price_details h3,
+    .perfume_price_details h3 span {
+        font-size: 36px;
+    }
+
+    .perfume_faq_text .accordion-button {
+        font-size: 20px;
+    }
+
+    .perfume_faq_text .accordion-body {
+        font-size: 16px;
+    }
+
+    .perfume_product_top .img {
+        width: 575px;
+        height: 575px;
+    }
+
+    .perfume_product_top h4,
+    .perfume_product_top h4 span {
+        font-size: 30px;
+    }
+
+    .perfume_product_bottom h4 {
+        font-size: 28px;
+    }
+
+    .perfume_product_bottom h5 {
+        font-size: 32px;
+        padding: 10px 50px;
+    }
+
+    /*===================================
+     FERFUME PAGE END
+    ===================================*/
+
+
+    /*===================================
+     BEAUTY PRODUCT START
+    ===================================*/
+
+    .beauty_banner_logo a a {
+        width: 200px;
+        height: 65px;
+    }
+
+    .beauty_banner_text h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .beauty_banner_text h6,
+    .beauty_banner_text h6 span {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .beauty_banner_text h3 {
+        font-size: 22px;
+    }
+
+    .beauty_btn {
+        font-size: 16px;
+        padding: 14px 20px 10px 20px;
+    }
+
+    .beauty_banner_img {
+        height: 560px;
+        margin-top: 60px;
+    }
+
+    .beauty_product .tshirt_single_product {
+        height: 400px;
+    }
+
+    .beauty_video_ifrem iframe {
+        height: 350px;
+    }
+
+    .beauty_quality_text h3 {
+        font-size: 26px;
+    }
+
+    .beauty_benefits_img {
+        margin-top: 40px;
+        height: 700px;
+    }
+
+    /*===================================
+     BEAUTY PRODUCT END
+    ===================================*/
+
+
+    /*===================================
+     FASHON PAGE START
+    ===================================*/
+
+    .fashon_banner_logo a {
+        width: 200px;
+        height: 65px;
+    }
+
+    .fashon_banner_text h1 {
+        font-size: 36px;
+        line-height: 46px;
+    }
+
+    .fashon_banner_text h6,
+    .fashon_banner_text h6 span {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .fashon_banner_text h3 {
+        font-size: 24px;
+    }
+
+    .fashon_btn {
+        font-size: 16px;
+        padding: 12px 20px 10px 20px;
+    }
+
+    .fashon_banner_img {
+        height: 930px;
+        margin-top: 40px;
+    }
+
+    .fashon_banner_img::after {
+        right: 25px;
+    }
+
+    .fashon_product .tshirt_single_product {
+        height: 460px !important;
+    }
+
+    .fashon_video_ifrem iframe {
+        height: 400px;
+    }
+
+    .fashon_video_text p {
+        font-size: 16px;
+    }
+
+    .fashon_heading h2 {
+        font-size: 26px;
+    }
+
+    .fashon_benefits_text ul li {
+        font-size: 15px;
+        margin-top: 12px;
+    }
+
+    .fashon_benefits_img {
+        height: 400px;
+    }
+
+    .fashon_heading p,
+    .fashon_heading p span {
+        font-size: 16px;
+    }
+
+    /*===================================
+     FASHON PAGE END
+    ===================================*/
+
+}
+
+@media (min-width: 576px) and (max-width: 767.99px) {
+
+    /*===================================
+     T-SHIRT PAGE START
+    ===================================*/
+
+    .tshirt_banner {
+        padding: 30px 0px 80px 0px;
+    }
+
+    .tshirt_banner_logo a {
+        width: 200px;
+        height: 65px;
+    }
+
+    .tshirt_banner_text h1,
+    .tshirt_banner_text h1 span {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .tshirt_banner_area {
+        margin-top: 55px;
+    }
+
+    .tshirt_banner_text p {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .tshirt_banner_text a {
+        margin-top: 20px;
+    }
+
+    .tshirt_banner_img .img {
+        margin-left: 0;
+        margin-top: 40px;
+    }
+
+    .tshirt_btn {
+        font-size: 16px;
+        padding: 15px 25px 12px;
+    }
+
+    .tshirt_single_product {
+        height: 300px;
+    }
+
+    .tshirt_product {
+        padding-top: 80px;
+    }
+
+    .tshirt_heading h2 {
+        font-size: 26px;
+        line-height: 40px;
+    }
+
+    .tshirt_heading p {
+        margin-top: 5px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .tshirt_video {
+        margin-top: 110px;
+        margin-bottom: 80px;
+    }
+
+    .tshirt_video_ifram iframe {
+        height: 300px;
+    }
+
+    .tshirt_size {
+        padding: 70px 0px 80px;
+    }
+
+    .tshirt_faq {
+        margin: 70px 0px 80px;
+    }
+
+    .tshirt_faq_text .accordion-button {
+        font-size: 18px;
+    }
+
+    .tshirt_review {
+        padding: 70px 0px 120px 0px;
+    }
+
+    .tshirt_single_review {
+        height: 280px;
+    }
+
+    .billing_form {
+        margin-top: 70px;
+    }
+
+    .billing_checkout_form {
+        padding: 50px 20px 50px 20px;
+    }
+
+    .billing_checkout_form h3 {
+        font-size: 22px;
+    }
+
+    .billing_details h4 {
+        font-size: 22px;
+    }
+
+    .billing_details {
+        margin-right: 0;
+    }
+
+    .tshirt_copy_right {
+        margin-top: 70px;
+    }
+
+    .tshirt_copy_right_text p {
+        font-size: 16px;
+    }
+
+    /*===================================
+     T-SHIRT PAGE END
+    ===================================*/
+
+
+    /*===================================
+     SHOES PAGE START
+    ===================================*/
+
+    .shoes_banner {
+        padding: 65px 0px 80px;
+    }
+
+    .shoes_banner_text .logo {
+        width: 200px;
+        height: 65px;
+    }
+
+    .shoes_banner_text h2 {
+        padding: 16px 20px;
+    }
+
+    .shoes_banner_text h1,
+    .shoes_banner_text h1 span {
+        font-size: 26px;
+    }
+
+    .shoes_single_product {
+        height: 220px;
+    }
+
+    .shoes_heading h2 {
+        font-size: 24px;
+        line-height: 40px;
+    }
+
+    .shoes_details_img {
+        height: 450px;
+        margin-left: 0;
+        margin-top: 30px;
+    }
+
+    .shoes_details_three .shoes_details_img {
+        margin-right: 0;
+        margin-top: 0;
+    }
+
+    .shoes_details_three .shoes_details_text {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+
+    .shoes_offer_text h4 {
+        font-size: 26px;
+    }
+
+    .shoes_offer_text h3,
+    .shoes_offer_text h3 span {
+        font-size: 36px;
+    }
+
+    .shoes_offer_text h5,
+    .shoes_offer_text h5 span {
+        font-size: 20px;
+    }
+
+    /*===================================
+     SHOES PAGE END
+    ===================================*/
+
+
+    /*===================================
+     FERFUME PAGE START
+    ===================================*/
+
+    .perfume_banner_text h4 {
+        font-size: 26px;
+    }
+
+    .perfume_banner_text h1,
+    .perfume_banner_text h1 span {
+        font-size: 36px;
+    }
+
+    .perfume_banner_text .img {
+        width: 510px;
+        height: 400px;
+    }
+
+    .perfume_banner_text h5,
+    .perfume_banner_text h5 span {
+        font-size: 32px;
+    }
+
+    .perfume_btn {
+        font-size: 20px;
+        padding: 12px 30px 10px;
+    }
+
+    .perfume_heading h2 {
+        font-size: 24px;
+    }
+
+    .perfume_single_pakage h6 {
+        font-size: 20px;
+    }
+
+    .perfume_single_pakage p {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .perfume_about_details {
+        padding: 30px 20px 60px 20px;
+    }
+
+    .perfume_about_details_text ul li {
+        font-size: 22px;
+        margin-top: 20px;
+    }
+
+    .perfume_about_details_img {
+        height: 720px;
+        margin-top: 40px;
+    }
+
+    .perfume_price_details {
+        padding: 50px 20px 60px;
+    }
+
+    .perfume_price_details h5 {
+        font-size: 28px;
+    }
+
+    .perfume_price_details h3,
+    .perfume_price_details h3 span {
+        font-size: 30px;
+    }
+
+    .perfume_faq_text .accordion-button {
+        font-size: 18px;
+    }
+
+    .perfume_faq_text .accordion-body {
+        font-size: 16px;
+    }
+
+    .perfume_product_top {
+        padding: 60px 20px;
+    }
+
+    .perfume_product_top .img {
+        width: 475px;
+        height: 475px;
+    }
+
+    .perfume_product_top h4,
+    .perfume_product_top h4 span {
+        font-size: 30px;
+    }
+
+    .perfume_product_bottom h4 {
+        font-size: 28px;
+    }
+
+    .perfume_product_bottom h5 {
+        font-size: 24px;
+        padding: 10px 40px;
+    }
+
+    /*===================================
+     FERFUME PAGE END
+    ===================================*/
+
+
+    /*===================================
+     BEAUTY PRODUCT START
+    ===================================*/
+
+    .beauty_banner_logo a a {
+        width: 200px;
+        height: 65px;
+    }
+
+    .beauty_banner_text h1 {
+        font-size: 36px;
+        line-height: 50px;
+    }
+
+    .beauty_banner_text h6,
+    .beauty_banner_text h6 span {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .beauty_banner_text h3 {
+        font-size: 22px;
+    }
+
+    .beauty_btn {
+        font-size: 16px;
+        padding: 12px 20px 10px 20px;
+    }
+
+    .beauty_banner_img {
+        height: 415px;
+        margin-top: 50px;
+    }
+
+    .beauty_product .tshirt_single_product {
+        height: 300px;
+    }
+
+    .beauty_video_ifrem iframe {
+        height: 300px;
+    }
+
+    .beauty_heading h2 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .beauty_benefits_img {
+        margin-top: 40px;
+        height: 500px;
+    }
+
+    .beauty_form .billing_checkout_form {
+        padding: 50px 20px 50px 20px;
+    }
+
+    /*===================================
+     BEAUTY PRODUCT END
+    ===================================*/
+
+
+    /*===================================
+     FASHON PAGE START
+    ===================================*/
+
+    .fashon_banner_logo a {
+        width: 200px;
+        height: 65px;
+    }
+
+    .fashon_banner_text {
+        margin-right: 0;
+    }
+
+    .fashon_banner_text h1 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .fashon_banner_text h6,
+    .fashon_banner_text h6 span {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .fashon_banner_text h3 {
+        font-size: 24px;
+    }
+
+    .fashon_btn {
+        font-size: 16px;
+        padding: 12px 20px 10px 20px;
+    }
+
+    .fashon_banner_img {
+        height: 690px;
+    }
+
+    .fashon_product .tshirt_single_product {
+        height: 350px !important;
+    }
+
+    .fashon_video_ifrem iframe {
+        height: 300px;
+    }
+
+    .fashon_video_text p {
+        font-size: 16px;
+    }
+
+    .fashon_heading h2 {
+        font-size: 26px;
+    }
+
+    .fashon_benefits_text ul li {
+        font-size: 15px;
+        margin-top: 12px;
+    }
+
+    .fashon_benefits_img {
+        height: 620px;
+        margin-top: 40px;
+    }
+
+    .fashon_heading p,
+    .fashon_heading p span {
+        font-size: 16px;
+    }
+
+    /*===================================
+     FASHON PAGE END
+    ===================================*/
+
+}
+
+@media (max-width: 575.99px) {
+
+    /*===================================
+     T-SHIRT PAGE START
+    ===================================*/
+
+    .tshirt_banner {
+        padding: 30px 0px 80px 0px;
+    }
+
+    .tshirt_banner_logo a {
+        width: 160px;
+        height: 50px;
+    }
+
+    .tshirt_banner_text h1,
+    .tshirt_banner_text h1 span {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .tshirt_banner_text p {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .tshirt_banner_text a {
+        margin-top: 20px;
+    }
+
+    .tshirt_btn {
+        font-size: 16px;
+        padding: 15px 20px 12px;
+    }
+
+    .tshirt_banner_img .img {
+        width: auto;
+        height: auto;
+        margin-top: 40px;
+    }
+
+    .tshirt_banner_area {
+        margin-top: 55px;
+    }
+
+    .tshirt_single_product {
+        height: auto;
+    }
+
+    .tshirt_product {
+        padding-top: 80px;
+    }
+
+    .tshirt_heading h2 {
+        font-size: 26px;
+        line-height: 40px;
+    }
+
+    .tshirt_heading p {
+        font-size: 15px;
+    }
+
+    .tshirt_video_ifram iframe {
+        height: 250px;
+    }
+
+    .tshirt_video_bottom h3 {
+        font-size: 20px;
+    }
+
+    .tshirt_video_area .tshirt_btn {
+        margin-top: 30px;
+    }
+
+    .tshirt_video {
+        margin-top: 110px;
+        margin-bottom: 80px;
+    }
+
+    .tshirt_size_btn {
+        margin-top: 15px;
+    }
+
+    .tshirt_size {
+        padding: 70px 0px 80px;
+    }
+
+    .tshirt_faq {
+        margin: 70px 0px 80px;
+    }
+
+    .tshirt_faq_text .accordion-button {
+        font-size: 18px;
+    }
+
+    .tshirt_faq_text .accordion-body {
+        font-size: 16px;
+        line-height: 18px;
+        padding: 20px 25px;
+    }
+
+    .tshirt_review {
+        padding: 70px 0px 120px 0px;
+    }
+
+    .tshirt_single_review {
+        height: auto;
+    }
+
+    .billing_checkout_form {
+        padding: 40px 15px 40px 15px;
+    }
+
+    .billing_checkout_form h3 {
+        font-size: 20px;
+    }
+
+    .product_select {
+        padding: 20px 10px 15px;
+    }
+
+    .product_select_details {
+        margin-left: 5px;
+    }
+
+    .product_select_details .text {
+        width: 56%;
+        margin-left: 10px;
+    }
+
+    .product_select_details .text h6 {
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .billing_details h4 {
+        font-size: 20px;
+    }
+
+    .billing_details {
+        margin-right: 0;
+    }
+
+    .billing_single_input label {
+        font-size: 14px;
+    }
+
+    .billing_orders h4 {
+        font-size: 20px;
+    }
+
+    .billing_orders_product li .product {
+        width: 70%;
+    }
+
+    .billing_orders_product li h6 {
+        width: 30%;
+    }
+
+    .billing_orders_product li .product .text {
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+
+    .product_payment_accordion .accordion-body p,
+    .product_payment_accordion .accordion-body span {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .product_payment_accordion .accordion-body .pay_info label {
+        width: 100%;
+    }
+
+    .product_payment_accordion .accordion-body .pay_info input {
+        width: 100%;
+    }
+
+    .tshirt_copy_right_text p {
+        font-size: 16px;
+    }
+
+    .tshirt_copy_right {
+        margin-top: 30px;
+    }
+
+    /*===================================
+     T-SHIRT PAGE END
+    ===================================*/
+
+
+    /*===================================
+     SHOES PAGE START
+    ===================================*/
+
+    .shoes_banner {
+        padding: 70px 0px 80px;
+    }
+
+    .shoes_banner_text .logo {
+        width: 160px;
+        height: 50px;
+    }
+
+    .shoes_banner_text h2 {
+        font-size: 18px;
+        padding: 16px 20px;
+    }
+
+    .shoes_banner_text h1,
+    .shoes_banner_text h1 span {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .shoes_single_product {
+        height: auto;
+    }
+
+    .shoes_heading h2 {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    .shoes_details_img {
+        height: auto;
+        margin-left: 0;
+        margin-top: 30px;
+    }
+
+    .shoes_details_three .shoes_details_img {
+        margin-right: 0;
+        margin-top: 0;
+    }
+
+    .shoes_details_three .shoes_details_text {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+
+    .shoes_offer_text h4 {
+        font-size: 26px;
+    }
+
+    .shoes_offer_text h3,
+    .shoes_offer_text h3 span {
+        font-size: 32px;
+    }
+
+    .shoes_offer_text h5,
+    .shoes_offer_text h5 span {
+        font-size: 20px;
+    }
+
+    /*===================================
+     SHOES PAGE END
+    ===================================*/
+
+
+    /*===================================
+     FERFUME PAGE START
+    ===================================*/
+
+    .perfume_banner_text h4 {
+        font-size: 20px;
+    }
+
+    .perfume_banner_text h1,
+    .perfume_banner_text h1 span {
+        font-size: 30px;
+        margin-top: 30px;
+    }
+
+    .perfume_banner_text .img {
+        width: auto;
+        height: auto;
+        margin: 0;
+        margin-top: 30px;
+    }
+
+    .perfume_banner_text h5,
+    .perfume_banner_text h5 span {
+        font-size: 24px;
+    }
+
+    .perfume_btn {
+        font-size: 20px;
+        padding: 12px 30px 10px;
+    }
+
+    .perfume_btn i {
+        margin-right: 5px;
+    }
+
+    .perfume_heading h2 {
+        font-size: 22px;
+    }
+
+    .perfume_pakage_text {
+        padding: 50px 20px;
+    }
+
+    .perfume_single_pakage h6 {
+        font-size: 20px;
+    }
+
+    .perfume_single_pakage p {
+        font-size: 16px;
+        line-height: 24px;
+        margin-top: 25px;
+    }
+
+    .perfume_about_details {
+        padding: 40px 20px 60px 20px;
+    }
+
+    .perfume_about_details_text ul li {
+        font-size: 18px;
+        margin-top: 15px;
+    }
+
+    .perfume_about_details_text ul li::after {
+        top: 6px;
+    }
+
+    .perfume_about_details_img {
+        height: auto;
+        margin-top: 40px;
+    }
+
+    .perfume_price_details {
+        padding: 50px 20px 60px;
+    }
+
+    .perfume_price_details h5 {
+        font-size: 24px;
+    }
+
+    .perfume_price_details h3 {
+        font-size: 28px;
+    }
+
+    .perfume_price_details h3 span {
+        font-size: 28px;
+    }
+
+    .perfume_price_details h6 {
+        font-size: 26px;
+    }
+
+    .perfume_faq_text .accordion-button {
+        font-size: 16px;
+    }
+
+    .perfume_faq_text .accordion-body {
+        font-size: 14px;
+    }
+
+    .perfume_product_top {
+        padding: 60px 20px;
+    }
+
+    .perfume_product_top .img {
+        width: auto;
+        height: auto;
+    }
+
+    .perfume_product_top h4,
+    .perfume_product_top h4 span {
+        font-size: 28px;
+    }
+
+    .perfume_product_bottom h4 {
+        font-size: 28px;
+    }
+
+    .perfume_product_bottom h5 {
+        font-size: 26px;
+        padding: 10px 20px;
+    }
+
+    /*===================================
+     FERFUME PAGE END
+    ===================================*/
+
+
+    /*===================================
+     BEAUTY PRODUCT START
+    ===================================*/
+
+    .beauty_banner_logo a {
+        width: 160px;
+        height: 50px;
+    }
+
+    .beauty_banner_text h1 {
+        font-size: 36px;
+        line-height: 50px;
+    }
+
+    .beauty_banner_text h6,
+    .beauty_banner_text h6 span {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .beauty_banner_text h3 {
+        font-size: 22px;
+    }
+
+    .beauty_btn {
+        font-size: 16px;
+        padding: 14px 20px 10px 20px;
+    }
+
+    .beauty_banner_img {
+        height: 240px;
+        margin-top: 40px;
+    }
+
+    .beauty_product .tshirt_single_product {
+        height: auto;
+    }
+
+    .beauty_video_ifrem iframe {
+        height: 250px;
+    }
+
+    .beauty_video_text p {
+        font-size: 16px;
+    }
+
+    .beauty_heading h2 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .beauty_quality_text h3 {
+        font-size: 22px;
+    }
+
+    .beauty_quality_text ul li {
+        font-size: 16px;
+    }
+
+    .beauty_benefits_text ul li {
+        font-size: 16px;
+    }
+
+    .beauty_benefits_img {
+        height: 300px;
+        margin-top: 20px;
+    }
+
+    .beauty_uses_area ul li {
+        font-size: 16px;
+    }
+
+    .beauty_form .billing_checkout_form {
+        padding: 40px 15px 40px 15px;
+    }
+
+    /*===================================
+     BEAUTY PRODUCT END
+    ===================================*/
+
+
+    /*===================================
+     FASHON PAGE START
+    ===================================*/
+
+    .fashon_banner_logo a {
+        width: 160px;
+        height: 50px;
+    }
+
+    .fashon_banner_text {
+        margin-right: 0;
+    }
+
+    .fashon_banner_text h1 {
+        font-size: 30px;
+        line-height: 45px;
+    }
+
+    .fashon_banner_text h6,
+    .fashon_banner_text h6 span {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .fashon_banner_text ul li {
+        font-size: 16px;
+    }
+
+    .fashon_btn {
+        font-size: 16px;
+        padding: 12px 20px 10px 20px;
+    }
+
+    .fashon_banner_img {
+        height: auto;
+        margin-top: 60px;
+    }
+
+    .fashon_banner_img::after {
+        right: -46px;
+        width: 400px;
+        height: 400px;
+    }
+
+    .fashon_product .tshirt_single_product {
+        height: auto !important;
+    }
+
+    .fashon_video_ifrem iframe {
+        height: 250px;
+    }
+
+    .fashon_video_text p {
+        font-size: 16px;
+    }
+
+    .fashon_heading h2 {
+        font-size: 26px;
+    }
+
+    .fashon_benefits_text ul li {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .fashon_benefits_img {
+        height: auto;
+        margin-top: 40px;
+    }
+
+    .fashon_heading p,
+    .fashon_heading p span {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--colorPink);
+    }
+
+    /*===================================
+     FASHON PAGE END
+    ===================================*/
+
+}

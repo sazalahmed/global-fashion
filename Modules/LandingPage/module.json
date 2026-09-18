@@ -1,0 +1,11 @@
+{
+    "name": "LandingPage",
+    "alias": "landingpage",
+    "description": "Landing page mode with selectable templates for single-product pages",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\LandingPage\\Providers\\LandingPageServiceProvider"
+    ],
+    "files": []
+}

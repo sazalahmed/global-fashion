@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         stopOnFailure="false">
+
+    <testsuites>
+        <!-- GATE 1: Unit Tests -->
+        <testsuite name="Gate1-Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+
+        <!-- GATE 2: Feature Tests -->
+        <testsuite name="Gate2-Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+
+        <!-- GATE 3: API Tests -->
+        <testsuite name="Gate3-API">
+            <directory>tests/API</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="DB_CONNECTION" value="mysql"/>
+        <env name="DB_DATABASE" value="bizpos_test"/>
+        <env name="DB_USERNAME" value="root"/>
+        <env name="DB_PASSWORD" value=""/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+    </php>
+
+</phpunit>

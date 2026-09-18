@@ -1,0 +1,168 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.rp-body {
+    font-family: 'Nunito Sans', 'Courier New', Courier, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.rp-wrapper {
+    width: 300px;
+    margin: 0 auto;
+    padding: 16px 12px 24px;
+}
+
+.rp-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.rp-company-name {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.rp-company-address {
+    font-size: 11px;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.rp-company-phone {
+    font-size: 11px;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.rp-doc-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 6px;
+    color: #000;
+}
+
+.rp-divider-dashed {
+    border: none;
+    border-top: 1px dashed #555;
+    margin: 8px 0;
+}
+
+.rp-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 3px 0;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.rp-label {
+    font-weight: 600;
+    color: #444;
+    flex-shrink: 0;
+    margin-right: 8px;
+}
+
+.rp-value {
+    text-align: right;
+    flex: 1;
+    color: #000;
+}
+
+.rp-value-bold {
+    font-weight: 800;
+}
+
+.rp-amount-block {
+    text-align: center;
+    padding: 10px 0;
+    margin: 4px 0;
+}
+
+.rp-amount-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 2px;
+}
+
+.rp-amount-value {
+    font-size: 26px;
+    font-weight: 900;
+    color: #000;
+    letter-spacing: -0.5px;
+}
+
+.rp-footer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.rp-thank-you {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.rp-footer-meta {
+    font-size: 10px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.rp-footer-brand {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #888;
+    margin-top: 6px;
+}
+
+@media screen {
+    .rp-body {
+        background: #f5f5f5;
+        padding: 24px 0;
+    }
+
+    .rp-wrapper {
+        background: #fff;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+    }
+}
+
+@media print {
+    .rp-body {
+        background: #fff;
+        padding: 0;
+    }
+
+    .rp-wrapper {
+        width: 100%;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    @page {
+        margin: 6mm;
+        size: 80mm auto;
+    }
+}

@@ -1,0 +1,175 @@
+==================================================================
+BizPOS Pro — Complete Feature List
+==================================================================
+
+
+
+------------------------------------------------------------------
+2. SALES MANAGEMENT
+------------------------------------------------------------------
+- Create & manage sales orders with full lifecycle
+  (pending -> confirmed -> delivered)
+- Quotations (estimates) that convert to sales
+- Sales Returns with price validation against the original sale
+- Invoices, PDF generation, and printing
+- Order discounts, shipping charges, and per-line discounts
+- Customer-wise sales history
+
+
+------------------------------------------------------------------
+3. PRODUCTS & CATALOG
+------------------------------------------------------------------
+- Product management with images, pricing, SKU/model, and VAT rates
+- Categories, Brands, Units, and Variants (size/color/etc.)
+- Barcode label printing
+- Bulk import/export
+- Selling price, cost price, and stock tracking
+
+
+------------------------------------------------------------------
+4. INVENTORY / STOCK
+------------------------------------------------------------------
+- Real-time stock overview
+- Low-stock alerts
+- Stock adjustments (with reasons & history)
+- Stock valuation and movement tracking
+
+
+------------------------------------------------------------------
+5. PURCHASING & SUPPLIERS
+------------------------------------------------------------------
+- Purchase orders with supplier-wise tracking
+- Purchase Returns
+- Supplier management, supplier groups, and supplier ledgers/balances
+- Supplier payments and dues tracking
+
+
+------------------------------------------------------------------
+6. CUSTOMERS (CRM)
+------------------------------------------------------------------
+- Customer database with profiles & addresses
+- Customer Ledger and outstanding balances
+- Customer Advances (prepayments)
+- Customer Groups and delivery Areas
+- Purchase history per customer
+
+
+------------------------------------------------------------------
+7. FINANCE & MONEY
+------------------------------------------------------------------
+- Cash Flow management and Payment Accounts (cash, bank, mobile money)
+- Expenses with categories
+- Assets register with categories & depreciation tracking
+- Loans management with lenders
+- Investment tracking (investors)
+- "Today's Summary" / Income views (simple mode for small shops)
+
+
+------------------------------------------------------------------
+8. ACCOUNTING (DOUBLE-ENTRY)
+------------------------------------------------------------------
+- Journal Entries & General Ledger
+- Trial Balance, Profit & Loss, Balance Sheet, Cash Flow Statement
+- Credit Notes, Debit Notes, and Receipts
+- Auto-balancing journal entries from sales/purchases/payments
+- Bangladesh VAT support (Mushak forms, 15% standard NBR rate)
+
+
+------------------------------------------------------------------
+9. ONLINE STORE (ECOMMERCE)
+------------------------------------------------------------------
+- Full customer-facing storefront with product browsing, cart,
+  wishlist, compare
+- Checkout with online payment gateways (bKash, Nagad, SSLCommerz)
+  and Cash on Delivery
+- Customer accounts (register/login, Google sign-in, order history,
+  profile)
+- Coupons, Flash Deals, Campaigns, Collections
+- Banners & drag-and-drop homepage section builder
+- Menu builder (admin-managed navigation)
+- Blog module
+- Shipping Zones & rates
+- Contact page (admin-configurable details, banner, map)
+- Configurable store theme colors, payment icons, and settings
+
+
+------------------------------------------------------------------
+10. DELIVERY & COURIER INTEGRATION
+------------------------------------------------------------------
+- Integration with Bangladesh couriers: Pathao, Steadfast, eCourier,
+  Redx, Paperfly, Sundarban, SA Paribahan
+- Delivery/shipment tracking and courier operations
+
+
+------------------------------------------------------------------
+11. REPORTS & ANALYTICS
+------------------------------------------------------------------
+- Dashboard with KPIs & charts
+- Daily Summary (DTS), Monthly Summary
+- Sales reports, Detail Sales, Category-wise sales
+- Inventory, Purchase, and Supplier Payment reports
+- Receivables Aging, Profit & Loss, Cash Movement
+- Customer reports, VAT/Tax reports, Financial reports, Staff reports
+- Custom Report Builder
+- Excel/PDF export across modules
+
+
+------------------------------------------------------------------
+12. MARKETING
+------------------------------------------------------------------
+- SMS Campaigns (SSL Wireless, BulkSMSBD gateways)
+- Email Marketing
+- Loyalty Program (points/rewards)
+- Ad Spend tracking (marketing ROI)
+
+
+------------------------------------------------------------------
+13. HR & PAYROLL
+------------------------------------------------------------------
+- Employee management
+- Attendance tracking & reports
+- Leave Management (leave types, requests, approvals)
+- Weekends & Holidays configuration
+- Payroll processing
+
+
+------------------------------------------------------------------
+14. MANUFACTURING (OPTIONAL)
+------------------------------------------------------------------
+- Production orders & manufacturing dashboard
+- Raw materials, raw-material purchases & suppliers
+- Colors, Sizes, Factories, Catalogs
+- Damages, RM & product wastes
+- Reports: RM stock, production, damage, waste, cost analysis
+
+
+------------------------------------------------------------------
+15. AI ASSISTANT
+------------------------------------------------------------------
+- AI-powered shopping assistant (floating chat widget on the storefront)
+- Admin-configurable AI settings
+
+
+
+
+------------------------------------------------------------------
+17. SYSTEM, SECURITY & ADMINISTRATION
+------------------------------------------------------------------
+- User Management with Roles & Permissions
+- Backup & Restore
+- API Management (keys/tokens for integrations & mobile)
+- Multi-location support & Branches
+- Printer configuration
+- Activity Log & System Logs (full audit trail)
+- General settings: business profile, tax/VAT, payment methods,
+  courier, invoice/receipt, notifications, localization, SMS gateway
+- Simple Mode for small shops (hides advanced accounting/reports)
+- Dark mode, multi-language ready, BDT/lakh number formatting
+
+
+==================================================================
+NOTES
+==================================================================
+- This reflects what is actually built in the system (verified against
+  the live navigation and 1,059 routes), not a roadmap.
+- The AI Assistant and Manufacturing modules are optional/toggleable.

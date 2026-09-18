@@ -1,0 +1,11 @@
+{
+    "name": "AdSpend",
+    "alias": "adspend",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AdSpend\\Providers\\AdSpendServiceProvider"
+    ],
+    "files": []
+}

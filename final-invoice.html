@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice — Global</title>
+<!--
+  DomPDF-safe build:
+  - No flexbox / no CSS grid / no Bootstrap  -> table-based layout
+  - No clip-path                              -> angled shapes drawn as inline <svg> polygons
+  - No Font Awesome webfont                   -> footer icons are inline <svg>
+  - Brand colour lives in the SVG fill="..."  -> stays dynamic/templatable, renders in DomPDF
+-->
+<style>
+  /* Brand colours (browser view). For DomPDF the authoritative colour is the
+     fill="" attribute on each <svg> shape, since DomPDF has limited CSS-var support. */
+  :root{
+    --gf-red:#ED1C24;
+    --gf-dark:#111111;
+    --gf-grey:#5b5b5b;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:#dcdcdc;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#000;
+    font-size:14px;
+    padding:32px 0;
+  }
+
+  /* ---------- PAGE ---------- */
+  .page{
+    position:relative;
+    width:794px;            /* ~A4 width @96dpi */
+    min-height:1123px;      /* ~A4 height */
+    margin:0 auto;
+    background:#ffffff;
+    box-shadow:0 10px 40px rgba(0,0,0,.25);
+  }
+  .content{
+    position:relative;
+    padding:60px 70px 0;
+  }
+
+  /* ---------- HEADER (logo + qr) ---------- */
+  .head-table{ width:100%; border-collapse:collapse; }
+  .head-table td{ vertical-align:top; }
+  .logo-img{ width:260px; height:auto; display:block; }
+  .qr-cell{ text-align:right; width:120px; }
+  .qr-code{ width:110px; height:110px; }
+
+  /* ---------- TITLE ---------- */
+  .invoice-title{
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin:18px 0 26px;
+  }
+  .invoice-title span{
+    border-bottom:2px dotted #000;
+    padding-bottom:2px;
+  }
+
+  /* ---------- GENERIC TWO-COLUMN LAYOUT TABLE ---------- */
+  .layout-table{ width:100%; border-collapse:collapse; }
+  .layout-table > tbody > tr > td{ vertical-align:top; }
+  .col-left{ width:50%; padding-right:18px; }
+  .col-right{ width:50%; padding-left:18px; }
+  .text-right{ text-align:right; }
+  .text-center{ text-align:center; }
+  .fw-bold{ font-weight:bold; }
+  .upper{ text-transform:uppercase; }
+  .line{ line-height:1.5; }
+
+  .section-head{
+    font-weight:bold;
+    text-transform:uppercase;
+    font-size:13px;
+    border-bottom:1px solid #000;
+    padding-bottom:3px;
+    margin-bottom:6px;
+  }
+
+  /* ---------- SHIPPING PAID BOX ---------- */
+  .shipping-box{
+    border:1px solid #000;
+    width:180px;
+    margin-left:auto;
+    margin-top:18px;
+    border-collapse:collapse;
+  }
+  .shipping-box td{ text-align:center; padding:3px; }
+  .shipping-header{
+    background-color:#f1f1f1;
+    font-weight:bold;
+    font-size:12px;
+    border-bottom:1px solid #000;
+  }
+  .shipping-value{ font-weight:bold; }
+
+  /* ---------- ITEMS TABLE ---------- */
+  .table-items{ width:100%; border-collapse:collapse; margin-top:20px; }
+  .table-items th{
+    background-color:#4a4a4a;
+    color:#fff;
+    text-align:center;
+    font-weight:bold;
+    font-size:13px;
+    padding:6px 5px;
+    border:1px solid #000;
+  }
+  .table-items td{
+    padding:5px 8px;
+    border:1px solid #000;
+    font-size:13px;
+  }
+
+  /* ---------- FINANCIALS ---------- */
+  .due-table{ width:100%; border-collapse:collapse; margin-top:8px; }
+  .due-table td{ padding:2px 0; font-size:13px; }
+  .due-table .val{ text-align:right; }
+  .due-table .total-due td{ border-top:1px solid #000; font-weight:bold; padding-top:4px; }
+
+  .sum-table{ width:100%; border-collapse:collapse; }
+  .sum-table td{ padding:3px 0; font-size:13px; }
+  .sum-table .lbl{ text-align:right; text-transform:uppercase; padding-right:18px; }
+  .sum-table .val{ text-align:right; width:110px; }
+  .sum-table .thin td{ border-bottom:1px solid #000; }
+  .sum-table .thick td{ border-bottom:2px solid #000; }
+  .sum-table .grand td{ font-weight:bold; }
+
+  /* ---------- SIGNATURES ---------- */
+  .sign-table{ width:100%; border-collapse:collapse; margin-top:90px; }
+  .sign-table td{ vertical-align:bottom; }
+  .signature-mark{
+    border-top:1px solid #000;
+    width:170px;
+    text-align:center;
+    display:inline-block;
+    padding-top:3px;
+    font-size:13px;
+  }
+  .seal-wrap{ margin-bottom:6px; }
+  .seal-img{ width:100px; height:100px; }
+
+  /* ---------- SIDE RED TABS (inline SVG, absolutely positioned) ---------- */
+  .side-tab{
+    position:absolute;
+    top:430px;
+    width:22px;
+    height:350px;
+    z-index:1;
+  }
+  .side-tab.left{ left:0; }
+  .side-tab.right{ right:0; }
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+  }
+  .contact-bar{ width:100%; border-collapse:collapse; }
+  .contact-bar td{
+    text-align:center;
+    vertical-align:middle;
+    font-size:9px;
+    color:var(--gf-dark);
+    padding:0 6px 12px;
+    white-space:nowrap;
+  }
+  .contact-bar .ic{
+    width:17px;
+    height:17px;
+    vertical-align:middle;
+    margin-right:5px;
+  }
+  .base-bar{ display:block; width:100%; height:16px; }
+
+  @media print{
+    body{ background:#fff; padding:0; }
+    .page{ box-shadow:none; margin:0; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- SIDE TABS (was clip-path; now inline SVG polygons) -->
+    <svg class="side-tab left" viewBox="0 0 22 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 22,51 22,249 0,300" fill="#ED1C24"/>
+    </svg>
+    <svg class="side-tab right" viewBox="0 0 22 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="22,0 0,51 0,249 22,300" fill="#ED1C24"/>
+    </svg>
+
+    <!-- ===================== CONTENT ===================== -->
+    <div class="content">
+
+      <!-- HEADER: logo + QR -->
+      <table class="head-table">
+        <tr>
+          <td>
+            <img src="public/images/logo_global_f.png" alt="Global logo" class="logo-img">
+          </td>
+          <td class="qr-cell">
+            <svg class="qr-code" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="QR code">
+              <rect width="100" height="100" fill="white"/>
+              <rect x="5" y="5" width="25" height="25" fill="black"/>
+              <rect x="9" y="9" width="17" height="17" fill="white"/>
+              <rect x="13" y="13" width="9" height="9" fill="black"/>
+              <rect x="70" y="5" width="25" height="25" fill="black"/>
+              <rect x="74" y="9" width="17" height="17" fill="white"/>
+              <rect x="78" y="13" width="9" height="9" fill="black"/>
+              <rect x="5" y="70" width="25" height="25" fill="black"/>
+              <rect x="9" y="74" width="17" height="17" fill="white"/>
+              <rect x="13" y="78" width="9" height="9" fill="black"/>
+              <rect x="40" y="10" width="6" height="6" fill="black"/>
+              <rect x="50" y="10" width="6" height="6" fill="black"/>
+              <rect x="40" y="20" width="6" height="6" fill="black"/>
+              <rect x="40" y="40" width="20" height="20" fill="black"/>
+              <rect x="70" y="40" width="6" height="6" fill="black"/>
+              <rect x="84" y="40" width="6" height="6" fill="black"/>
+              <rect x="70" y="55" width="6" height="6" fill="black"/>
+              <rect x="40" y="70" width="6" height="6" fill="black"/>
+              <rect x="50" y="80" width="6" height="6" fill="black"/>
+              <rect x="75" y="75" width="15" height="15" fill="black"/>
+            </svg>
+          </td>
+        </tr>
+      </table>
+
+      <!-- TITLE -->
+      <div class="invoice-title"><span>Invoice</span></div>
+
+      <!-- VENDOR / META -->
+      <table class="layout-table">
+        <tr>
+          <td class="col-left line">
+            <div class="fw-bold">GLOBAL FURNITURE</div>
+            <div>57, West Monipur, 60 Feet Road,</div>
+            <div>Mirpur- 2, Dhaka- 1216</div>
+            <div>01727 009 008</div>
+            <div>info@globalfurniture.com.bd</div>
+            <div>www.globalfurniture.com.bd</div>
+          </td>
+          <td class="col-right text-right line">
+            <div><strong>Created by:</strong> Md. Ataur Rahaman Afique</div>
+            <div><strong>Invoice ID:</strong> 260200079</div>
+            <div><strong>Date:</strong> 2026-04-22</div>
+            <table class="shipping-box">
+              <tr><td class="shipping-header">SHIPPING PAID</td></tr>
+              <tr><td class="shipping-value">50715.00</td></tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <!-- BILL TO / SHIP TO -->
+      <table class="layout-table" style="margin-top:18px;">
+        <tr>
+          <td class="col-left line">
+            <div class="section-head">Bill To</div>
+            <div><strong>Name:</strong> Palmpay Limited</div>
+            <div><strong>Address:</strong> House-7A, Road No-41, Gulshan 2, Dhaka, PO : 1212, Bangladesh; Gulshan PS; Dhaka-1212; Bangladesh</div>
+            <div><strong>Contact:</strong> 01325080310</div>
+          </td>
+          <td class="col-right line">
+            <div class="section-head">Ship To</div>
+            <div><strong>Name:</strong> Palmpay Limited</div>
+            <div><strong>Address:</strong> House-7A, Road No-41, Gulshan 2, Dhaka, PO : 1212, Bangladesh; Gulshan PS; Dhaka-1212; Bangladesh</div>
+            <div><strong>Contact:</strong> 01325080310</div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ITEMS TABLE -->
+      <table class="table-items">
+        <thead>
+          <tr>
+            <th style="width:6%;">Sl.</th>
+            <th style="width:32%;">Product Name</th>
+            <th style="width:10%;">Color</th>
+            <th style="width:18%;">Size</th>
+            <th style="width:8%;">Qnty</th>
+            <th style="width:8%;">Unit</th>
+            <th style="width:10%;">Unit Price</th>
+            <th style="width:10%;">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">1</td>
+            <td>Water Purifier</td>
+            <td class="text-center">--</td>
+            <td class="text-center">400 GPT-40L</td>
+            <td class="text-center">1</td>
+            <td class="text-center">PCS</td>
+            <td class="text-right">44100.00</td>
+            <td class="text-right">44100.00</td>
+          </tr>
+          <tr class="fw-bold">
+            <td colspan="4" class="text-right">Total Qty</td>
+            <td class="text-center">1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- FINANCIAL SUMMARY -->
+      <table class="layout-table" style="margin-top:16px;">
+        <tr>
+          <td style="width:42%; vertical-align:top; padding-top:6px;">
+            <table class="due-table">
+              <tr><td class="fw-bold">Previous Due:</td><td class="val">2627263.25</td></tr>
+              <tr><td class="fw-bold">Current Due:</td><td class="val">50715.00</td></tr>
+              <tr class="total-due"><td>Total Due:</td><td class="val">2677978.25</td></tr>
+            </table>
+          </td>
+          <td style="width:58%; vertical-align:top; padding-left:40px;">
+            <table class="sum-table">
+              <tr><td class="lbl">Subtotal</td><td class="val">44100.00</td></tr>
+              <tr class="thin"><td class="lbl">Vat</td><td class="val">6615.00</td></tr>
+              <tr class="thick grand"><td class="lbl">Total</td><td class="val">50715.00</td></tr>
+              <tr class="grand"><td class="lbl">Balance Due</td><td class="val">50715.00</td></tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <!-- SIGNATURES + SEAL -->
+      <table class="sign-table">
+        <tr>
+          <td style="width:40%; text-align:left;">
+            <span class="signature-mark">Received by</span>
+          </td>
+          <td style="width:20%;"></td>
+          <td style="width:40%; text-align:right;">
+            <div class="seal-wrap">
+              <svg class="seal-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Official seal">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#ED1C24" stroke-width="2" stroke-dasharray="2,2"/>
+                <circle cx="50" cy="50" r="41" fill="none" stroke="#ED1C24" stroke-width="1.5"/>
+                <path d="M35 60 L45 40 L55 60 M30 48 L50 35 L70 48" fill="none" stroke="#ED1C24" stroke-width="2.5"/>
+                <text x="50" y="82" font-family="Arial" font-size="7" font-weight="bold" fill="#ED1C24" text-anchor="middle" letter-spacing="1.5">FURNITURE</text>
+                <text x="50" y="21" font-family="Arial" font-size="8" font-weight="bold" fill="#ED1C24" text-anchor="middle" letter-spacing="2">GLOBAL</text>
+              </svg>
+            </div>
+            <span class="signature-mark">Authorized by</span>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+    <!-- =================== /CONTENT =================== -->
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <table class="contact-bar">
+        <tr>
+          <td>
+            <svg class="ic" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+              <rect width="17" height="17" rx="4" fill="#ED1C24"/>
+              <rect x="6" y="3.5" width="5" height="10" rx="1" fill="#fff"/>
+              <rect x="7.6" y="11.4" width="1.8" height="1.1" rx="0.5" fill="#ED1C24"/>
+            </svg>01727009008
+          </td>
+          <td>
+            <svg class="ic" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+              <rect width="17" height="17" rx="4" fill="#ED1C24"/>
+              <rect x="3.5" y="5" width="10" height="7" rx="1" fill="#fff"/>
+              <path d="M3.8 5.6 L8.5 9 L13.2 5.6" stroke="#ED1C24" stroke-width="0.9" fill="none"/>
+            </svg>info@globalfurniture.com.bd
+          </td>
+          <td>
+            <svg class="ic" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+              <rect width="17" height="17" rx="4" fill="#ED1C24"/>
+              <text x="8.7" y="13" font-family="Arial" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">f</text>
+            </svg>fb.com/globalfurniture.com.bd
+          </td>
+          <td>
+            <svg class="ic" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+              <rect width="17" height="17" rx="4" fill="#ED1C24"/>
+              <circle cx="8.5" cy="8.5" r="5" fill="none" stroke="#fff" stroke-width="1"/>
+              <ellipse cx="8.5" cy="8.5" rx="2.2" ry="5" fill="none" stroke="#fff" stroke-width="0.8"/>
+              <line x1="3.5" y1="8.5" x2="13.5" y2="8.5" stroke="#fff" stroke-width="0.8"/>
+            </svg>www.gloalfurniture.com.bd
+          </td>
+          <td>
+            <svg class="ic" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+              <rect width="17" height="17" rx="4" fill="#ED1C24"/>
+              <path d="M8.5 3.5 C6 3.5 4.5 5 4.5 7 C4.5 9.5 8.5 13.5 8.5 13.5 C8.5 13.5 12.5 9.5 12.5 7 C12.5 5 11 3.5 8.5 3.5 Z" fill="#fff"/>
+              <circle cx="8.5" cy="7" r="1.4" fill="#ED1C24"/>
+            </svg>57, West Monipur, 60 Feet Road Mirpur-2, Dhaka-1216
+          </td>
+        </tr>
+      </table>
+
+      <!-- angled base bar (was clip-path; now one inline SVG with two polygons) -->
+      <svg class="base-bar" viewBox="0 0 794 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,0 444,0 397,16 0,16" fill="#111111"/>
+        <polygon points="460,0 794,0 794,16 413,16" fill="#ED1C24"/>
+      </svg>
+    </div>
+
+  </div>
+
+</body>
+</html>

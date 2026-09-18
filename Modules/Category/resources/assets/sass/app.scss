@@ -1,0 +1,40 @@
+/* ===================================
+   Category Module Styles
+   =================================== */
+
+/* Category Image Placeholder */
+.bp-category-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--bp-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+[data-theme="dark"] .bp-category-img {
+  background-color: var(--bp-primary-light);
+}
+
+/* Image Preview on Forms */
+.bp-image-preview {
+  max-width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px dashed var(--bp-primary);
+  padding: 4px;
+}
+
+.bp-image-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+[data-theme="dark"] .bp-image-preview {
+  border-color: var(--bp-primary-light);
+}

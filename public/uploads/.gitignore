@@ -1,0 +1,10 @@
+*
+!.gitignore
+
+# Track the seeded Global Fashion catalog images (public/uploads/products/*.{jpg,jpeg,png}),
+# but keep all other runtime uploads (numbered folders, thumbnails, etc.) ignored.
+!products/
+products/*
+!products/*.jpg
+!products/*.jpeg
+!products/*.png

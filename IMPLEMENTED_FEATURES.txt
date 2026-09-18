@@ -1,0 +1,195 @@
+Legend: [x] Present   [~] Partial / exists in a different form
+
+=========================================================
+1. DASHBOARD
+=========================================================
+[x] Sales Overview
+[x] Purchase Overview
+[x] Cash Flow
+[x] Profit & Loss Summary
+[x] Low Stock Alert
+[x] Due Collection
+[x] Due Payment
+[x] Top Selling Products
+[x] Daily/Monthly Reports
+[~] KPI Dashboard (stat cards exist; no dedicated KPI board)
+
+=========================================================
+2. USER & ROLE MANAGEMENT
+=========================================================
+[x] Roles configurable (Admin, Accountant, Sales, Purchase, Warehouse,
+    Manager, Branch Manager, Staff) via Security module
+[x] Permission Management
+[x] Activity Log
+
+=========================================================
+3. CUSTOMER (CRM)
+=========================================================
+[x] Customer Database
+[x] Customer Groups
+[x] Quotation
+[x] Customer Due
+[x] Loyalty Points
+[x] SMS/Email/WhatsApp Notification
+[~] Customer Wallet (implemented as customer "advances" / prepaid balance)
+
+=========================================================
+4. SUPPLIER MANAGEMENT
+=========================================================
+[x] Supplier Database
+[x] Purchase History
+[x] Due Payment
+[x] Supplier Ledger
+
+=========================================================
+5. PRODUCT MANAGEMENT
+=========================================================
+[x] Product
+[x] Category
+[x] Brand
+[x] Unit
+[x] Barcode
+[x] SKU
+[x] Variant (Size, Color)
+[x] Multiple Images
+
+=========================================================
+6. INVENTORY MANAGEMENT
+=========================================================
+[x] Warehouse
+[x] Multiple Warehouse
+[x] Stock In
+[x] Stock Out
+[x] Stock Adjustment
+[x] Damage Products
+[x] Low Stock Alert
+[x] Opening Stock
+[~] Transfer (payment-account transfers exist; dedicated stock transfer not confirmed)
+
+=========================================================
+7. PURCHASE MANAGEMENT
+=========================================================
+[x] Purchase Requisition
+[x] Purchase Order
+[x] GRN (Goods Receive)
+[x] Purchase Return
+[x] Supplier Invoice
+[x] Due Payment
+
+=========================================================
+8. SALES MANAGEMENT
+=========================================================
+[x] Quotation
+[x] Sales Order
+[x] Invoice
+[x] Sales Return
+[x] Due Collection
+[x] Discount
+[x] Delivery Status
+
+=========================================================
+9. POS
+=========================================================
+[x] Barcode Scan
+[x] Touch POS
+[x] Multiple Payment (split payments)
+[x] Hold Sale
+[x] Return
+[x] Receipt Print
+[x] Offline Mode (PWA service worker + IndexedDB queue)
+
+=========================================================
+10. ACCOUNTING
+=========================================================
+[x] General Ledger
+[x] Trial Balance
+[x] Income
+[x] Expense
+[x] Balance Sheet
+[x] Profit & Loss
+[x] Cash Flow
+[~] Cash Book (covered by cash-movement report; no dedicated cash book)
+
+=========================================================
+11. COURIER INTEGRATION
+=========================================================
+[x] Courier Booking
+[x] Tracking
+[x] COD Collection
+[x] Delivery Status
+[x] Multiple Courier Support (Pathao, Steadfast, etc.)
+[~] Return Delivery (not clearly implemented)
+
+=========================================================
+12. E-COMMERCE INTEGRATION
+=========================================================
+[x] Website Orders (Storefront)
+
+=========================================================
+13. HR & PAYROLL
+=========================================================
+[x] Employee
+[x] Attendance
+[x] Leave
+[x] Payroll
+[x] Salary
+[x] Advance Salary
+[x] Bonus
+[x] Loan
+
+=========================================================
+14. REPORTS
+=========================================================
+[x] Sales Report
+[x] Purchase Report
+[x] Inventory Report
+[x] Stock Valuation
+[x] Customer Ledger
+[x] Supplier Ledger
+[x] Profit Report
+[x] Expense Report
+[x] VAT Report
+[~] Tax Report (VAT covered)
+[~] Employee Report (staff report)
+
+=========================================================
+15. DOCUMENT MANAGEMENT
+=========================================================
+[x] Invoice PDF
+[x] Purchase PDF
+
+=========================================================
+16. MULTI BUSINESS
+=========================================================
+[x] Multiple Branch
+[x] Multiple Warehouse
+
+=========================================================
+17. SETTINGS
+=========================================================
+[x] Company Profile
+[x] Tax
+[x] VAT
+[x] Currency (single-currency)
+[x] Financial Year
+[x] Invoice Template
+[x] Barcode Settings
+[x] Email Settings
+[x] SMS API
+[x] Payment Gateway
+
+=========================================================
+NOT YET IMPLEMENTED (for reference)
+=========================================================
+- CRM: Lead Management, Follow-up, Sales Pipeline
+- Supplier: Rating, Performance
+- Product: Batch, Expiry Date, Serial Number
+- Inventory: Stock Audit (physical count), Batch Tracking
+- Purchase: RFQ
+- Sales: Commission (sales-agent)
+- POS: Cash Drawer, Shift Opening/Closing
+- Accounting: Petty Cash
+- E-commerce: Facebook Orders, Shopify, WooCommerce
+- HR: Performance (appraisal)
+- Reports: Courier Report
+- Multi Business: Multiple Company (multi-tenant)

@@ -1,0 +1,3961 @@
+% (Percent)
+% Of
+(' + escapeHtml(order.time) + 
+(Cash In - Cash Out)
+(Opening + Cash In - Cash Out)
+(comma separated)
+(deficit)
+(optional — for server-side events)
+(shown on product page)
+- BDT 0
+-' + formatBDT(lineDiscount) + '
+-- Choose Report Type --
+-- SKU, Pricing &amp; Status
+-- Select Attribute --
+-- Select Customer --
+-- Select Product --
+-- Select Supplier --
+-- days
+...
+0 = Never expire
+0 ? item.received_qty : item.quantity) + '
+0 Variants
+0 item(s)
+0 items
+0 selected
+0 x Monthly
+016XXXXXXXXX
+01XXXXXXXXX
+1 ' + escHtml(subName) + '
+1 ' + safeSubName + '
+1 Year
+1 point = BDT 0.10 discount
+1,234,567.89 (International)
+1-28 (to avoid month-end issues)
+1-30 Days
+10 minutes
+1000 — Current Assets
+1001 — Cash in Hand
+1002 — bKash Account
+1003 — Nagad Account
+1004 — Bank — DBBL
+1005 — Bank — BRAC Bank
+1010 — Accounts Receivable
+1020 — Inventory
+1025 — Advance Tax (AIT)
+12 Installments
+12 x Monthly
+12,34,567.89 (BD Standard - Lakh)
+12-digit TIN
+1500 — Fixed Assets
+1500 — Shop Equipment
+1510 — Furniture &amp; Fixtures
+18 Installments
+180 Days
+2 Labels
+2 Years
+2000 — Current Liabilities
+2001 — Accounts Payable
+2010 — VAT Payable (15%)
+2015 — Salary Payable
+210mm (A4)
+24 Installments
+2500 — Bank Loan — City Bank
+2500 — Long-term Liabilities
+29.5% margin
+3 Installments
+3 Labels
+3 Months
+3 Years
+30 Days
+30 days
+3000 — Equity
+3001 — Owner's Capital
+3010 — Retained Earnings
+3020 — Owner's Drawing
+31-60 Days
+38mm x 25mm (Small)
+4 Labels
+4000 — Revenue
+4001 — Sales Revenue
+4010 — Sales Returns
+4020 — Service Income
+4030 — Discount Received
+5000 — Operating Expenses
+5001 — Cost of Goods Sold
+50mm x 25mm (Standard)
+50mm x 30mm (Large)
+5100 — Rent Expense
+5110 — Salary Expense
+5120 — Utilities Expense
+5130 — Marketing Expense
+5140 — Courier &amp; Delivery
+5150 — Depreciation Expense
+5160 — Office Supplies
+5170 — Bank Charges
+5180 — Discount Allowed
+5190 — Interest Expense
+5500 — Non-operating Expenses
+58mm
+58mm (Small)
+6 Installments
+6 Months
+6-digit code sent to your inbox
+61-90 Days
+8+ Characters
+8+ chars
+80mm
+80mm (Standard)
+9 Installments
+9-digit routing number
+90 Days
+90+ Days
+? This action cannot be undone.
+A. Output VAT on Sales
+A4 Printer
+AMOUNT PAID
+API Base URL
+API Configured
+API Key
+API Key Created!
+API Key Management
+API Keys
+API Management
+API Permissions
+API Secret
+API calls exceeding the rate limit will receive a 429 Too Many Requests response. Implement exponential backoff in your integration.
+API key created successfully.
+API key deleted successfully.
+Abnormal
+Absent
+Accept Nagad mobile payments
+Accept Visa, Mastercard, bank transfers via SSLCommerz
+Accept bKash mobile payments
+Accept cash payment upon delivery
+Accepted
+Accepted Payment Channels
+Accepted formats: CSV, XLSX, XLS (max 5MB)
+Accessories
+Account
+Account *
+Account Code
+Account Code *
+Account Holder Name
+Account Information
+Account Name
+Account Name *
+Account Number
+Account Number *
+Account Type
+Account Type *
+Account code cannot be changed
+Account created successfully!
+Account created successfully.
+Account deleted successfully.
+Account updated successfully.
+Accounting &amp; VAT
+Accounting Overview
+Accounts
+Accumulated
+Accumulated Dep.
+Action
+Activate
+Active Customer
+Active Customers
+Active Hero
+Active Keys
+Active Landing Page
+Active Members
+Active Plans
+Active Production Orders
+Active Promo
+Active Suppliers
+Active Users
+Active Warehouses
+Active Zones
+Activity Detail
+Activity Information
+Activity Log
+Actual (Running)
+Ad Number
+Ad Platforms
+Ad Spend Analytics
+Add Account
+Add Advance
+Add Advance Payment
+Add Area
+Add Asset
+Add Bank
+Add Branch
+Add Brand
+Add Catalog
+Add Category
+Add Color
+Add Courier
+Add Customer
+Add Customer Group
+Add Employee
+Add Expense
+Add Expense Vendor
+Add Factory
+Add Holiday
+Add Item
+Add Lender
+Add Maintenance Record
+Add Method
+Add More Items from Purchase
+Add New
+Add New Product
+Add New Supplier
+Add Payment
+Add Payment Account
+Add Payment Icons
+Add Platform
+Add Printer
+Add Products
+Add Raw Material
+Add Raw Material Supplier
+Add Recurring
+Add Return Type
+Add Shipping Zone
+Add Shipping Zone — eCommerce
+Add Size
+Add Split
+Add Split Payment
+Add Supplier
+Add Supplier Group
+Add Tax Rate
+Add Unit
+Add Variant Attribute
+Add Vendor
+Add Warehouse
+Add Webhook
+Add Zone
+Add at least one product to this deal.
+Add at least one product.
+Add new brand
+Add new category
+Add new unit
+Add new value...
+Add one
+Add to POS Cart
+Add: Deposits in transit (recorded in books but not yet in bank)
+Added By
+Added to wishlist.
+Addition
+Additional
+Additional Details
+Additional Info
+Additional Information
+Additional Notes
+Additional Notes:
+Additional charge per kg after first
+Additional notes for this entry...
+Additional notes or instructions for this debit note...
+Address:
+Adjust
+Adjust Amount
+Adjust quantities above
+Adjusted
+Adjusted Bank Balance
+Adjusted Book Balance
+Adjusted By
+Adjustment
+Adjustment #
+Adjustment Details
+Adjustment Items
+Adjustment Type *
+Adjustment deleted.
+Adjustments
+Admin Login
+Admin Notification Email
+Advance
+Advance Amount (BDT) *
+Advance Balance
+Advance Balances
+Advance Ded.
+Advance Payment
+Advance Return
+Advance payment recorded successfully.
+Advances
+Against Expense (Optional)
+Against Sale:
+Aggregate Stats
+Aging Report
+Agrani Bank
+Alert Configuration
+Alert when online stock falls below this number
+Alert when stock falls below this.
+Align Center
+Align Left
+All Branches
+All Brands
+All Cashiers
+All Categories
+All Clear
+All Comp. Status
+All Couriers
+All Customers
+All Departments
+All Directions
+All Events
+All Expenses
+All Factories
+All Gateways
+All Groups
+All Leave Types
+All Lenders
+All Levels
+All Loans
+All Log Names
+All Materials
+All Methods
+All Parents
+All Parties
+All Payment
+All Payment Status
+All Platforms
+All Positions
+All Products
+All Reasons
+All Responsibility
+All Roles
+All Sales
+All Sources
+All Status
+All Stock
+All Stock Status
+All Subject Types
+All Suppliers
+All Sync Status
+All Types
+All Users
+All Visibility
+All Warehouses
+All areas
+All attendance and payroll records for this employee will be archived.
+All caches cleared successfully (app, config, route, view).
+All employees have been paid for this payroll period
+All locations within this warehouse will also be removed.
+All products are above their reorder levels. No action needed.
+All products associated with this brand will be unlinked.
+All purchase items are already added
+All stock records, sales history references, and variant data will be permanently removed.
+All-Time Paid
+Allocated Amount
+Allocated Documents
+Allocation
+Allow Back-dated Transactions
+Allow Decimal Quantities
+Allow Negative Stock
+Allow customers to cancel within this period
+Allow selling below zero stock
+Allowed
+Allows Decimal
+Already Issued
+Already Paid
+Already Received
+Already Returned
+Always
+American Express
+Amount (BDT)
+Amount (BDT) *
+Amount *
+Amount in Words (Bangla)
+Amount in words
+Annual Leave
+Annual leave must be planned at least 7 days in advance.
+Answer
+Any additional details about this asset...
+Any additional notes (optional)...
+Any notes about this delivery...
+Any sale note...
+Appearance — Color Scheme
+Applicable To
+Applied
+Applied On
+Apply
+Apply Filters
+Apply Filters & Group By
+Apply To
+Apply advance deductions (max 50% of basic salary)
+Apply for Leave
+Approval
+Approve & Create
+Approve & Process
+Approve & Submit
+Approve Payroll
+Approve Return
+Approved At
+Approved By
+Approved, awaiting completion
+Area
+Area Hierarchy
+Area added successfully.
+Area deleted.
+Area updated successfully.
+Areas
+As of Date
+As of Date *
+Asset
+Asset Details
+Asset ID
+Asset Name
+Asset Name *
+Assets &amp; Expenses are normally Debit; Liabilities, Equity &amp; Revenue are normally Credit
+Assign Courier
+Assigned Users
+At least one of each required
+Attach Document
+Attachment
+Attachments
+Attendance %
+Attendance Configuration
+Attendance Details
+Attribute Information
+Attribute Name
+Attribute Name *
+Attribute Values
+Attributes &amp; Options
+Audience *
+Audit Trail
+Author
+Authorised By
+Authorized Signatory
+Authorized Signature
+Auto
+Auto (Filter Rules)
+Auto Generate
+Auto Generate SKU
+Auto Play
+Auto Print After Sale
+Auto from Category
+Auto-Book Shipment
+Auto-Confirm Orders
+Auto-focus barcode input
+Auto-generated from name
+Auto-generated if empty
+Auto-generated or manual entry
+Available
+Available Courier Partners
+Available advance balance
+Available for adjustment
+Available on POS terminal
+Average Attendance
+Average Attendance %
+Average Cost
+Avg CPC
+Avg Cost
+Avg Damage Rate
+Avg Sale Value
+Avg. Est. Days
+Avg. Shipping Rate
+Awaiting response
+B. Input VAT on Purchases
+BDT
+BDT ' + Math.round(p.sell_price).toLocaleString() + '
+BDT ' + Number(inv.due_amount).toLocaleString() + '
+BDT ' + Number(inv.grand_total).toLocaleString() + '
+BDT ' + Number(price).toLocaleString() + '
+BDT ' + Number(product.price).toLocaleString() + '
+BDT ' + diff.toFixed(2) + '
+BDT ' + formatBDT(amt) + '
+BDT ' + formatBDT(diff) + ' (Unbalanced)
+BDT ' + formatBDT(due).replace('BDT ', '
+BDT ' + formatBDT(item.unit_price) + '
+BDT ' + formatBDT(price) + '
+BDT ' + formatBDT(unitPrice) + '
+BDT ' + formatBDT(v.sell_price) + '
+BDT (Flat)
+BDT - Bangladeshi Taka
+BDT 0
+BDT 0 (Balanced)
+BDT 0 (No amounts entered)
+BDT 0.00
+BDT 0.35 (English) - BDT 0.50 (Bangla Unicode)
+BDT 0.50
+BDT 1,234.00
+BDT 1,43,000
+BDT 3,42,000
+BDT 30,000
+BDT 4,85,000
+BDT 7,96,500
+BDT bulk rate
+BDT excl. VAT
+BDT incl. VAT
+BIN Number
+BIN:
+BOM Planned
+BOM Status
+BRAC Bank
+BRANCH-YYYY-NNNNN
+Back to Log
+Back to PO
+Back to Sale
+Backup
+Backup & Restore
+Backup &amp; Restore
+Backup Date
+Backup created successfully.
+Backup restored successfully.
+Bahrain (+973)
+Balance
+Balance (BDT)
+Balance Date
+Balance Due
+Balance Transfers
+Balance Type
+Balance transfer recorded successfully.
+Balanced
+Bangla
+Bangla Digits
+Bangla Invoice Amount
+Bangla on Receipt
+Bangladesh
+Bangladesh (+880)
+Bank
+Bank *
+Bank Account
+Bank Account *
+Bank Account Details
+Bank Branch
+Bank Details
+Bank Information
+Bank Name
+Bank Reconciliation
+Bank Statement Balance
+Bank Statement Balance:
+Bank Transfer
+Bank account number
+Bank added successfully.
+Bank deleted.
+Bank name
+Bank reconciliation completed.
+Banks
+Banner Details
+Banner Image
+Banner Image *
+Banner created successfully.
+Banner deleted successfully.
+Banner updated successfully.
+Banners — eCommerce
+Barcode Generator
+Barcode Label
+Barcode Type
+Barisal
+Base Rate
+Base Rate (BDT) *
+Base Unit
+Base Unit *
+Base Units
+Basic
+Basic Info
+Basic Information
+Basic Salary
+Being prepared
+Below reorder level
+Benefit text
+Benefits
+Best Send Time
+Bi-weekly
+Bill To
+Bill of Materials (BOM)
+Billing To
+Bills
+Biz
+BizPOS
+BizPOS Pro
+BizPOS Pro &mdash; Admin Portal &mdash; v2.0
+Blog Posts
+Blog post created successfully.
+Blog post deleted successfully.
+Blog post updated successfully.
+Blog — eCommerce
+Bluetooth
+Bold
+Bonus points on signup
+Book Balance (BizPOS)
+Book Balance (per BizPOS)
+Book Balance:
+Book Transactions (BizPOS)
+Branch *
+Branch Code *
+Branch Information
+Branch Logo
+Branch Management
+Branch Name
+Branch Name *
+Branch created successfully.
+Branch deleted successfully.
+Branch manager name
+Branch name
+Branch updated successfully.
+Branch:
+Brand Information
+Brand Name
+Brand Name *
+Brand created successfully.
+Brand deleted successfully.
+Brand updated successfully.
+Branding & Finance
+Brief description of the brand...
+Brief description of this category...
+Brief description of this role
+Brief description of this salary structure...
+Brief description...
+Brief summary of the post
+Bronze
+Build Your Custom Report
+Build custom reports with flexible filters
+Bulk SMS
+BulkSMSBD
+Business Details
+Business Identification Number
+Business Profile
+Button
+Button Text
+Button URL
+Buyer (always)
+Buyer (defective exception)
+By
+By Branch
+By Customer
+By Product
+By Supplier
+C. Net VAT Payable (A - B)
+CANCELLED
+CN Number
+CN Number:
+CN number, customer, reason...
+COD Amount
+COD Amount (BDT)
+COD Amount :
+COD Charge (%)
+COD Collection
+COD Extra Charge (BDT)
+COD Maximum Amount
+COD orders always require manual confirmation
+COUPON CODE
+CPC
+CPM
+CSV
+CTR
+Calculate salaries based on assigned salary structures
+Calculated Metrics
+Calculation
+Campaign
+Campaign Checklist
+Campaign Details
+Campaign Information
+Campaign Name
+Campaign Name *
+Campaign deleted.
+Campaign name set
+Campaign updated.
+Campaigns
+Cancel Credit Note
+Cancel Debit Note
+Cancel Loan
+Cancel Order
+Cancel PO
+Cancel Ratio
+Cancel Return
+Cancel Sale
+Cancellation Reason *
+Cancellation SMS
+Cannot delete a role that has users assigned. Reassign them first.
+Cannot delete bank — it is linked to payment accounts.
+Cannot delete the Super Admin role.
+Cannot delete the default warehouse or warehouse with existing stock.
+Cannot delete the main branch.
+Cannot delete — customers are assigned to this area.
+Cannot delete — this area has sub-areas. Delete children first.
+Cannot delete — this group has assigned customers. Reassign them first.
+Cannot delete — this group has assigned suppliers. Reassign them first.
+Cannot delete — this type is used by existing returns.
+Cannot delete — this vendor has linked expenses.
+Card
+Card Holder Name
+Card Number
+Card Number (last 4)
+Card Type *
+Cart
+Cart cleared.
+Cart is empty
+Cart updated.
+Cash
+Cash Balance
+Cash Count
+Cash Flow Statement
+Cash Movement
+Cash Movement Report
+Cash Register
+Cash Summary
+Cash in Hand
+Cash includes: Cash in Hand, bKash, Nagad, Bank accounts
+Cash on Delivery
+Cash on Delivery (COD)
+Cash, bKash, Card, Bank
+Cashier
+Cashier Breakdown
+Cashier:
+Casual Leave
+Catalog
+Catalog *
+Catalog ID
+Catalog Information
+Catalog Name *
+Catalog created successfully.
+Catalog deleted successfully.
+Catalog description...
+Catalog name
+Catalog updated successfully.
+Catalogs
+Categorization
+Category *
+Category Information
+Category Name *
+Category created successfully.
+Category deleted successfully.
+Category updated successfully.
+Category-wise
+Category-wise Sales
+Category-wise Sales Report
+Category:
+Challan #
+Challan Created
+Challan Details
+Challan Number
+Change
+Change:
+Changes Made
+Chart of Accounts
+Check In
+Check Out
+Check Your Email
+Check the days that are weekends (non-working days). Default for BD: Friday + Saturday.
+Check the trash icon to remove an image on save.
+Checked By
+Chest
+China
+Chittagong
+Choose Columns
+Choose a bank account and statement date above, then click "Load" to start the reconciliation process.
+Choose a strong password you haven't used before.
+Choose from Sales, Purchase, Inventory, or Financial reports
+City
+City Bank
+Classification
+Clear
+Clear All
+Clear Cart (F8)
+Clear Old Logs
+Clicks
+Client ID
+Client Secret
+Clone
+Closing Balance
+Closing Stock
+Closing Time
+Code
+Code *
+Code 128
+Code expires in 10 minutes
+Collect Payment
+Collected
+Collection Details
+Collection Type *
+Collection created successfully.
+Collection deleted successfully.
+Collection updated successfully.
+Collections — eCommerce
+Color
+Color *
+Color Code
+Color ID
+Color Swatch
+Color name
+Colors
+Comma-separated
+Comma-separated tags
+Comp. Amount
+Comp. Status
+Company
+Company Email
+Company Information
+Company Logo
+Company Name
+Company Name *
+Company Phone *
+Company info, logo, tax IDs
+Company or organization
+Company:
+Comparison
+Compensation
+Compensation Received
+Compensation recorded successfully.
+Complete
+Complete & Process Refund
+Complete Payment
+Complete Return
+Complete financial overview for the day
+Completed At
+Compliance
+Component Name
+Components
+Compose your email content here...
+Condition
+Condition *
+Condition of Items
+Condition of Returned Items
+Conditions
+Configuration
+Configure Google Tag Manager and Facebook Pixel for conversion tracking across your storefront and landing pages.
+Configure Pathao, Steadfast, Redx
+Configure VAT rates as per NBR Bangladesh regulations and set up Mushak form printing preferences.
+Configure language, date format, number system, and Bangla-specific display options for invoices and UI.
+Configure shipping rates
+Configured
+Configured Webhooks
+Confirm New Password
+Confirm Selected
+Connect an SMS provider to send OTPs, payment receipts, delivery updates, and marketing campaigns.
+Connect delivery partners, configure COD settings, and automate shipment booking directly from sales orders.
+Connected
+Connection Type
+Consignment ID
+Contact
+Contact Email
+Contact Information
+Contact Person
+Contact Person *
+Contact Phone
+Contact:
+Content
+Control which events trigger notifications and through which channels -- Email, SMS, Push, or In-App.
+Conv. Rate
+Conversion
+Conversion *
+Conversion Factor
+Conversions
+Convert to Sale
+Converted
+Correction
+Cost
+Cost (BDT)
+Cost Analysis
+Cost Analysis Report
+Cost Breakdown
+Cost Estimate
+Cost Price
+Cost Price (BDT)
+Cost per SMS
+Count
+Country
+Country of Origin
+Coupon
+Coupon Code *
+Coupon Details
+Coupon Preview
+Coupon Status *
+Coupon created successfully.
+Coupon deleted successfully.
+Coupon description
+Coupon removed.
+Coupons — eCommerce
+Courier
+Courier & Delivery
+Courier & Delivery Management
+Courier &amp; Delivery
+Courier Information
+Courier Order ID
+Courier Partner *
+Courier Partner API Credentials
+Courier Provider *
+Courier Providers
+Courier Status
+Courier Status Update
+Courier assigned manually. API connection failed.
+Courier:
+Couriers
+Create API Key
+Create Banner
+Create Banner — eCommerce
+Create Blog Post
+Create Blog Post — eCommerce
+Create Challan
+Create Collection
+Create Collection — eCommerce
+Create Coupon
+Create Coupon — eCommerce
+Create Credit Note
+Create Debit Note
+Create Delivery Challan
+Create Email Campaign
+Create Flash Deal
+Create Flash Deal — eCommerce
+Create Installment Plan
+Create Installment Plan (Kisti)
+Create Invoice
+Create Journal Entry
+Create Journal Entry for Adjustments
+Create Loan
+Create New Invoice
+Create New Plan
+Create New Quotation
+Create New Sale
+Create Production Order
+Create Purchase Order
+Create Purchase Return
+Create Quotation
+Create RM Purchase Order
+Create Recurring Expense
+Create Role
+Create SMS Campaign
+Create Salary Structure
+Create Sale Return
+Create Sales
+Create Schedule
+Create Webhook
+Create a draft payroll that must be approved before payment
+Create a strong password
+Create a warehouse
+Create and send email newsletters, promotions, and automated campaigns.
+Create one
+Create one now
+Create the first one.
+Create your first credit note
+Created On
+Credit
+Credit (BDT)
+Credit Limit
+Credit Limit (BDT)
+Credit Note
+Credit Note Details
+Credit Note Information
+Credit Notes
+Credit note deleted.
+Ctrl+K
+Curated product collections
+Currency Display
+Current
+Current (0-30d)
+Current Balance
+Current Balance (Net Due)
+Current Book Value
+Current Book Value (BDT)
+Current Icons
+Current Images
+Current Qty
+Current Stock
+Current Value
+Current book value
+Current password is incorrect.
+Current photo will be kept if no new file is selected.
+Custom API
+Custom Builder
+Custom CSS
+Custom Range
+Custom Report
+Custom Report Builder
+Custom header text shown above receipt items...
+Customer & Sale Reference
+Customer *
+Customer Acknowledgement
+Customer Advance Available
+Customer Advance Balances
+Customer Advances
+Customer Areas
+Customer Authentication
+Customer Details
+Customer Due
+Customer Due Receive
+Customer Group
+Customer Groups
+Customer Info
+Customer Information
+Customer Ledger
+Customer Ledger Statement
+Customer Name
+Customer Non-Sale Due
+Customer Notes
+Customer Phone
+Customer Profile
+Customer Report
+Customer Reports
+Customer Request
+Customer Signature
+Customer created successfully.
+Customer deleted successfully.
+Customer full name
+Customer group created successfully.
+Customer group deleted successfully.
+Customer group updated successfully.
+Customer name (optional)
+Customer updated successfully.
+Customer:
+Customers with Advance
+Customers with Due
+Customers with duplicate phone numbers will be skipped.
+Customize invoice numbering, thermal receipt format, and what information appears on customer documents.
+Customize storefront sections
+Customize the storefront color scheme. Changes apply to the full website only (not landing pages). Leave blank to use default colors.
+DBBL (Dutch-Bangla Bank)
+DD MMM YYYY (04 Mar 2026)
+DD-MM-YYYY (04-03-2026)
+DN Number
+DN Number:
+DN number, supplier...
+DTS
+Daily
+Daily Average
+Daily Sales Summary
+Daily Sales Trend
+Daily Summary (DTS)
+Daily Transaction Summary
+Daily Transaction Summary (DTS)
+Daily, monthly, by product, customer, branch
+Damage
+Damage (Net)
+Damage Cost
+Damage Notes
+Damage Rate
+Damage Report
+Damage Type
+Damage record created successfully.
+Damaged
+Damaged in Transit
+Damages
+Damages & Wastes
+Danger Zone
+Database
+Database backup & restore
+Date *
+Date Format
+Date From
+Date Range
+Date To
+Date:
+Day of Month
+Day of Week
+Days
+Days Overdue
+Days Remaining
+Deactivate
+Deal Details
+Deal Products
+Debit
+Debit &amp; Credit Lines
+Debit (BDT)
+Debit Note
+Debit Note Details
+Debit Note Info
+Debit Note Items
+Debit Notes
+Debit note deleted.
+Declining Balance
+Deduct
+Deduction
+Deductions
+Default
+Default Courier Partner
+Default Courier Settings
+Default Customer
+Default Delivery Type
+Default Language
+Default Payment Method
+Default Warehouse
+Defaulted
+Defective
+Defective Product
+Deficit
+Define roles and assign permissions
+Delete Brand
+Delete Campaign
+Delete Challan
+Delete Customers
+Delete Employee
+Delete Expense
+Delete Invoice
+Delete PO
+Delete Product
+Delete Products
+Delete Quotation
+Delete Return
+Delete Selected
+Delete Structure
+Delete Unit
+Delete Warehouse
+Delete this customer
+Delete variant
+Deleted
+Delivered At
+Delivery
+Delivery Address
+Delivery Address *
+Delivery Challan
+Delivery Challans
+Delivery Charge
+Delivery Charge (BDT)
+Delivery Charges
+Delivery Confirmation SMS
+Delivery Cost
+Delivery Date
+Delivery Date *
+Delivery Information
+Delivery Person
+Delivery Rate
+Delivery Timeline
+Delivery challan created successfully.
+Delivery challan deleted successfully.
+Delivery challan updated successfully.
+Delivery status updated successfully.
+Demo Credentials
+Denomination
+Department
+Depreciable
+Depreciated
+Depreciation
+Depreciation Method
+Describe the issue and reason for return...
+Describe the physical condition of returned items...
+Describe the reason for issuing this credit note...
+Describe the transaction...
+Description *
+Description:
+Deselect All
+Designation
+Detail Sales
+Detail Sales Report
+Detailed product description with features, specifications, etc.
+Details
+Dhaka
+Dhaka & major cities
+Dhaka Main
+Dhanmondi
+Difference
+Difference (Assets - Liabilities - Equity)
+Difference:
+Direction
+Disabled
+Disbursed On
+Disbursement Date *
+Discount %
+Discount :
+Discount Type
+Discount Type *
+Discount Value *
+Discount:
+Discrepancies
+Discrepancy
+Display Type
+Display Type *
+Display VAT line separately
+Dispose
+Dispose Asset
+Disposed
+District
+District:
+Districts
+Division
+Divisions
+Document
+Dove Body Wash 400ml (HB-DOVE-BW-400)
+Down Payment
+Down Payment (BDT)
+Download PDF
+Draft entry deleted.
+Drag &amp; Drop Images
+Drag &amp; Drop New Images
+Dropdown
+Due
+Due :
+Due Amount
+Due Balance
+Due Date
+Due Receive
+Due on Receipt
+Due payment recorded successfully.
+Due to NBR
+Due:
+Duplicate
+Duplicate Quotation
+EAAxxxxxxx...
+EAN-13
+Earn 1 point for every BDT 1 spent
+Earned
+Earning
+Earnings
+Eastern Bank (EBL)
+Ecommerce
+Ecommerce Dashboard
+Edit Account
+Edit Ad Spend
+Edit Asset
+Edit Banner
+Edit Banner — eCommerce
+Edit Blog Post
+Edit Blog Post — eCommerce
+Edit Branch
+Edit Brand
+Edit Catalog
+Edit Category
+Edit Challan
+Edit Collection
+Edit Collection — eCommerce
+Edit Customer
+Edit Customer Group
+Edit Email Template
+Edit Employee
+Edit Entry
+Edit Expense
+Edit Expense Vendor
+Edit Factory
+Edit Flash Deal
+Edit Flash Deal — eCommerce
+Edit Invoice
+Edit Journal Entry
+Edit Lender
+Edit Payment
+Edit Payment Account
+Edit Printer
+Edit Product
+Edit Purchase Order
+Edit Purchase Return
+Edit Quotation
+Edit RM Purchase Order
+Edit Raw Material
+Edit Recurring Expense
+Edit Return
+Edit Return Type
+Edit Role
+Edit Salary Structure
+Edit Sale Return
+Edit Stock Adjustment
+Edit Stock Transfer
+Edit Supplier
+Edit Supplier Group
+Edit Unit
+Edit User
+Edit Variant Attribute
+Edit Warehouse
+Edit page
+Editing a completed payment may affect accounting records and invoice balances. Proceed with caution.
+Electronics
+Email Address
+Email Address *
+Email Addresses
+Email Body
+Email Body *
+Email Campaigns
+Email Config
+Email Configuration
+Email Content
+Email Marketing
+Email Notifications
+Email Settings
+Email Subject
+Email Template
+Email Templates
+Email Tips
+Email admin when new order is placed
+Email campaign created successfully.
+Email content written
+Email customer with order receipt
+Email pay slips to all employees
+Email settings saved successfully.
+Email subject line
+Email template updated successfully.
+Email, SMS, push alerts
+Email:
+Emails Sent
+Emergency Contact
+Emergency Contact Name
+Emergency Contact Phone
+Emergency contact person
+Employee *
+Employee Advance Balances
+Employee Details
+Employee ID
+Employee Information
+Employee Name
+Employee Profile
+Employee full name
+Enable GTM
+Enable Pixel
+Enable and configure accepted payment channels for POS and eCommerce transactions.
+Enable for units like Kg, Litre, Meter
+Enable for units like Kg, Litre, Meter where fractional quantities are needed
+Enable inventory tracking
+Enable or disable sidebar sections. Dashboard and Settings are always visible. Disabled items are hidden for all users.
+Enable scan beep sound
+Enabled
+Encryption
+End
+End Date
+End Date & Time *
+End of day report
+Endpoint URL *
+Ends At
+English
+Enter API Key
+Enter API Secret
+Enter Nagad Merchant ID
+Enter Nagad Merchant Key
+Enter SSLCommerz Store ID
+Enter SSLCommerz Store Password
+Enter bKash App Key
+Enter bKash App Secret
+Enter barcode above to preview
+Enter brand name
+Enter category name
+Enter customer name or ID
+Enter eCourier API key
+Enter email addresses separated by commas or new lines
+Enter full name
+Enter numbers in Bangladesh format (01XXXXXXXXX)
+Enter opening quantities above
+Enter post title
+Enter reason for cancellation...
+Enter reason for voiding…
+Enter secret token
+Enter the starting balance for this account
+Enter your password
+Entry #
+Entry #, description...
+Entry Created
+Entry Details
+Entry Information
+Entry Posted
+Entry Voided
+Environment
+Equity
+Error
+Errors Today
+Esc
+Essential Items
+Essential items
+Est. Days
+Est. Net Cost
+Estimated
+Estimated Delivery Days *
+Estimated Total
+Event
+Events *
+Exact
+Excel
+Excerpt
+Exchange Rate (1 USD)
+Exchange within 7 days with receipt
+Exempt
+Exhausted
+Expected Cash (System):
+Expected Delivery
+Expected Return Qty
+Expense #
+Expense Account
+Expense Account *
+Expense Amount
+Expense Details
+Expense ID
+Expense Information
+Expense Ledger
+Expense Number
+Expense Summary
+Expense Vendor
+Expense Vendors
+Expense Voucher
+Expense approved.
+Expense cancelled successfully.
+Expense deleted.
+Expense marked as paid. Journal entry created.
+Expense recorded successfully.
+Expense rejected.
+Expense updated successfully.
+Expense vendor created successfully.
+Expense vendor deleted successfully.
+Expense vendor updated successfully.
+Expenses (This Month)
+Expired
+Expiry
+Expiry Date
+Export Excel
+Export PDF
+Express
+External Campaign ID
+External ID
+External integrations & triggers
+F1
+F2
+F3
+F4
+F8
+FAQ
+FIFO (First In, First Out)
+Fabric
+Fabric Cost
+Fabric Cost (This Month)
+Fabric Issuances
+Fabric Items
+Fabric Returned
+Fabric Returns
+Fabric issued successfully.
+Fabric return recorded successfully.
+Facebook Messenger
+Facebook Page
+Facebook Pixel
+Factories
+Factory
+Factory *
+Factory Comparison
+Factory Details
+Factory Information
+Factory Name *
+Factory address
+Factory created successfully.
+Factory deleted successfully.
+Factory name
+Factory updated successfully.
+Failed
+Failed to load items
+Failed to send SMS. Please check SMS gateway configuration.
+Fashion
+Fashion - Men
+Fashion - Women
+Fast, barcode-ready sales counter
+Featured
+Featured Brand
+Featured Image
+Field
+File Name
+Fill in the terms above to preview the schedule
+Filter Rules
+Filter by month
+Filtered
+Final
+Finance
+Financed
+Financed Amount
+Financial
+Financial Details
+Financial Report
+Financial Reports
+Financial Summary
+Financial Year Starts
+First Due Date
+First Repayment
+First Repayment Date *
+First image will be the main display image. Max 5 images total.
+First image will be the main display image. Max 5 images.
+Fixed
+Fixed (BDT)
+Fixed Amount
+Fixed Amount (BDT)
+Flash Deals — eCommerce
+Flash deal created successfully.
+Flash deal deleted successfully.
+Flash deal updated successfully.
+Flat Rate
+Flat rate for first 1 kg
+Footer Payment Icons
+Footwear
+For Bangladesh market: Tuesday-Thursday, 10:00 AM - 2:00 PM yields the best open rates.
+Forgot Password
+Forgot Password?
+Forgot password?
+Fraud Check Report
+Free Shipping
+Free Shipping Above (BDT)
+Frequency
+Frequency *
+From
+From Account *
+From Address
+From Branch
+From Date
+From Date *
+From Email
+From Name
+From Warehouse
+From Warehouse *
+From Warehouse:
+Full
+Full Invoice (A4)
+Full Ledger
+Full Name *
+Full Preview
+Full address
+Full address...
+Full delivery address...
+Full eCommerce Site
+Full store address
+Full street address
+Full warehouse address
+Fullscreen
+Fully Paid
+Fully Received
+GRN #
+GRN Details
+GTM Container ID
+GTM, Facebook Pixel
+GTM-XXXXXXX
+Gazipur
+General Information
+General Ledger
+General Payment
+Generate
+Generate & Export
+Generate API Key
+Generate Barcode
+Generate Payroll
+Generate Reports
+Generation Info
+Gold
+Good
+Good Qty
+Goods received successfully.
+Google Tag Manager
+Grand Total
+Grand Total :
+Grand Total:
+Grant only the minimum permissions required. You can always update permissions later without regenerating the key.
+Groceries
+Gross
+Gross Pay
+Gross Profit
+Group
+Group By
+Group Discount (%)
+Group Name *
+Groups
+Guidelines
+Gulshan
+HMAC signing key
+HQ
+HR
+Half Day
+Has Due
+Heading
+Health & Beauty
+Held Orders
+Hello World
+Hero
+Hero Image
+Hero Section
+Hero Slider
+Hero Subtitle
+Hero Title *
+Hex
+Hex Code
+Hidden
+Hide Online
+Hide Zero Balances
+History
+Hold
+Hold (F2)
+Hold Ctrl to select multiple
+Hold Order (F2)
+Holiday Name *
+Holiday added successfully.
+Holiday deleted successfully.
+Holiday updated successfully.
+Holidays
+Home
+Home & Living
+Homepage Builder
+Homepage Builder — eCommerce
+Homepage Sections
+Homepage banners & sliders
+Homepage sections updated successfully.
+Hourly Sales Breakdown
+Hours Worked
+House, Road, Area
+How It Works
+ID
+IN (+)
+INV-2026-00248
+INV-NNNNN
+INV-YYYY-NNNNN
+IP : Port
+IP Address *
+Icon
+Icon Class
+If damaged...
+If rejected...
+If you did not request this, please ignore this email.
+Image
+Immediate action needed
+Import Customers
+Import Products
+Import Suppliers
+Important Notes
+Impressions
+In Stock
+In Transit
+In Words:
+In-App
+Inactive Customers (90+ Days)
+Include all active employees for the selected branch (or all branches)
+Income
+Income vs Expense Split
+Income, expenses, profit summary
+Incorrect OTP. Please check and try again.
+India (+91)
+Info
+Infobip
+Input VAT
+Input VAT (Purchases)
+Inside Dhaka (BDT)
+Inside Dhaka (BDT) *
+Instagram
+Installment Plans
+Installment Plans (Kisti)
+Installment Schedule Preview
+Installment Terms
+Installments
+Installments (Kisti)
+Internal Note
+Internal delivery notes...
+Internal notes about this branch
+Internal notes about this customer...
+Internal notes about this factory...
+Internal notes about this lender...
+Internal notes about this material...
+Internal notes about this supplier...
+Internal notes...
+Invalid email or password. Please try again.
+Invalid or expired reset link. Please try again.
+Invalid reset token. Please try again.
+Inventory &amp; Stock
+Inventory Report
+Inventory Reports
+Invoice #
+Invoice & Receipt
+Invoice Date
+Invoice Date:
+Invoice Details
+Invoice Footer Text
+Invoice Number Prefix
+Invoice Numbering
+Invoice Prefix
+Invoice SMS sent to customer.
+Invoice Total
+Invoice Total:
+Invoice cancelled successfully.
+Invoice created successfully.
+Invoice emailed to customer successfully.
+Invoice not available
+Invoice updated successfully.
+Invoice#
+Invoice:
+Is Active
+Islami Bank Bangladesh
+Issuance #
+Issuance Date *
+Issue Credit Note
+Issue Date
+Issue Date *
+Issue Date:
+Issue Fabric
+Issue this credit note to make it official and generate the journal entry.
+Issue this debit note to make it official and generate the journal entry.
+Issued
+Issued By
+Issued By:
+Italic
+Item
+Item Discount
+Item Discounts
+Item description...
+Item not found in cart.
+Item removed from cart.
+Items
+Items Received
+Items Sold
+Items matched.
+Items needing attention
+Items to Receive
+Items to Ship
+Items to Show
+Items unmatched.
+JBL Tune 520BT Headphones (AUD-JBL-520BT-BLK)
+JPG, PNG, WEBP. Max 2MB.
+JPG, PNG, WebP -- max 2MB each
+January
+Japan
+Joining Date
+Journal Entries
+Journal Entry
+Journal entry created and posted successfully.
+Journal entry posted successfully.
+Journal entry saved as draft.
+Journal entry voided. A reversing entry has been created.
+July (Bangladesh Standard)
+Keep it under 50 characters. Use action words and create urgency.
+Key Information
+Key Name
+Key Name *
+Khulna
+Kitchen
+Kitchen Appliances
+Kuwait (+965)
+LIFO (Last In, First Out)
+Label Printer
+Label Settings
+Label Size
+Labels Per Row
+Ladies Jamdani Saree (CLT-JAM-WHT-01)
+Landing Page
+Landing Page Mode
+Landing Page Settings
+Landing mode, active page
+Landing page mode disabled. Full eCommerce site is active.
+Landing page updated.
+Language, date, currency format
+Last Backup
+Last Cost
+Last Depreciation
+Last Due Date
+Last Login
+Last Modified
+Last Month
+Last Payment
+Last Purchase
+Last Purchase Price
+Last Repayment
+Last Synced
+Last Updated
+Last Used
+Late
+Late By
+Late arrival or absence
+Latest
+Leather Casual Loafer (FTW-LOAF-BRN-42)
+Leave 0 for prepaid orders
+Leave Application
+Leave Balance
+Leave Management
+Leave Type
+Leave Type *
+Leave application submitted.
+Leave applications must be submitted in advance (except sick leave).
+Leave approved.
+Leave blank to auto-generate
+Leave blank to keep current password
+Leave empty for indefinite
+Leave empty for no cap
+Leave empty for unlimited
+Leave empty if paid immediately
+Leave empty to disable free shipping
+Leave empty to generate for all branches
+Leave empty to keep current image
+Leave empty to keep the current photo.
+Leave empty to show immediately
+Leave empty to show indefinitely
+Leave rejected.
+Leaving Date
+Ledger
+Ledger Qty
+Legal & Tax Identifiers
+Legal entity name
+Lender
+Lender *
+Lender Information
+Lender created successfully.
+Lender deleted.
+Lender name
+Lender updated successfully.
+Lenders
+Length
+Less: Items in bank but not in books
+Less: Outstanding cheques (recorded in books but not yet cleared)
+Level
+Level *
+Liabilities
+Liability
+Line Description
+Line Items
+Line Total
+Line Total (BDT)
+Line description...
+Link
+Linked Sale
+Linked User Account
+List
+Live (Production)
+Live Preview
+Live Tracking
+Load
+Loading items...
+Loan #
+Loan Details
+Loan Number
+Loan Summary
+Localization
+Localization (Bangla Support)
+Location
+Location, model, etc.
+Locations
+Log (Testing)
+Log Entries
+Log Files
+Log Name
+Log file not found.
+Logo
+Loss
+Lost
+Lot #
+Lot ID
+Lot ID (optional)
+Lot Info
+Lot Items
+Lot Number
+Lot Summary
+Lot#
+Low Stock
+Low Stock Alert
+Low Stock Alert Threshold
+Low Stock Alerts
+Low Stock Count
+Low Stock Items
+Low Stock Materials
+Lowercase
+Loyalty - Gold Tier
+Loyalty - Platinum Tier
+Loyalty Members
+Loyalty Points
+Loyalty Program
+Loyalty Tiers
+Loyalty points history will appear here once the loyalty program is active.
+Mail Driver
+Main Branch
+Maintenance Date *
+Maintenance Due
+Maintenance Log
+Maintenance mode disabled. Site is live.
+Maintenance record added.
+Maintenances
+Major cities
+Major districts
+Make Payment
+Making Cost
+Making Cost (This Month)
+Malaysia (+60)
+Manage API access tokens
+Manage Banks
+Manage Landing Pages
+Manage Program
+Manage Webhooks
+Manage customer orders
+Manage discount coupons
+Manage loyalty points, tiers, and reward your returning customers.
+Manage store locations
+Manage user accounts & status
+Manage your store locations, assign managers, and configure branch-specific settings.
+Manager
+Manager & Operations
+Manager Name
+Manager Phone
+Manual
+Manual (Pick Products)
+Manually
+Manufacturing Dashboard
+Mar 2026
+Margin
+Margin %
+Margin: --
+Mark
+Mark Attendance
+Mark Delivered
+Mark all read
+Mark as Delivered
+Mark as Returned
+Mark this payroll as approved for payment
+Marketing Overview
+MasterCard
+Matched
+Material
+Material Details
+Material Name
+Material Name *
+Material name
+Materials List
+Materials to Issue
+Materials to Return
+Maternity Leave
+Max
+Max 5MB. Accepted: .xlsx, .xls, .csv
+Max Back-date Days
+Max Level
+Max Occurrences
+Max Price (BDT)
+Max Products
+Max Stock Level
+Maximum API requests per minute
+Maximum Discount Cap
+Maximum number of days in the past allowed for transactions.
+Memo number, receipt #, etc.
+Merchant
+Merchant ID
+Merchant password
+Merchant username
+Message
+Message Content *
+Messages Sent
+Meta Description
+Meta Information
+Meta Title
+Method
+Method *
+Mfg Dashboard
+Mfg Reports
+Min
+Min 8 characters
+Min Alert
+Min Order
+Min Price (BDT)
+Min Stock Alert
+Miniket Rice 5kg (GRC-RICE-MNK-5KG)
+Minimal
+Minimum 500 points required to redeem
+Minimum Order Amount
+Minimum Order Amount (BDT)
+Minimum Points to Redeem
+Minimum length requirement
+Minimum stock level
+Mirpur
+Mixed Case
+Miyako Blender 3-in-1 (HOM-MYK-BLD-3IN1)
+Mobile & Gadgets
+Mobile Bank Name *
+Mobile Banking
+Mobile Number *
+Mobile:
+Module
+Mohammadpur
+Month
+Month *
+Month:
+Monthly
+Monthly Attendance Report
+Monthly Average
+Monthly Expenses
+Monthly Net VAT Trend
+Monthly P&L Comparison
+Monthly Report
+Monthly Return
+Monthly Revenue vs Expenses
+Monthly Salary
+Monthly Sales
+Monthly Sales Summary
+Monthly Summary
+Monthly VAT Breakdown
+Movement Type
+Multiple variants by Color, Size, Storage, etc.
+Mushak 6.3
+Mushak 6.3, ledger, P&amp;L reports
+Mushak 6.5
+Mushak 9.1
+Mushak Form 6.5
+Mushak Form 6.5 &mdash; National Board of Revenue, Bangladesh
+Mushak Form Settings
+My Profile
+Myanmar (+95)
+Mymensingh
+NBR Bangladesh VAT Compliance
+NBR Standard Rate
+NID
+NID Number
+Nagad
+Nagad Merchant ID *
+Nagad Merchant Key *
+Nagad Number
+Nagad Payment Gateway
+Nagad Transaction ID
+Name *
+Name on account
+Name on card
+Name:
+Name: A-Z
+Narayanganj
+Narrow down results with date range, branch, and grouping options
+National ID Number
+Nationwide coverage
+Nationwide parcel service
+Needs attention
+Needs reorder
+Negative Cash Flow
+Nepal (+977)
+Net 15
+Net 30
+Net 45
+Net 60
+Net 7
+Net Amount (This Month)
+Net Balance
+Net Cash
+Net Cash Flow =
+Net Cash Position
+Net Consumed
+Net Flow (This Month)
+Net Non-Operating Income
+Net Pay
+Net Points Outstanding
+Net Profit
+Net Profit (This Month)
+Net Salary
+Net VAT
+Net VAT Payable
+Network (IP)
+Never
+New Adjustment
+New Brand
+New Campaign
+New Category
+New Customer Registration
+New Customers (Last 30 Days)
+New Landing Page
+New Loan
+New Order Alert (Admin)
+New Password
+New Stock Adjustment
+New Stock Transfer
+New Tab
+New This Month
+New Transfer
+New Unit
+New Value
+New eCommerce Order
+Newsletter
+Next Day
+Next Due
+Next Due Date
+Next Invoice Number
+Next Maintenance Date
+No -- VAT added at checkout
+No Comparison
+No Due
+No Grouping
+No RM waste records found.
+No Stock
+No Warranty
+No account found with this email address.
+No accounts found.
+No accounts in this sub-type.
+No active employees found.
+No advance transactions found.
+No areas configured. Add divisions first.
+No assets found.
+No attachments
+No attendance data for the selected month.
+No attendance records found for the selected date.
+No bank statement entries found. Import a statement or start a reconciliation.
+No banks added yet.
+No banners found.
+No blog posts found.
+No book transactions found for the selected period.
+No branches found.
+No campaigns found.
+No cashier data for this date
+No categories found.
+No collections found.
+No components defined.
+No coupons found.
+No courier providers found.
+No customer advances
+No customer advances found.
+No customer groups found.
+No customers found
+No data for this period.
+No data found for the selected criteria.
+No deposits in transit.
+No discrepancies found. Stock table and ledger are in sync.
+No due
+No email address found for this customer.
+No employee advances found.
+No employees found.
+No expense vendors found.
+No expenses found
+No expenses found.
+No expenses recorded
+No expenses recorded for this vendor.
+No flash deals found.
+No fraud check has been run yet.
+No held orders
+No holidays configured.
+No image
+No installment plans found
+No invoices yet
+No items available
+No items found for this invoice
+No items found.
+No journal entries found.
+No leave applications found.
+No ledger entries found for this product.
+No ledger entries found.
+No lenders found.
+No linked payment record.
+No linked purchase order
+No linked sale
+No loans found
+No log files found.
+No low stock alerts
+No maintenance records yet.
+No notes recorded for this entry.
+No notifications yet
+No orders found.
+No outstanding cheques.
+No outstanding dues
+No outstanding invoices found.
+No paid out records found.
+No payment records found.
+No payments found.
+No payments made
+No payments received
+No payments recorded
+No payments. Click "Add Payment" below.
+No payroll items found.
+No payroll records found.
+No pending compensation items.
+No phone number found for this customer.
+No printers configured.
+No product waste records found.
+No production orders yet.
+No products available for POS.
+No products found
+No products found.
+No products selected yet.
+No purchase history found.
+No quotations found.
+No received payments found.
+No return types found.
+No sale returns found.
+No sales data for this date
+No sales data this month
+No sales found
+No sales history found.
+No stock adjustments found.
+No stock alerts
+No stock movement entries found.
+No stock records found.
+No supplier advances found.
+No supplier assigned
+No supplier groups found.
+No supplier information
+No templates yet. Run the seeder.
+No transactions found for this period.
+No transactions found.
+No transfers found.
+No transfers recorded.
+No unreconciled bank items.
+No webhooks configured yet.
+No worries. Enter your registered email and we'll send a 6-digit OTP.
+No — Manual confirmation required
+None
+None (Top Level)
+None (Top-level Account)
+None (no vendor)
+Normal
+Normal Waste? *
+Normal?
+Not Balanced
+Not Connected
+Not Set
+Not Synced
+Not in Books
+Note (Optional)
+Note:
+Notes & Terms
+Notes for supplier communication...
+Notes visible to the customer...
+Notes:
+Notification Settings
+Notify customer on dispatch
+Number
+Number Format
+Number of Installments *
+Numbers &amp; Symbols
+OK
+OTP via Email
+OUT (-)
+Occurrences Created
+Offer Price (BDT)
+Old Value
+Oman (+968)
+On Invoice Creation
+On Leave
+On Payment Received
+One email per line or separated by commas
+One-time
+Online
+Online Price
+Online order received
+Only draft adjustments can be edited.
+Only draft or pending purchase orders can be edited.
+Only draft orders can be edited.
+Only draft purchase orders can be deleted.
+Only draft returns can be deleted.
+Only draft returns can be edited.
+Only draft transfers can be edited.
+Only draft/pending returns can be deleted.
+Only pending expenses can be edited.
+Opening
+Opening Balance
+Opening Balance (BDT)
+Opening Balance =
+Opening Balances
+Opening Qty
+Opening Stock
+Opening Stock by Branch
+Opening Time
+Opening balance cannot be changed after creation
+Opening balances saved successfully.
+Operating Profit
+Optional
+Optional Columns:
+Optional description
+Optional description for this account...
+Optional description...
+Optional note
+Optional note about this payment...
+Optional notes
+Optional notes about this adjustment...
+Optional notes about this loan
+Optional notes about this transfer...
+Optional promotional banner for this deal
+Optional reference number
+Order
+Order #
+Order Cancellation Period
+Order Confirmation SMS
+Order Date
+Order Date *
+Order Details
+Order ID
+Order Info
+Order Items
+Order Notes
+Order Number Prefix
+Order Qty
+Order Receipt (Customer)
+Order Settings
+Order Status
+Order Status Timeline
+Order Total
+Order placed successfully!
+Order status updated successfully.
+Order-wise Cost Breakdown
+Ordered
+Ordered Qty
+Original Invoice
+Original Invoice *
+Original Invoice:
+Original PO
+Original PO:
+Original Price (BDT)
+Original Purchase
+Original Purchase Order
+Original Purchase Order *
+Other
+Other Costs
+Other Costs Note
+Other Income
+Other Transactions
+Out of Stock
+Out of Stock Items
+Output VAT
+Output VAT (Sales)
+Output vs Input VAT
+Outside Dhaka (BDT)
+Outside Dhaka (BDT) *
+Outstanding
+Outstanding Balance
+Outstanding Due
+Outstanding amount carried forward
+Outstanding due
+Over 90 Days
+Over Count
+Overdue Loans
+Overdue invoice alerts
+Overview
+PAID
+PARTIAL
+PAYMENT RECEIPT
+PDF
+PDF, JPG, PNG (Max 5MB)
+PNG, JPG — Max 1MB
+PO #
+PO Date
+PO Date *
+PO Date:
+PO Details
+PO Number
+PO Total
+PO Total:
+PO#
+POS
+POS &bull; Accounting &bull; eCommerce
+POS Enabled
+POS Price
+POS Print Format
+POS Pro
+POS Receipt (Thermal)
+POS Terminal - BizPOS Pro
+POS settings saved successfully.
+PURCHASE ORDER
+Package delivered to recipient.
+Package is in transit to destination.
+Page Name *
+Paid (BDT)
+Paid :
+Paid Date
+Paid Out
+Paid Out + Expenses
+Paid in Full
+Paid:
+Pakistan (+92)
+Paper Width (mm) *
+Paperfly
+Parent *
+Parent Account
+Parent Category
+Partial Received
+Partially Paid
+Particulars
+Party
+Party Name
+Party Name *
+Party Type
+Party Type *
+Party information not available.
+Password Changed!
+Password Reset OTP
+Password changed successfully!
+Password:
+Passwords do not match.
+Paternity Leave
+Pathao
+Pathao Courier
+Pathao, Steadfast, eCourier
+Pathao, Steadfast, eCourier integrated
+Paused
+Pay
+Pay All
+Pay All Employees
+Pay Due
+Pay Later (Due)
+Pay Now (F3)
+Pay with cash upon delivery.
+Payable amount carried forward
+Paying
+Payment #
+Payment Account
+Payment Account *
+Payment Breakdown
+Payment Date
+Payment Date *
+Payment Details
+Payment Direction *
+Payment Due Reminder
+Payment Gateway
+Payment History
+Payment ID
+Payment Info
+Payment Information
+Payment Made
+Payment Method
+Payment Method *
+Payment Methods
+Payment Methods:
+Payment Receipt
+Payment Receipts
+Payment Received
+Payment Reference
+Payment Schedule
+Payment Splits *
+Payment Status
+Payment Status:
+Payment Summary
+Payment Terms
+Payment Type
+Payment Type *
+Payment account created successfully.
+Payment account deleted successfully.
+Payment account updated successfully.
+Payment deleted and journal entry voided.
+Payment recorded successfully.
+Payment terms, warranty info...
+Payments Made
+Payments Received
+Payments recorded
+Payroll #
+Payroll Dashboard
+Payroll Detail
+Payroll Paid
+Payroll Period
+Payroll Sheet
+Payroll Summary
+Payroll deleted.
+Payroll generation will:
+Pending (Draft)
+Pending Approval
+Pending Compensation
+Pending Orders
+Pending Pickup
+Pending RM POs
+Pending Sync
+Pending Transfers
+Pending completion
+People
+Per Installment
+Per Kg Rate (BDT)
+Per-Courier Breakdown
+Per-Unit Cost
+Percentage
+Percentage (%)
+Performance Metrics
+Performed By
+Period
+Period Paid
+Permanently delete this draft credit note.
+Permissions
+Permissions (via Role)
+Personalization
+Phone *
+Phone Number
+Phone Numbers
+Phone number
+Phone:
+Photo
+Physical Cash Total:
+Pick color
+Picked Up by Courier
+Pixel ID
+Plan #
+Plan Details
+Plan Number
+Plan Summary
+Planned
+Planned Quantity *
+Platform
+Platform *
+Platform Breakdown
+Platform Comparison
+Platform added.
+Platform deleted.
+Platform updated.
+Platform's campaign ID
+Platforms
+Platinum
+Please complete your Nagad Send Money at first, then fill up the form below.
+Please complete your Rocket Send Money at first, then fill up the form below.
+Please complete your bKash Send Money at first, then fill up the form below.
+Please fix the following errors:
+Please provide a reason for the leave application...
+Points
+Points Expiry (Days)
+Points Redeemed
+Points per BDT Spent
+Port
+Port *
+Position
+Position *
+Positive Cash Flow
+Post Code
+Post Details
+Post Entry
+Post this entry to make it permanent in the ledger.
+Postal Code
+Posted
+Premium Cotton Polo Shirt (CLT-POLO-NVY-L)
+Prepaid
+Prepared By
+Prepared By:
+Present
+Present Today
+Preview
+Preview Calculation
+Preview Invoice
+Preview the report and export as PDF, Excel, or CSV
+Previous Month
+Previous Quarter
+Previous Year
+Previous unpaid amount owed to this vendor
+Price Adjustment
+Price Includes VAT?
+Price: High to Low
+Price: Low to High
+Pricing
+Pricing Details
+Primary
+Primary Currency
+Primary contact name
+Principal
+Principal Amount
+Principal Amount (BDT) *
+Print & Display Options
+Print Barcode
+Print Barcode Labels - BizPOS Pro
+Print Barcodes
+Print Challan
+Print Invoice
+Print Labels
+Print PO
+Print Receipt
+Print Schedule
+Print receipt on POS checkout
+Printer Details
+Printer Management
+Printer Name *
+Printer Type *
+Printer added successfully.
+Printer deleted.
+Printer updated successfully.
+Printers
+Prints company logo
+Pro
+Process
+Process Refund
+Process Refunds
+Process payment for all pending employees
+Processed By
+Processing
+Product *
+Product Abnormal Waste
+Product Active
+Product Collections
+Product ID
+Product Images
+Product Information
+Product Name
+Product Name *
+Product Status
+Product Sync
+Product Sync — eCommerce
+Product Type
+Product Variants
+Product Waste
+Product Waste Cost
+Product Wastes
+Product added to cart.
+Product created successfully.
+Product created. Now configure variants below.
+Product deleted successfully.
+Product description for eCommerce store, invoices, and product labels...
+Product duplicated as draft. Review and update as needed.
+Product updated successfully.
+Product waste record created successfully.
+Production
+Production (Live)
+Production Damages
+Production Lots
+Production Order ID *
+Production Order approved successfully.
+Production Order cancelled successfully.
+Production Order completed successfully.
+Production Order created successfully.
+Production Order deleted successfully.
+Production Order updated successfully.
+Production Orders by Month
+Production Report
+Production lot received successfully.
+Products Checked
+Products Using
+Products Using This Variant
+Products Using Variants
+Products using this unit will need to be reassigned.
+Products with duplicate SKUs will be skipped.
+Profile Image
+Profile updated successfully!
+Profit
+Profit & Loss Statement
+Profit &amp; Loss
+Profit &amp; Loss Statement
+Profit (BDT)
+Profit Margin
+Profitable
+Program Settings
+Program Status:
+Progress
+Promo Large
+Promo Small
+Promotion
+Promotional Large
+Promotional Small
+Prorate salaries based on attendance records (if available)
+Provider
+Provider Configuration
+Publish
+Publish Date
+Published
+Purchase Date
+Purchase Date *
+Purchase History
+Purchase Order Details
+Purchase Orders
+Purchase Orders (RM)
+Purchase Price
+Purchase Price (BDT) *
+Purchase Ref
+Purchase Reference
+Purchase Reports
+Purchase Return
+Purchase Return Types
+Purchase Trend
+Purchase Unit
+Purchase order approved successfully.
+Purchase order cancelled.
+Purchase order created successfully.
+Purchase order deleted successfully.
+Purchase order updated successfully.
+Purchase orders, supplier analysis, trends
+Purchase return cancelled successfully.
+Purchase return completed. Stock deducted and supplier credited.
+Purchase return created successfully.
+Purchase return deleted successfully.
+Purchase return updated successfully.
+Purchased Qty
+Purpose
+Purpose *
+Push
+QR Code
+Qatar (+974)
+Qty
+Qty (Labels)
+Qty *
+Qty Change
+Qty Damaged
+Qty In
+Qty Out
+Qty Purchased
+Qty Sold
+Qty Wasted
+Qty Wasted *
+Qty to Issue *
+Qty to Receive
+Qty to Return *
+Quality Issue
+Quantity *
+Quantity Summary
+Quantity Wasted *
+Quarterly
+Question
+Quick Actions
+Quick Amount
+Quick Links
+Quick Payment
+Quick Summary
+Quick Templates
+Quotation
+Quotation #
+Quotation Date
+Quotation Details
+Quotation Info
+Quotation converted to sale successfully.
+Quotation created successfully.
+Quotation deleted successfully.
+Quotation duplicated successfully.
+Quotation expired
+Quotation marked as sent.
+Quotation updated successfully.
+Quote For
+Quoted Items
+RM Abnormal Waste
+RM Purchase Order approved successfully.
+RM Purchase Order cancelled.
+RM Purchase Order created successfully.
+RM Purchase Order deleted successfully.
+RM Purchase Order updated successfully.
+RM Purchase Orders
+RM Stock
+RM Stock Report
+RM Waste
+RM Waste Cost
+RM Wastes
+RM waste record created successfully.
+Rack A-12
+Radio
+Rajshahi
+Rangpur
+Rate
+Rate Limiting
+Rates
+Raw Material
+Raw Material *
+Raw Material Information
+Raw Material Stock Report
+Raw Material Suppliers
+Raw Material Waste
+Raw Material Wastes
+Raw Properties
+Raw material created successfully.
+Raw material deleted successfully.
+Raw material updated successfully.
+Re-check
+Re-enter password
+Re-enter your password
+Reach
+Read Customers
+Read Products
+Read Sales
+Read Stock
+Read Transactions
+Read-only
+Real-time stock tracking across branches
+Reason
+Reason *
+Reason for Credit Note:
+Reason for Debit Note
+Reason for return, condition details...
+Reason:
+Recalculate
+Recall
+Recall Order (F4)
+Receipt
+Receipt #
+Receipt #, party name…
+Receipt Amount
+Receipt Date
+Receipt Detail
+Receipt Footer Text
+Receipt Header Text
+Receipt Information
+Receipt Number
+Receipt Type
+Receipt Width
+Receipts
+Receivables Aging
+Receivables Aging Report
+Receive
+Receive All
+Receive Due
+Receive Events
+Receive Goods
+Receive Into *
+Receive Lot
+Receive Production Lot
+Receive Qty
+Receive Stock
+Receive Transfer
+Received
+Received *
+Received At
+Received By
+Received Compensation
+Received Date *
+Received Into
+Received Qty
+Received This Month
+Received minus Paid
+Receiving Branch
+Receiving History
+Receiving Info
+Receiving Now
+Recent Expenses
+Recent Production Orders
+Recent Sales
+Recipient
+Recipient Name *
+Recipient Phone *
+Recipient name
+Recipients
+Recommended: 1920x600px for Hero, 600x400px for Promo
+Reconcile Selected
+Reconciliation
+Reconciliation Summary
+Reconciliation started. Match transactions below.
+Record
+Record Ad Spend
+Record Compensation
+Record Due Payment
+Record Installment Payment
+Record Other Transaction
+Record Payment
+Record Product Waste
+Record RM Waste
+Record Repayment
+Record Return
+Record Spend
+Record Waste
+Recurring
+Recurring Expense
+Recurring Expense Details
+Recurring Expenses
+Recurring every year
+Recurring expense created.
+Recurring expense deleted.
+Recurring expense updated.
+Redeemed
+Redemption Rate (BDT per Point)
+Reduced VAT
+Redx
+Ref #
+Reference #
+Reference#
+Reference:
+Refund
+Refund Method
+Refund Method *
+Refund Method:
+Refund Status
+Refund Summary
+Refund pending approval
+Refund processed
+Refunded
+Regional Preferences
+Regular Customers
+Regular Delivery
+Reject Reason
+Rejected
+Rejection Reason
+Related Sale
+Remaining
+Remaining Balance
+Remaining to Issue
+Remark:
+Remove
+Remove Row
+Remove current logo
+Remove this image
+Removed from wishlist.
+Reorder
+Reorder Level
+Repaid
+Repayment Schedule
+Repayment Terms
+Repayment schedule updated successfully.
+Replacement
+Report Configuration
+Report Data
+Report Preview
+Report Type
+Reports & Analytics
+Request a new code after 60 seconds
+Required Columns:
+Reschedule
+Resend Anytime
+Reserved
+Reset Defaults
+Reset Filters
+Reset Password
+Reset filters
+Reset link has expired. Please request a new OTP.
+Reset to default
+Resolution *
+Responsibility
+Restore
+Return
+Return #
+Return & Delivery Policy
+Return Advance
+Return Amount
+Return Courier
+Return Date
+Return Date *
+Return Details
+Return Fabric
+Return Items
+Return Notes
+Return Policy Text (shown on invoices)
+Return Qty
+Return Reason
+Return Reason *
+Return Subtotal
+Return Summary
+Return Total
+Return Total :
+Return Types
+Return Value
+Return Window (Days)
+Return cancelled
+Return type created successfully.
+Return type deleted successfully.
+Return type updated successfully.
+Returned
+Returned Items
+Returns
+Revenue
+Revenue (BDT)
+Revenue (This Month)
+Revoked
+Rocket
+Rocket Number
+Rocket Transaction ID
+Role
+Role & Status
+Role *
+Role Information
+Role Name
+Role Name *
+Role created successfully.
+Role deleted successfully.
+Role updated successfully.
+Roles
+Roles & Permissions
+Roles &amp; Permissions
+Routing Number
+Run Fraud Check
+Run Reconciliation
+Running
+SA Paribahan
+SALE RETURN
+SDD4674GH77J7
+SEO
+SEO Information
+SEO Meta Description
+SEO Title
+SEO description for this brand...
+SEO meta description for search engines...
+SEO page title
+SEO title for this brand
+SKU *
+SKU: ' + escHtml(p.sku) + ' · Barcode: ' + (p.barcode || '--
+SKU: ' + escapeHtml(p.sku || '-
+SKU: ' + escapeHtml(sku) + '
+SKU: ' + escapeHtml(v.sku || '-
+SL.
+SMS
+SMS Balance
+SMS Gateway
+SMS Gateway *
+SMS Gateway Configuration
+SMS Message
+SMS Notification
+SMS Notifications
+SMS Parts
+SMS Preview
+SMS Provider
+SMS Sent
+SMS campaign created successfully.
+SMTP
+SMTP Host
+SMTP Settings
+SSL
+SSL Wireless
+SSL Wireless, BulkSMSBD
+SSLCommerz Terminal
+SUPPLIER DETAIL
+Salary
+Salary (BDT) *
+Salary Components
+Salary Structures
+Salary structure created.
+Salary structure deleted.
+Salary structure updated.
+Sale Completed!
+Sale Date
+Sale Date *
+Sale Ref
+Sale Reference
+Sale Return
+Sale or invoice reference (optional)
+Sale return approved successfully.
+Sale return cancelled successfully.
+Sale return completed successfully.
+Sale return created successfully.
+Sale return deleted successfully.
+Sale return updated successfully.
+Sales & Invoices
+Sales Count
+Sales History
+Sales Reports
+Sales Returns
+Sales Trend (Last 30 Days)
+Sales Unit
+Sales performance, attendance, productivity
+Salvage Value
+Salvage Value (BDT)
+Same Day
+Same as delivery courier
+Sample Basic Salary
+Samsung Galaxy A55 (SAM-A55-BLU-128)
+Sandbox (Testing)
+Saudi Arabia (+966)
+Save & Send
+Save &amp; Add Another
+Save Account
+Save Adjustment
+Save All Changes
+Save Asset
+Save Attendance
+Save Attribute
+Save Brand
+Save Business Info
+Save Catalog
+Save Category
+Save Changes
+Save Configuration
+Save Courier Settings
+Save Credentials
+Save Customer
+Save Draft
+Save Employee
+Save Expense
+Save Factory
+Save Invoice Settings
+Save Landing Page Settings
+Save Lender
+Save Localization
+Save Maintenance
+Save Notifications
+Save Order
+Save POS Settings
+Save Payment
+Save Printer
+Save Product
+Save Raw Material
+Save Return Policy
+Save Role
+Save SMS Settings
+Save Schedule
+Save Settings
+Save Structure
+Save Supplier
+Save Tax Settings
+Save Tracking Settings
+Save Transaction
+Save Unit
+Save Vendor
+Save Weekends
+Save as Draft
+Save as Pending
+Save the landing page first to see the live preview.
+Savings
+Scan barcode or click a product
+Scan barcode or search product (name, SKU)...
+Schedule
+Scheduled
+Search & Add Products
+Search & add products...
+Search Product
+Search Product (by name, SKU, or barcode)
+Search and add products above to generate barcodes.
+Search and select 1-10 products
+Search anything...
+Search by name or SKU...
+Search by name, phone, or email...
+Search by product name, SKU or barcode...
+Search invoice...
+Search log messages...
+Search purchase order...
+Search sales...
+Searching...
+Secondary Currency
+Secret (optional)
+Section
+Section Info
+Section Settings — eCommerce
+Section Title
+Section settings updated.
+Sections
+Secure Reset
+Security & Access
+Select Account
+Select All
+Select Bank
+Select Bank Account
+Select Base Unit
+Select Branch
+Select Brand
+Select Categories
+Select Category
+Select Columns
+Select Country
+Select Courier
+Select Customer
+Select Default Courier
+Select Department
+Select Designation
+Select Destination Warehouse
+Select District
+Select Districts *
+Select Division
+Select Employee
+Select Factory
+Select Gateway
+Select Group
+Select Landing Page
+Select Leave Type
+Select Lender
+Select Manager
+Select Material
+Select Method
+Select Parent
+Select Party
+Select Party Type
+Select Payment Account
+Select Payment Method
+Select Payment Terms
+Select Platform
+Select Product
+Select Products
+Select Provider
+Select Reason
+Select Report Type
+Select Report Type *
+Select Resolution
+Select Role
+Select Source Warehouse
+Select Sub-Type
+Select Supplier
+Select Type
+Select Unit
+Select Upazila
+Select Variant
+Select Variant *
+Select Warehouse
+Select a Bank Account to Begin
+Select a product to view its stock ledger
+Select a report type first to see available columns
+Select an invoice to load items
+Select destination
+Select items and specify return quantity
+Select matching items and click "Reconcile" to match transactions.
+Select source
+Select the data fields you want to include in your report
+Select the payroll month in YYYY-MM format
+Select variant...
+Select...
+Selected Categories
+Selected Products
+Selected categories
+Sell (BDT)
+Sell Price
+Sell even when stock is 0
+Selling Price
+Selling Price (BDT) *
+Send
+Send Now
+Send Pay Slips
+Send Payment Reminder
+Send Reminder
+Send Test
+Send Test SMS
+Send Time
+Send real-time HTTP notifications to external systems when events occur in BizPOS. Webhooks are signed with HMAC-SHA256 if a secret is provided.
+Send targeted SMS messages to your customers via SSL Wireless or BulkSMSBD.
+Send test ping
+Send to Customer
+Send when order is cancelled
+Send when order is confirmed
+Send when order is delivered
+Send when order is shipped with tracking
+Sender ID
+Sender name
+Sending
+Sendmail
+Sent
+Serial Number
+Service Charge
+Service Charge (%)
+Services
+Set Active
+Set Inactive
+Set New Password
+Set Opening Balances
+Set Stock Alert
+Set as Default
+Sets phone number format, placeholder, and validation across the system
+Setting an expiry date is recommended for security. Expired keys will stop working automatically.
+Settlement
+Settlement Date:
+Share
+Ship
+Ship Now
+Ship Qty
+Ship Selected
+Ship Transfer
+Shipped
+Shipped At
+Shipped By
+Shipped Items
+Shipping :
+Shipping Charge (BDT)
+Shipping Charge :
+Shipping Cost (BDT)
+Shipping Info
+Shipping Notification SMS
+Shipping Rates
+Shipping Zones
+Shipping Zones — eCommerce
+Shipping zone created successfully.
+Shipping zone deleted successfully.
+Shop, Cart, Checkout, Customer Dashboard — all active
+Short Description
+Short Name
+Short Name *
+Short description for search engines (max 160 chars)
+Short description of this collection
+Show All Accounts
+Show Business Name
+Show Logo on Receipt
+Show Low Stock Only
+Show Online
+Show Price
+Show Product Name
+Show VAT on Invoice
+Show Zero Balances
+Show barcode on receipt
+Show customer info on receipt
+Show in POS
+Show in online store
+Show logo on receipt
+Show stock quantity on products
+Show tracking in orders
+Showing all results
+Sick Leave
+Sick leave of more than 2 days requires a medical certificate.
+Sidebar
+Sidebar Configuration
+Sidebar Menu
+Sidebar Menu Configuration
+Sidebar configuration saved successfully.
+Sign in
+Sign in to your admin account to continue
+Silver
+Simple Product
+Singapore (+65)
+Single landing page only — all storefront routes redirect to it
+Single price &amp; stock -- no variants needed
+Size
+Size (M, L...)
+Size *
+Size Guide
+Size ID
+Sizes
+Sl.
+Slide Interval (ms)
+Slug
+Social Media
+Sold By:
+Sold Qty
+Some items are no longer available. Please review your cart.
+Sonali Bank
+Sort By
+Sort Order
+Sort Order:
+South Korea
+Special Instructions
+Special Instructions:
+Special VAT
+Special instructions for supplier...
+Specific Categories
+Specific Products
+Spend
+Spend Date
+Spend Date *
+Spend Trend (30 Days)
+Sri Lanka (+94)
+Stack Trace
+Staff
+Staff Attendance
+Staff Report
+Staff Reports
+Standard Chartered BD
+Standard VAT
+Start
+Start Date
+Start Date & Time *
+Start Date *
+Starts At
+State reason for rejection...
+Statement Closing Balance
+Statement Date *
+Stats
+Status *
+Status:
+Steadfast
+Steadfast Courier
+Stock &amp; Inventory
+Stock Adjustment
+Stock Alerts
+Stock History
+Stock Information
+Stock Movement
+Stock Movement History
+Stock Reconciliation
+Stock Status
+Stock Summary
+Stock Table Qty
+Stock Transfer
+Stock Value
+Stock by Branch
+Stock by Warehouse
+Stock deducted & supplier credited
+Stock levels, movement, valuation, alerts
+Stock received successfully.
+Stock tracking will be available in a future update.
+Storage Used
+Store
+Store (always)
+Store Address
+Store Branches
+Store ID
+Store ID *
+Store Information
+Store Logo
+Store Name *
+Store Password *
+Store Settings
+Store Tagline
+Store URL
+Storefront & payment config
+Straight Line
+Street Address
+Structure Details
+Structure Information
+Structure Name
+Structure Name *
+Sub Unit
+Sub Units
+Sub-Type
+Sub-Type *
+Subject
+Subject ID
+Subject Line
+Subject Line *
+Subject Type
+Subject line added
+Submit Application
+Submit Transfer
+Submit for Approval
+Submitted By
+Subtitle
+Subtotal (excl. Tax)
+Subtotal :
+Subtotal:
+Subtraction
+Success
+Success Ratio
+Summary
+Sundarban
+Sundarban Courier
+Super Admins
+Supplier *
+Supplier Acknowledgement
+Supplier Advance Balances
+Supplier Communication
+Supplier Detail
+Supplier Due
+Supplier Group
+Supplier Groups
+Supplier Information
+Supplier Instructions
+Supplier Ledger
+Supplier Ledger Statement
+Supplier Non-Purchase Due
+Supplier Payment Report
+Supplier Payments
+Supplier Phone
+Supplier Ref
+Supplier Signature
+Supplier address
+Supplier company name
+Supplier created successfully.
+Supplier deleted successfully.
+Supplier group created successfully.
+Supplier group deleted successfully.
+Supplier group updated successfully.
+Supplier updated successfully.
+Supplier:
+SureCash
+Switch between full eCommerce site and single-product landing page mode.
+Switch to Full Site
+Sylhet
+Symbol
+Sync Errors
+Sync Selected
+Sync Status
+Sync products to storefront
+Sync to Store
+Sync to eCommerce
+Synced
+System Logs
+TIN
+TIN Number
+TLS
+TOTAL
+TOTAL ASSETS
+TOTAL EQUITY
+TOTAL LIABILITIES
+TOTAL LIABILITIES + EQUITY
+TOTAL:
+TOTALS:
+Tags
+Taiwan
+Taka 1,234.00 (Bangla)
+Taken
+Target URL
+Tax %
+Tax &amp; License
+Tax (BDT)
+Tax :
+Tax Amount
+Tax Identification Number
+Tax Name
+Tax Report
+Tax rates, Mushak forms
+Template
+Template Name
+Templates, numbering, print
+Terminated
+Terms & Conditions
+Terms & Conditions:
+Test (Sandbox)
+Test Connection
+Thank You!
+Thank you for shopping with us!
+Thank you for your purchase!
+The applied coupon is no longer valid. Please review your order.
+There are no installment plans matching your filters.
+There are no loans matching your filters.
+There are no sales matching your filters.
+Thermal (58mm)
+Thermal (80mm)
+Thermal Receipt Settings
+Thermal printer support
+This Financial Year (Jul 2025 — Jun 2026)
+This Month Expenses
+This Month Payroll
+This Month Purchases
+This Month Sales
+This Quarter (Jan — Mar 2026)
+This Week
+This action cannot be undone.
+This delivery challan can no longer be deleted.
+This delivery challan can no longer be edited.
+This is a computer-generated debit note. No signature is required for electronic copies.
+This is a computer-generated receipt and does not require a signature.
+This journal entry has been posted.
+This name appears on invoices, receipts, and eCommerce store.
+This payment is marked as Completed.
+This purchase order cannot be approved.
+This purchase order cannot be cancelled.
+This purchase order cannot receive goods.
+This purchase order cannot receive stock.
+This return can no longer be edited.
+This sets the default payment method. Split payments are available after approval.
+This will reverse any stock adjustments and payment records associated with this invoice.
+Thread
+Tier
+TikTok
+Time
+Time-limited promotions
+Timezone
+Title
+Title *
+To
+To Account *
+To Branch
+To Date
+To Date *
+To Warehouse
+To Warehouse *
+To Warehouse:
+Today's Activities
+Today's Expenses
+Today's Profit
+Today's Sales
+Toggle Dark Mode
+Toggle Sidebar Menu Items
+Toggle dark mode
+Top 10 Campaigns by Spend
+Top 5 Products
+Top Categories
+Top Customers
+Top Selling Products
+Top customers, due balances, loyalty
+Total (All Warehouses)
+Total (BDT)
+Total :
+Total API Keys
+Total Abnormal Waste (Expensed)
+Total Accounts
+Total Activities
+Total Advance Balance
+Total Advance Given
+Total Advance Paid
+Total Advance Received
+Total Alerts
+Total Amount
+Total Amount (BDT) *
+Total Assets
+Total Attributes
+Total Backups
+Total Banners
+Total Bills
+Total Borrowed
+Total Branches
+Total Brands
+Total COGS
+Total Campaigns
+Total Cancel
+Total Cash In
+Total Cash Out
+Total Categories
+Total Challans
+Total Collected
+Total Components
+Total Cost
+Total Coupons
+Total Credit
+Total Credit Notes
+Total Credits
+Total Customers
+Total Damage Cost
+Total Damage Due
+Total Damaged
+Total Days
+Total Deals
+Total Debit
+Total Debit Notes
+Total Debits
+Total Debits (This Month)
+Total Deducted
+Total Deductions
+Total Deductions :
+Total Deliveries
+Total Depreciation
+Total Discount
+Total Due
+Total Due (BDT)
+Total Due Amount
+Total Due Balance
+Total Earnings
+Total Employees
+Total Employees :
+Total Entries
+Total Equity
+Total Estimated Material Cost:
+Total Expense
+Total Expenses
+Total Expenses (This Period)
+Total Factories
+Total Financed
+Total Generated
+Total Good
+Total Good Qty
+Total Gross :
+Total In
+Total Installments *
+Total Invoices
+Total Issuance Cost:
+Total Issued
+Total Items
+Total Items :
+Total Items Sold
+Total Items in PO
+Total Items:
+Total Late
+Total Leave
+Total Leave Applications
+Total Lenders
+Total Liabilities
+Total Materials
+Total Net :
+Total Normal Waste (Absorbed)
+Total Operating Expenses
+Total Ordered
+Total Orders
+Total Out
+Total Outstanding
+Total POs
+Total Paid
+Total Paid (All Time)
+Total Paid (BDT)
+Total Paid (Credit)
+Total Paid (This Month)
+Total Paid Out
+Total Payable
+Total Payrolls
+Total Permissions
+Total Plan Value
+Total Points Earned
+Total Products
+Total Profit
+Total Purchase
+Total Purchased
+Total Purchases
+Total Purchases (Debit)
+Total Qty
+Total Qty:
+Total Quantity
+Total Quantity:
+Total Quotations
+Total Receipts
+Total Receivable
+Total Receivables
+Total Received
+Total Received (This Month)
+Total Recipients
+Total Refund
+Total Repaid
+Total Return Value
+Total Returned
+Total Returns
+Total Revenue
+Total Roles
+Total Salary (Active)
+Total Sales
+Total Sales (BDT)
+Total Sales Count
+Total Spent
+Total Stock
+Total Stock Value
+Total Stock Value:
+Total Stock: 0
+Total Structures
+Total Success
+Total Suppliers
+Total Tax
+Total Tax:
+Total Transactions (This Month)
+Total Units
+Total Usage Limit
+Total Used
+Total Users
+Total Value
+Total Value :
+Total Values
+Total Vendors
+Total Warehouses
+Total Waste Cost
+Total Wasted
+Total Working Days
+Total Zones
+Total: 0 labels
+Totals
+Totals:
+Track Link
+Track Shipment
+Track Stock
+Tracking #
+Tracking #:
+Tracking & Analytics
+Tracking Number
+Tracking URL
+Tracking information updated successfully.
+Tracking number
+Trade License
+Trade License #
+Trade license number
+Transaction Details
+Transaction Type *
+Transaction deleted.
+Transaction recorded successfully.
+Transactions
+Transfer
+Transfer #
+Transfer Details
+Transfer History
+Transfer In
+Transfer Items
+Transfer Out
+Transfer Qty
+Transfer Stock
+Transfer deleted.
+Transfer reason...
+Transfers
+Trial Balance
+Type product name, SKU, or scan barcode...
+Type your SMS message here...
+Type:
+UAE (+971)
+UNPAID
+UPC-A
+USA
+USB
+USD - US Dollar
+Uncategorized
+Under Count
+Under Maintenance
+Underline
+Unique code for this account
+Unit
+Unit *
+Unit Cost
+Unit Cost *
+Unit Information
+Unit Name
+Unit Name *
+Unit Price
+Unit Price (BDT)
+Unit Price *
+Unit Type
+Unit Type *
+Unit created successfully.
+Unit deleted successfully.
+Unit updated successfully.
+United Kingdom (+44)
+United States (+1)
+Units Sold (Month)
+Unknown settings group.
+Unlimited
+Unpaid Leave
+Unpaid leave is granted only when all paid leaves are exhausted.
+Unreconciled Difference
+Unreconciled Items
+Unsubscribe link included
+Upay
+Upazila
+Upcoming
+Upcoming Due (Next 7 Days)
+Upcoming Installments (Next 7 Days)
+Update & Resend
+Update Account
+Update Adjustment
+Update Asset
+Update Attribute
+Update Brand
+Update Catalog
+Update Category
+Update Challan
+Update Employee
+Update Expense
+Update Factory
+Update Invoice
+Update Lender
+Update Order
+Update Payment
+Update Printer
+Update Product
+Update Purchase Order
+Update Raw Material
+Update Role
+Update Schedule
+Update Stock
+Update Structure
+Update Supplier
+Update Template
+Update Tracking
+Update Transfer
+Update Unit
+Update Vendor
+Update Warehouse
+Update as Draft
+Update as Pending
+Update your company information, legal identifiers, and financial settings. This information appears on all invoices and receipts.
+Upload Images
+Upload Logo
+Upload payment method icons shown in the storefront footer. If no icons are uploaded, the payment section will be hidden.
+Uppercase
+Uppercase &amp; lowercase letters
+Urban areas
+Usage
+Usage Limit Per Customer
+Use Advance
+Use full advance or total
+Use the product dropdown above to choose a product and see its movement history.
+Used In
+Useful Life
+Useful Life (Years)
+User
+User Information
+User Management
+User created successfully.
+User deleted successfully.
+User not found.
+User updated successfully.
+Username
+Users
+Uttara
+VAT
+VAT (%)
+VAT (15%)
+VAT / Tax Report
+VAT 15% (Standard)
+VAT 5% (Special)
+VAT 7.5% (Reduced)
+VAT Amount
+VAT Calculation Summary (Mushak 9.1 Reference)
+VAT Exempt
+VAT Invoice
+VAT Rate
+VAT Rate Configuration
+VAT Registration
+VAT collected, payable, NBR compliance
+VAT:
+VIP Customers
+Valid From
+Valid From *
+Valid To
+Valid To *
+Valid Until
+Valid Until *
+Valid: -- to --
+Valuation Method
+Value
+Value Name
+Value Name *
+Values
+Values Used
+Variable
+Variable Product
+Variance:
+Variant
+Variant Attribute Detail
+Variant ID
+Variant SKUs, pricing, and attributes will be managed per-variant.
+Variant attribute created successfully.
+Variant attribute deleted successfully.
+Variant attribute updated successfully.
+Variant configuration available after saving
+Vendor
+Vendor Details
+Vendor Information
+Vendor Name *
+Vendor:
+Video
+View & Ledger
+View All
+View All Notifications
+View Campaigns
+View Customer
+View Details
+View Ledger
+View PO
+View Profile
+View Reason
+View Receipt
+View Report
+View Sale
+View Supplier
+View system activity history
+Visa
+Visible Online
+Visible in POS &amp; sales
+Visual Summary
+Void
+Void Entry
+Void Reason *
+Void Reversal
+Voided
+Walk-in Customer
+Warehouse *
+Warehouse Information
+Warehouse Name *
+Warehouse created successfully.
+Warehouse deleted successfully.
+Warehouse set as default.
+Warehouse updated successfully.
+Warehouse:
+Warnings Today
+Warranty
+Warranty & Maintenance
+Warranty Expiry
+Warranty Expiry Date
+Warranty Info
+Waste
+Waste %
+Waste Date *
+Waste Report
+Waste Summary
+Waste Type *
+Wasted
+Webhook URL
+Webhook created.
+Webhook deleted.
+Webhooks
+Website
+Website Mode
+Website URL
+Week
+Weekend Days
+Weekend days updated successfully.
+Weekends & Holidays
+Weekly
+Weight
+Weight (KG)
+Weight (grams)
+Weight:
+Welcome Bonus Points
+Welcome back
+What to print after POS sale
+What was done...
+What was this expense for?
+What will this key be used for?
+WhatsApp Business
+When disabled, users cannot create sales, purchases, expenses, or payments with a date before today.
+When product falls below min stock
+Who Pays Return Shipping
+Wholesale
+Wholesale Price (BDT)
+With Products
+Within 7 days
+Working Hours
+Write your post content here...
+Written Off
+Wrong Item
+Wrong Item Delivered
+Wrong Item Received
+XXXXXXXX
+YYYY-MM-DD (2026-03-04)
+Year
+Yearly
+Yes -- Price shown includes VAT
+Yes — Automatically confirm orders
+Yes, Delete
+You cannot delete your own account.
+You have requested to reset your password for BizPOS Pro. Use the following OTP code:
+YouTube Channel
+YouTube Embed URL
+Your API key will only be shown once after creation. Store it securely and never expose it in client-side code.
+Your cart is empty.
+Your eCourier username
+Your password
+ZOTO Always comfort
+Zip Code
+Zipper
+Zone Details
+Zone Name
+Zone Name *
+Zone Status *
+Zone Summary
+address
+auto-generated-from-name
+bKash
+bKash App Key *
+bKash App Secret *
+bKash Number
+bKash Password
+bKash Payment Gateway
+bKash Transaction ID
+bKash Username
+barcode
+base
+company_name, contact_person, phone
+cost_price
+days
+description
+eCom
+eCom Enabled
+eCommerce &amp; SEO
+eCommerce Enabled
+eCommerce Settings
+eCommerce Sync
+eCommerce settings updated successfully.
+eCommerce signup
+eCourier
+email
+email, division, district, area, address, opening_balance, credit_limit, payment_terms, supplier_group
+hours
+management system
+name
+number to reorder sections
+pathao.com - Inside Dhaka & Nationwide
+per-variant
+phone
+privacy policy
+selected
+sell_price
+sku
+status
+steadfast-courier.com - Nationwide
+to apply changes
+to compare stock table quantities against the stock ledger.
+to customize each section
+to view the general ledger.
+units
+vat_rate
+আপনার অর্ডারটি সফলভাবে সম্পন্ন হয়েছে!
+— None —

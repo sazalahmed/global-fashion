@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Furniture — Letterhead</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+  :root{
+    --gf-red:#ED1C24;
+    --gf-dark:#111111;
+    --gf-grey:#5b5b5b;
+    --page-w:794px;          /* ~A4 width @96dpi */
+    --page-h:1123px;         /* ~A4 height */
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:#dcdcdc;
+    font-family:"Segoe UI", Arial, Helvetica, sans-serif;
+    display:flex;
+    justify-content:center;
+    padding:32px 12px;
+  }
+
+  /* ---------- PAGE ---------- */
+  .page{
+    position:relative;
+    width:var(--page-w);
+    height:var(--page-h);
+    background:#ffffff;
+    box-shadow:0 10px 40px rgba(0,0,0,.25);
+    overflow:hidden;
+  }
+
+  /* ---------- LOGO ---------- */
+  .logo{
+    position:absolute;
+    top:78px;
+    left:70px;
+    display:flex;
+    align-items:flex-end;
+    gap:10px;
+  }
+  .logo svg{ display:block; }
+
+  .logo-text{ line-height:1; }
+  .logo-word{
+    position:relative;
+    font-weight:800;
+    font-size:46px;
+    letter-spacing:1px;
+    color:var(--gf-red);
+    font-family:Arial, Helvetica, sans-serif;
+    display:inline-block;
+  }
+  .logo-word .tm{
+    position:absolute;
+    top:2px;
+    right:-15px;
+    font-size:11px;
+    font-weight:700;
+  }
+  .logo-sub{
+    margin-top:6px;
+    font-size:13px;
+    letter-spacing:11px;
+    color:var(--gf-grey);
+    font-weight:500;
+    padding-left:4px;
+  }
+
+  /* ---------- SIDE RED TABS ---------- */
+  .side-tab{
+    position:absolute;
+    top:40%;
+    height:300px;
+    width:22px;
+    background:var(--gf-red);
+  }
+  .side-tab.left{
+    left:0;
+    clip-path:polygon(0 0, 100% 17%, 100% 83%, 0 100%);
+  }
+  .side-tab.right{
+    right:0;
+    clip-path:polygon(100% 0, 0 17%, 0 83%, 100% 100%);
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+  }
+
+  .contact-bar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:nowrap;
+    gap:0;
+    padding:0 16px 12px;
+  }
+  .contact-item{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:0 7px;
+    font-size:9px;
+    color:var(--gf-dark);
+    white-space:nowrap;
+  }
+  .contact-item .ic{
+    width:17px;
+    height:17px;
+    border-radius:4px;
+    background:var(--gf-red);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:8.5px;
+    flex:0 0 auto;
+  }
+
+  /* angled base bar: black left, red right, diagonal split */
+  .base-bar{
+    position:relative;
+    height:16px;
+  }
+  .base-bar .blk{
+    position:absolute;
+    inset:0;
+    background:var(--gf-dark);
+    clip-path:polygon(0 0, 56% 0, 50% 100%, 0 100%);
+  }
+  .base-bar .red{
+    position:absolute;
+    inset:0;
+    background:var(--gf-red);
+    clip-path:polygon(58% 0, 100% 0, 100% 100%, 52% 100%);
+  }
+
+  @media print{
+    body{ background:#fff; padding:0; }
+    .page{ box-shadow:none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <!-- Chair mark -->
+      <svg width="64" height="58" viewBox="0 0 64 58" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Global Furniture chair logo">
+        <!-- red tick / swoosh sweeping up to the right -->
+        <path d="M1 26 C9 23 15 26 20 33 C25 14 35 5 54 1 C38 11 30 23 27 40 C20 32 11 27 1 26 Z" fill="#ED1C24"/>
+        <!-- red curved backrest -->
+        <path d="M28 12 C44 11 53 19 53 33 C53 38 51 42 47 45 L41 41 C45 38 46 35 46 31 C46 22 41 17 30 19 Z" fill="#ED1C24"/>
+        <!-- black seat -->
+        <path d="M15 43 C25 40 39 40 48 44 L46 49 C37 46 25 46 17 48 Z" fill="#111111"/>
+        <!-- black gas cylinder -->
+        <rect x="28" y="48" width="4" height="6" fill="#111111"/>
+        <!-- black star base -->
+        <path d="M18 58 L29 53 L31 53 L42 58 L38 58 L30 55 L22 58 Z" fill="#111111"/>
+        <!-- caster -->
+        <ellipse cx="16" cy="51" rx="5" ry="3" fill="#111111"/>
+      </svg>
+
+      <!-- Word mark -->
+      <div class="logo-text">
+        <div class="logo-word">GLOBAL<span class="tm">TM</span></div>
+        <div class="logo-sub">FURNITURE</div>
+      </div>
+    </div>
+
+    <!-- SIDE TABS -->
+    <div class="side-tab left"></div>
+    <div class="side-tab right"></div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="contact-bar">
+        <div class="contact-item">
+          <span class="ic"><i class="fa-solid fa-phone"></i></span>
+          01727009008
+        </div>
+        <div class="contact-item">
+          <span class="ic"><i class="fa-solid fa-envelope"></i></span>
+          info@globalfurniture.com.bd
+        </div>
+        <div class="contact-item">
+          <span class="ic"><i class="fa-brands fa-facebook-f"></i></span>
+          fb.com/globalfurniture.com.bd
+        </div>
+        <div class="contact-item">
+          <span class="ic"><i class="fa-solid fa-globe"></i></span>
+          www.gloalfurniture.com.bd
+        </div>
+        <div class="contact-item">
+          <span class="ic"><i class="fa-solid fa-location-dot"></i></span>
+          57, West Monipur, 60 Feet Road Mirpur-2, Dhaka-1216
+        </div>
+      </div>
+
+      <div class="base-bar">
+        <div class="blk"></div>
+        <div class="red"></div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

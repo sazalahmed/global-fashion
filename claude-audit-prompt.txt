@@ -1,0 +1,198 @@
+You are a Laravel QA Engineer. Your job is to fully audit this Laravel project using Laravel Dusk browser testing. Follow every step below in order without stopping.
+
+---
+
+## PHASE 1: SETUP & DISCOVERY
+
+### Step 1.1 — Check Dusk Installation
+Run: composer show laravel/dusk
+If not installed, run: composer require laravel/dusk --dev && php artisan dusk:install
+
+### Step 1.2 — Discover All Routes
+Run: php artisan route:list --json
+Save the full output to: storage/audit/routes.json
+Extract only GET routes (excluding _debugbar, _ignition, api/ prefixed routes).
+Build a list: route URI → Controller@method → Blade view file path.
+
+### Step 1.3 — Scan All Blade Files
+List every file in resources/views/ recursively.
+For each blade file, extract:
+- All raw text strings (button labels, headings, paragraphs, placeholders, error messages, tooltips)
+- Any hardcoded URLs, email addresses, phone numbers
+- Any text NOT wrapped in __() or trans() or @lang()
+Save findings to: storage/audit/static-text-issues.json
+
+### Step 1.4 — Scan All Controllers
+List every file in app/Http/Controllers/ recursively.
+For each controller method, check:
+- Has $request->validate() or a FormRequest class
+- Has try/catch for DB operations
+- Uses Eloquent (not DB::statement or raw SQL)
+- Has proper auth middleware (check routes/web.php too)
+Save findings to: storage/audit/logic-issues.json
+
+---
+
+## PHASE 2: CREATE DUSK TEST FILES
+
+Create the following directory structure:
+tests/Browser/Audit/
+tests/Browser/Pages/
+storage/audit/screenshots/ (for all screenshots)
+storage/audit/ (for all report files)
+
+### Step 2.1 — Create DuskTestCase base
+Make sure tests/DuskTestCase.php exists and APP_URL points to http://127.0.0.1:8000
+
+### Step 2.2 — Create tests/Browser/Audit/RouteAuditTest.php
+This test must:
+- Read from storage/audit/routes.json
+- Login as the first admin/user in the DB using loginAs()
+- Visit every single GET route
+- For routes with {id} or {slug} params, replace with real values from DB (use User::first()->id, etc.)
+- On each page: assert HTTP response is not 500, assert page does not contain "Whoops", "ErrorException", "SQLSTATE", "syntax error"
+- Take a screenshot named: screenshot('route_' . str_replace(['/', '{', '}'], '_', $uri))
+- Log each visited route as PASS or FAIL to storage/audit/route-audit.log
+
+### Step 2.3 — Create tests/Browser/Audit/StaticTextAuditTest.php
+This test must:
+- Visit every route from storage/audit/routes.json after logging in
+- On each page, get the full page source using $browser->driver->getPageSource()
+- Search the raw HTML for strings that appear to be hardcoded UI text (buttons, labels, headings, nav items, form placeholders, alert messages)
+- Ignore: HTML tags, CSS class names, JS variable names, data attributes
+- Log every found hardcoded string with: page URL, HTML element type, the text content
+- Save all findings to: storage/audit/static-text-audit.log
+- Take screenshot of each page: screenshot('text_audit_' . str_replace('/', '_', $uri))
+
+### Step 2.4 — Create tests/Browser/Audit/DesignAuditTest.php
+This test must:
+- Visit every route from storage/audit/routes.json
+- For each page run 3 viewport checks:
+  - Mobile: $browser->resize(375, 812) → screenshot('mobile_...')
+  - Tablet: $browser->resize(768, 1024) → screenshot('tablet_...')
+  - Desktop: $browser->resize(1440, 900) → screenshot('desktop_...')
+- On each viewport, assert: no horizontal scrollbar (body scrollWidth <= window innerWidth), nav element is visible, main content area is visible
+- Check all <img> tags: assert naturalWidth > 0 (no broken images)
+- Check all <a href="#"> dead links and log them
+- Log findings to: storage/audit/design-audit.log
+
+### Step 2.5 — Create tests/Browser/Audit/LogicAuditTest.php
+This test must:
+- Find all <form> elements across all pages
+- For each form: assert input[name=_token] exists (CSRF protection)
+- Try submitting every form empty and assert some validation message appears (.text-red-500, .error, [role=alert], .invalid-feedback, or any element with "required" or "field is" text)
+- Test that all routes requiring auth redirect guests to /login when visited without login
+- Log all results to: storage/audit/logic-audit.log
+- Take screenshots on every form submit attempt
+
+### Step 2.6 — Create tests/Browser/Audit/FullAuditSuite.php
+A single test file that runs all 4 audits above in sequence and outputs a combined summary.
+
+---
+
+## PHASE 3: RUN THE AUDIT
+
+### Step 3.1 — Start the dev server
+Run in background: php artisan serve --port=8000 &
+Wait 3 seconds for it to start.
+
+### Step 3.2 — Run all audit tests
+Run: php artisan dusk tests/Browser/Audit/ 2>&1 | tee storage/audit/dusk-output.log
+If any test fails due to missing screenshots directory, create it and re-run.
+
+### Step 3.3 — If Dusk Chrome driver fails
+Run: php artisan dusk:chrome-driver --detect
+Then retry running the tests.
+
+---
+
+## PHASE 4: FIX ALL ISSUES
+
+### Step 4.1 — Fix Static Text Issues
+Read storage/audit/static-text-audit.log and storage/audit/static-text-issues.json.
+For every hardcoded string found in a Blade file:
+1. Open the exact Blade file
+2. Generate a snake_case translation key from the string (e.g. "Save Changes" → "save_changes")
+3. Replace the raw string with {{ __('save_changes') }} or @lang('save_changes') (use whichever pattern is already in use in that file)
+4. Add the key-value pair to lang/en/messages.php or lang/en.json (whichever exists)
+5. If neither exists, create lang/en.json
+Do NOT change strings inside PHP logic, only inside Blade HTML templates.
+After all replacements, show a summary: X strings replaced across Y files.
+
+### Step 4.2 — Fix Broken Images
+For every broken image found in storage/audit/design-audit.log:
+1. Check if the src path exists in public/ or storage/
+2. If it's a missing asset, add a placeholder or fallback: onerror="this.src='/images/placeholder.png'"
+3. If the path is wrong (e.g. /storage/ vs /public/), fix the path in the Blade file
+
+### Step 4.3 — Fix Missing CSRF Tokens
+For every form flagged in storage/audit/logic-audit.log as missing CSRF:
+1. Open the Blade file
+2. Add @csrf immediately after the opening <form> tag
+
+### Step 4.4 — Fix Missing Validation Feedback
+For every form that showed no validation message on empty submit:
+1. Find the corresponding controller method
+2. If $request->validate() is missing, add it with basic required rules for each field
+3. In the Blade file, add @error('field_name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror below each input
+
+---
+
+## PHASE 5: GENERATE FINAL REPORT
+
+Create storage/audit/AUDIT-REPORT.md with this structure:
+```markdown
+# Laravel Project Audit Report
+Generated: [current date and time]
+
+## Summary
+- Total routes tested: X
+- Routes passing: X
+- Routes failing: X
+- Static text issues found: X
+- Static text issues fixed: X
+- Design issues found: X
+- Logic issues found: X
+- Logic issues fixed: X
+
+## Route Audit Results
+[Table: Route | Status | Notes]
+
+## Static Text Issues (Fixed)
+[Table: File | Line | Original Text | Translation Key]
+
+## Design Issues
+### Broken Images
+[List]
+### Responsive Issues
+[List]
+
+## Logic Issues
+### Fixed
+[List with file and fix description]
+### Needs Manual Review
+[List with reason why manual review is needed]
+
+## Screenshots
+All screenshots saved to: storage/audit/screenshots/
+Naming convention:
+- route_{uri} → page load screenshots
+- mobile_{uri} / tablet_{uri} / desktop_{uri} → responsive screenshots
+- text_audit_{uri} → static text audit screenshots
+
+## Recommended Next Steps
+[List any remaining issues that need human attention]
+```
+
+---
+
+## IMPORTANT RULES:
+1. Do NOT stop between phases. Complete all phases end to end.
+2. If a file already exists, check it first before overwriting.
+3. If a route requires specific model IDs (e.g. /invoice/{id}), query the DB for a real existing ID.
+4. If APP_KEY is not set or .env is missing, stop and report this first.
+5. Never delete existing test files — only create new ones under tests/Browser/Audit/.
+6. Commit nothing. Only write files and run commands.
+7. After each phase, print a one-line status: "✅ Phase X complete" or "❌ Phase X failed: [reason]"
+
+Begin now with Phase 1, Step 1.1.

@@ -1,0 +1,2645 @@
+/*===================================
+  GLOBAL CSS START
+===================================*/
+@import url('/vendor/google-fonts/fonts.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-family: var(--BodyFont);
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  color: var(--colorBlack);
+}
+
+p,
+span {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  margin: 0;
+  color: var(--paraColor);
+}
+
+img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+input,
+textarea {
+  width: 100%;
+  resize: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 13px 20px;
+  color: var(--colorBlack);
+  border: 1px solid var(--BorderColor);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--paraColor);
+}
+
+button {
+  border: none;
+}
+
+:root {
+  --colorRed: #ED1C24;
+  --colorBlue: #0e4c9e;
+  --colorOrange: #F35B04;
+  --colorGreen: #38B000;
+  --colorYellow: #ffcc00;
+  --colorPurple: #381740;
+  --colorViolet: #CA03C6;
+  --colorMaroon: #882A32;
+  --colorPink: #FF1493;
+  --colorWhite: #FFFFFF;
+  --colorBlack: #222222;
+  --BorderColor: #d4d4d4;
+  --paraColor: rgba(4, 6, 24, 0.50);
+  --BodyFont: "Hind Siliguri", serif;
+
+}
+
+/*===================================
+  GLOBAL CSS END
+===================================*/
+
+
+/*===================================
+  T-SHIRT PAGE START
+===================================*/
+
+.tshirt_banner {
+  background: #F0F2F5;
+  padding: 30px 0px 100px 0px;
+}
+
+.tshirt_banner_logo {
+  text-align: center;
+}
+
+.tshirt_banner_logo a {
+  width: 220px;
+  height: 70px;
+}
+
+.tshirt_banner_area {
+  margin-top: 85px;
+}
+
+.tshirt_banner_text h1,
+.tshirt_banner_text h1 span {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 54px;
+  text-transform: capitalize;
+}
+
+.tshirt_banner_text h1 span {
+  color: var(--colorRed);
+}
+
+.tshirt_banner_text p {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 20px;
+  color: var(--colorBlack);
+}
+
+.tshirt_btn {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--colorWhite);
+  background: var(--colorRed);
+  padding: 18px 32px 15px;
+  border-radius: 5px;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.tshirt_btn i {
+  rotate: 90deg;
+  margin-right: 10px;
+}
+
+.tshirt_btn:hover {
+  color: #FFFFFF;
+  padding: 18px 28px 15px;
+  background: var(--colorBlack);
+}
+
+.tshirt_banner_text a {
+  margin-top: 35px;
+}
+
+.tshirt_banner_img .img {
+  width: 470px;
+  height: 470px;
+  margin-left: auto;
+  padding: 20px 20px 20px 20px;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.24);
+}
+
+.tshirt_product {
+  padding-top: 100px;
+}
+
+.tshirt_single_product {
+  height: 475px;
+  margin: 0px 12px;
+  border: 1px solid var(--BorderColor);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.tshirt_single_product img {
+  border-radius: 20px !important;
+  -webkit-border-radius: 20px !important;
+  -moz-border-radius: 20px !important;
+  -ms-border-radius: 20px !important;
+  -o-border-radius: 20px !important;
+}
+
+.tshirt_product .slick-dots {
+  gap: 8px;
+  display: flex;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  width: auto;
+  height: auto;
+  z-index: 3;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.tshirt_product .slick-dots li button {
+  width: 14px;
+  height: 14px;
+  font-size: 0;
+  border-radius: 50%;
+  background: #d3d0d0;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.tshirt_product .slick-dots button:hover,
+.tshirt_product .slick-dots .slick-active button {
+  background: var(--colorRed);
+}
+
+.tshirt_video {
+  margin-top: 130px;
+  margin-bottom: 100px;
+}
+
+.tshirt_video_area {
+  text-align: center;
+}
+
+.tshirt_heading {
+  text-align: center;
+}
+
+.tshirt_heading h2 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 46px;
+  text-transform: capitalize;
+}
+
+.tshirt_heading p {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--colorBlack);
+  margin-top: 10px;
+}
+
+.tshirt_heading p span {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--colorRed);
+}
+
+.tshirt_video_ifram {
+  margin-top: 30px;
+  padding: 7px 7px 0px 7px;
+  border: 2px solid var(--colorRed);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.tshirt_video_ifram iframe {
+  width: 100%;
+  height: 500px;
+  border: 2px solid var(--colorRed);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.tshirt_video_bottom {
+  text-align: start;
+  margin-top: 30px;
+  border: 1px solid var(--colorBlue);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.tshirt_video_bottom .price {
+  margin: 3px;
+  padding: 25px 30px 20px;
+  border: 1px solid var(--colorBlue);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.tshirt_video_bottom h3 {
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.tshirt_video_bottom h3 span {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--colorRed);
+}
+
+.tshirt_video_bottom p {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--colorBlack);
+  margin-top: 15px;
+}
+
+.tshirt_video_area .tshirt_btn {
+  margin-top: 40px;
+}
+
+.tshirt_size {
+  padding: 90px 0px 100px;
+  background: #F0F2F5;
+}
+
+.tshirt_size .tshirt_heading {
+  margin-bottom: 30px;
+}
+
+.tshirt_size_table {
+  border-top: 1px solid var(--BorderColor);
+  border-bottom: 1px solid var(--BorderColor);
+  border-left: 1px solid var(--BorderColor);
+  border-right: 1px solid var(--BorderColor);
+}
+
+.tshirt_size_table tr th {
+  color: var(--colorWhite);
+  background-color: var(--colorBlue);
+  border-top: 1px solid var(--BorderColor);
+  border-bottom: 1px solid var(--BorderColor);
+  border-left: 1px solid var(--BorderColor);
+  border-right: 1px solid var(--BorderColor);
+}
+
+.tshirt_size_table tr th,
+.tshirt_size_table tr td {
+  text-align: center;
+  border-collapse: collapse;
+  padding: 10px;
+  min-height: 40px;
+  min-width: 40px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  border-right: 1px solid var(--BorderColor);
+}
+
+.tshirt_size_table tr:nth-child(even) td {
+  background-color: #a6dbfc;
+  color: var(--colorBlack);
+}
+
+.tshirt_size_btn {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.tshirt_faq {
+  margin: 90px 0px 100px;
+}
+
+.tshirt_faq_text {
+  margin-top: 30px;
+  border: 1px solid #FF0000;
+  box-shadow: 0px 0px 10px 0px #FF0000;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.tshirt_faq_text .accordion-item:first-of-type {
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+.tshirt_faq_text .accordion-item:first-of-type>.accordion-header .accordion-button {
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+.tshirt_faq_text .accordion-item:last-of-type {
+  border-bottom-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+
+.tshirt_faq_text .accordion-item:last-of-type>.accordion-header .accordion-button {
+  border-bottom-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+
+.tshirt_faq_text .accordion-item:last-of-type>.accordion-collapse .accordion-body {
+  border-bottom-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+
+.tshirt_faq_text .accordion-button {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1A1E23;
+}
+
+.tshirt_faq_text .accordion-body {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #FFFFFF;
+  background: #1A1E23;
+  padding: 30px 25px;
+}
+
+.tshirt_faq_text .accordion-button:not(.collapsed) {
+  color: #1A1E23;
+  background-color: #FFFFFF;
+  box-shadow: none;
+}
+
+.tshirt_faq_text .accordion-button:focus {
+  box-shadow: none;
+}
+
+.tshirt_review {
+  background: #F0F2F5;
+  padding: 90px 0px 140px 0px;
+}
+
+.tshirt_review .tshirt_heading {
+  margin-bottom: 30px;
+}
+
+.tshirt_single_review {
+  height: 320px;
+  margin: 0px 12px;
+  border: 1px solid var(--BorderColor);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.tshirt_single_review img {
+  border-radius: 20px !important;
+  -webkit-border-radius: 20px !important;
+  -moz-border-radius: 20px !important;
+  -ms-border-radius: 20px !important;
+  -o-border-radius: 20px !important;
+}
+
+.tshirt_review .slick-dots {
+  gap: 8px;
+  display: flex;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  width: auto;
+  height: auto;
+  z-index: 3;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.tshirt_review .slick-dots li button {
+  width: 14px;
+  height: 14px;
+  font-size: 0;
+  border-radius: 50%;
+  background: #d3d0d0;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.tshirt_review .slick-dots button:hover,
+.tshirt_review .slick-dots .slick-active button {
+  background: var(--colorRed);
+}
+
+.billing_form {
+  margin-top: 90px;
+}
+
+.billing_checkout_form {
+  margin-top: 30px;
+  padding: 75px 50px 50px 50px;
+  border-top: 12px solid var(--colorRed);
+  border-right: 4px solid var(--colorRed);
+  border-left: 4px solid var(--colorRed);
+  border-bottom: 4px solid var(--colorRed);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.billing_checkout_form h3 {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--colorBlack);
+}
+
+.product_select {
+  padding: 20px 20px;
+  background: #F0F2F5;
+  margin-top: 25px;
+  border: 1px solid var(--BorderColor);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.product_select .form-check-input {
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #838282;
+}
+
+.product_select .form-check-input:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.product_select .form-check-input:checked {
+  border-color: var(--colorRed);
+  background-color: var(--colorRed);
+}
+
+.product_select_details {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 15px;
+}
+
+.product_select_details .img {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.product_select_details .text {
+  width: 70%;
+  margin-left: 20px;
+}
+
+.product_select_details .text h6 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: var(--colorBlack);
+}
+
+.product_select_details .text span {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--colorBlack);
+}
+
+.billing_details {
+  margin-top: 60px;
+  margin-right: 60px;
+}
+
+.billing_details h4 {
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--colorBlack);
+}
+
+.billing_single_input {
+  margin-top: 20px;
+}
+
+.billing_single_input label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.billing_single_input label span {
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 5px;
+  color: var(--colorRed);
+}
+
+.billing_orders {
+  margin-top: 60px;
+}
+
+.billing_orders h4 {
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--colorBlack);
+}
+
+.billing_orders_top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed var(--BorderColor);
+}
+
+.billing_orders_top h5 {
+  width: 65%;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.billing_orders_top h6 {
+  width: 35%;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.billing_orders_product {
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--BorderColor);
+}
+
+.billing_orders_product li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.billing_orders_product li .product {
+  width: 65%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.billing_orders_product li .product .img {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.billing_orders_product li .product .text {
+  width: 66%;
+  margin-left: 20px;
+}
+
+.billing_orders_product li .product .text h5 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.billing_orders_product li h6 {
+  width: 35%;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.product_quantity {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  border: 1px solid var(--BorderColor);
+}
+
+.product_quantity button {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.product_quantity input {
+  width: 50px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 0px;
+  border-top: none;
+  border-bottom: none;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+}
+
+.product_quantity input::placeholder {
+  color: #1A1E23;
+}
+
+.billing_orders_subtotal {
+  margin-top: 15px;
+  border-bottom: 1px dashed var(--BorderColor);
+}
+
+.billing_orders_subtotal .subtotal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.billing_orders_subtotal .subtotal h5 {
+  width: 65%;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.billing_orders_subtotal .subtotal h6 {
+  width: 35%;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--colorBlack);
+}
+
+.billing_orders_subtotal .subtotal .charge {
+  width: 35%;
+}
+
+.billing_orders_subtotal .subtotal .form-check {
+  margin-bottom: 10px;
+}
+
+.billing_orders_subtotal .subtotal .form-check-input {
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #7d8188;
+}
+
+.billing_orders_subtotal .subtotal .form-check-label {
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 3px;
+}
+
+.billing_orders_subtotal .subtotal .form-check-input:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.billing_orders_subtotal .subtotal .form-check-input:checked {
+  border-color: var(--colorRed);
+  background-color: var(--colorRed);
+}
+
+.billing_orders_total {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.billing_orders_total h5 {
+  width: 65%;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.billing_orders_total h6 {
+  width: 35%;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.product_payment {
+  margin-top: 45px;
+}
+
+.product_payment .accordion {
+  background: #f3f3f3;
+  padding: 15px 0px;
+  --bs-accordion-bg: transparent;
+  border-radius: 3px;
+}
+
+.product_payment_accordion .accordion-item {
+  border: none;
+}
+
+.product_payment_accordion .accordion-button:not(.collapsed) {
+  color: #1A1E23;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.product_payment_accordion .accordion-item:first-of-type {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.product_payment_accordion .accordion-item:last-of-type {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.product_payment_accordion .accordion-button:focus {
+  box-shadow: none;
+}
+
+.product_payment_accordion .accordion-button {
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 30px;
+  text-transform: capitalize;
+}
+
+.product_payment_accordion .accordion-button.collapsed::before {
+  position: relative;
+  content: "";
+  top: 0;
+  left: -10px;
+  width: 18px;
+  height: 18px;
+  background: #FFFFFF;
+  border: 1px solid #7d8188;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.product_payment_accordion .accordion-button::before {
+  position: relative;
+  content: "";
+  top: 0;
+  left: -10px;
+  width: 18px;
+  height: 18px;
+  background: #FFFFFF;
+  border: 5px solid var(--colorRed);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.product_payment_accordion .accordion-button::after {
+  position: relative;
+  content: "";
+  top: 0;
+  left: -525px;
+  width: 18px;
+  height: 18px;
+  background: var(--colorWhite);
+  border: 5px solid var(--colorRed);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  display: none;
+}
+
+.product_payment_accordion .accordion-button img {
+  width: 60px !important;
+  height: 26px !important;
+  margin-left: 10px;
+}
+
+.product_payment_accordion .accordion-body {
+  background: #dddddd;
+  margin: 0px 20px;
+  position: relative;
+  border-radius: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.product_payment_accordion .accordion-body p,
+.product_payment_accordion .accordion-body span {
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+}
+
+.product_payment_accordion .accordion-body .pay_info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.product_payment_accordion .accordion-body .pay_info label {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.product_payment_accordion .accordion-body .pay_info input {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px 15px 4px;
+}
+
+.product_payment_accordion .accordion-body::before {
+  position: absolute;
+  content: "";
+  top: -16px;
+  left: 30px;
+  width: 30px;
+  height: 18px;
+  background: #dddddd;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.product_payment_btn {
+  margin-top: 10px;
+}
+
+.product_payment_btn p {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.product_payment_btn p a {
+  color: var(--colorRed);
+}
+
+.product_payment_btn button {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: var(--colorRed);
+  padding: 15px 20px;
+  margin-top: 20px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+.product_payment_btn button i {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--colorWhite);
+}
+
+.tshirt_copy_right {
+  margin-top: 90px;
+  margin-bottom: 30px;
+}
+
+.tshirt_copy_right_text {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.tshirt_copy_right_text p {
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.tshirt_copy_right_text p span {
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--colorBlue);
+  margin-left: 10px;
+}
+
+/*===================================
+  T-SHIRT PAGE END
+===================================*/
+
+
+/*===================================
+  SHOES PAGE START
+===================================*/
+
+.shoes_banner {
+  background: #F0F2F5;
+  padding: 80px 0px 100px;
+}
+
+.shoes_banner_text {
+  text-align: center;
+}
+
+.shoes_banner_text .logo {
+  width: 220px;
+  height: 70px;
+  display: block;
+  margin: auto;
+}
+
+.shoes_banner_text h2 {
+  font-size: 22px;
+  font-weight: 600;
+  display: inline-block;
+  padding: 16px 120px;
+  margin-top: 20px;
+  color: var(--colorWhite);
+  background: var(--colorOrange);
+  border: 3px solid var(--colorBlack);
+  border-radius: 4px;
+}
+
+.shoes_banner_text h1 {
+  padding: 0px 30px;
+}
+
+.shoes_banner_text h1,
+.shoes_banner_text h1 span {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 38px;
+  margin-top: 22px;
+}
+
+.shoes_banner_text h1 span {
+  color: var(--colorRed);
+}
+
+.shoes_banner_text .shoes_btn {
+  margin-top: 20px;
+}
+
+.shoes_btn {
+  border-radius: 2px;
+  background: var(--colorWhite);
+  border: 1px solid var(--colorOrange);
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+
+.shoes_btn span {
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 2px;
+  padding: 10px 30px 8px;
+  color: var(--colorWhite);
+  background: var(--colorOrange);
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.shoes_btn:hover {
+  border-color: var(--colorGreen);
+}
+
+.shoes_btn:hover span {
+  background: var(--colorGreen);
+}
+
+.shoes_product {
+  margin: 25px 0px 50px;
+}
+
+.shoes_single_product {
+  height: 250px;
+  padding: 15px;
+  margin-top: 25px;
+  background: #F0F2F5;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.shoes_details {
+  padding: 45px 0px 50px;
+  background: #FFE6A7;
+}
+
+.shoes_heading h2 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 43px;
+  color: var(--colorOrange);
+}
+
+.center_heading {
+  text-align: center;
+}
+
+.shoes_details_text ul li {
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--colorBlack);
+  padding-left: 28px;
+  margin-top: 16px;
+}
+
+.shoes_details_text ul li::after {
+  position: absolute;
+  content: "";
+  top: 3px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: url(../images/check.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.shoes_details_text .shoes_btn {
+  margin-top: 22px;
+}
+
+.shoes_details_tow {
+  padding: 60px 0px;
+}
+
+.shoes_details_img {
+  height: 490px;
+  padding: 30px;
+  margin-left: 30px;
+  background: #F0F2F5;
+  overflow: hidden;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.shoes_details_three {
+  padding: 60px 0px;
+  background: #FFE6A7;
+}
+
+.shoes_details_three .shoes_details_img {
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+.shoes_details_three .shoes_details_text {
+  margin-left: 30px;
+}
+
+.shoes_size {
+  padding: 50px 0px 60px;
+}
+
+.shoes_size .shoes_heading {
+  margin-bottom: 30px;
+}
+
+.shoes_size_btn {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.shoes_offer {
+  padding: 52px 0px 60px;
+  background: #F0F2F5;
+}
+
+.shoes_offer_text {
+  text-align: center;
+}
+
+.shoes_offer_text h4 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.shoes_offer_text h4 del {
+  color: var(--colorRed);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.shoes_offer_text h3,
+.shoes_offer_text h3 span {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--colorOrange);
+  margin-top: 20px;
+}
+
+.shoes_offer_text h3 span {
+  color: var(--colorGreen);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.shoes_offer_text h5,
+.shoes_offer_text h5 span {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--colorRed);
+  margin-top: 25px;
+}
+
+.shoes_offer_text h5 span {
+  color: var(--colorGreen);
+}
+
+.shoes_offer_text .shoes_btn {
+  margin-top: 32px;
+}
+
+.shoes_review {
+  padding: 52px 0px 60px;
+}
+
+.shoes_review .shoes_heading {
+  margin-bottom: 30px;
+}
+
+.shoes_review .slick-dots {
+  gap: 8px;
+  display: flex;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  width: auto;
+  height: auto;
+  z-index: 3;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.shoes_review .slick-dots li button {
+  width: 14px;
+  height: 14px;
+  font-size: 0;
+  border-radius: 50%;
+  background: #d3d0d0;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.shoes_review .slick-dots button:hover,
+.shoes_review .slick-dots .slick-active button {
+  background: var(--colorOrange);
+}
+
+.shoes_form {
+  margin-top: 75px;
+}
+
+.shoes_form .shoes_heading p,
+.shoes_form .shoes_heading p span {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--colorBlack);
+  margin-top: 10px;
+}
+
+.shoes_form .shoes_heading p span {
+  color: var(--colorRed);
+}
+
+.shoes_form .billing_checkout_form {
+  border-top: 12px solid var(--colorOrange);
+  border-right: 4px solid var(--colorOrange);
+  border-left: 4px solid var(--colorOrange);
+  border-bottom: 4px solid var(--colorOrange);
+}
+
+.shoes_form .product_payment_btn button {
+  background: var(--colorOrange);
+}
+
+/*===================================
+  SHOES PAGE END
+===================================*/
+
+
+/*===================================
+  FERFUME PAGE START
+===================================*/
+
+.perfume_banner {
+  background: url('../images/perfume_banner_bg.png');
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.perfume_banner_overly {
+  padding: 60px 0px 100px;
+  background: #171718a8;
+}
+
+.perfume_banner_text {
+  text-align: center;
+}
+
+.perfume_banner_text h4 {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--colorWhite);
+  background: #773F4E;
+  padding: 10px 8px 6px 8px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+
+.perfume_banner_text h1,
+.perfume_banner_text h1 span {
+  font-size: 54px;
+  font-weight: 600;
+  color: var(--colorWhite);
+  text-transform: capitalize;
+  margin-top: 40px;
+}
+
+.perfume_banner_text h1 span {
+  color: var(--colorYellow);
+}
+
+.perfume_banner_text .img {
+  width: 520px;
+  height: 440px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.perfume_banner_text h5,
+.perfume_banner_text h5 span {
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 25px;
+  color: var(--colorWhite);
+}
+
+.perfume_banner_text h5 span {
+  color: var(--colorYellow);
+}
+
+.perfume_banner_text a {
+  margin-top: 22px;
+}
+
+.perfume_btn {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--colorBlack);
+  background: var(--colorYellow);
+  border: 3px solid var(--colorPurple);
+  padding: 15px 60px 13px;
+  border-radius: 35px;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  -ms-border-radius: 35px;
+  -o-border-radius: 35px;
+}
+
+.perfume_btn i {
+  margin-right: 10px;
+}
+
+.perfume_btn:hover {
+  color: #FFFFFF;
+  background: #773F4E;
+  border-color: var(--colorYellow);
+}
+
+.perfume_pakage {
+  margin-top: 60px;
+}
+
+.perfume_pakage_text {
+  text-align: center;
+  padding: 50px 50px;
+  background: var(--colorWhite);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.perfume_heading {
+  text-align: center;
+  padding: 8px 0px 5px 0px;
+  border-top: 1px dashed var(--colorBlack);
+  border-bottom: 1px dashed var(--colorBlack);
+}
+
+.perfume_heading h2 {
+  font-size: 45px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.perfume_pakage_text .perfume_heading {
+  margin-bottom: 10px;
+}
+
+.perfume_single_pakage {
+  margin-top: 30px;
+  text-align: center;
+  padding: 30px 16px 30px 16px;
+  background: var(--colorPurple);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.perfume_single_pakage h6 {
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 23px;
+  color: var(--colorYellow);
+}
+
+.perfume_single_pakage p {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  margin-top: 35px;
+  color: var(--colorWhite);
+}
+
+.perfume_pakage_text a {
+  margin-top: 40px;
+}
+
+.perfume_details {
+  margin-top: 60px;
+}
+
+.perfume_about_details {
+  margin-top: 40px;
+  background: var(--colorYellow);
+  border: 4px solid #A64914;
+  padding: 80px 75px 80px 75px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.perfume_about_details_text ul li {
+  position: relative;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--colorBlack);
+  margin-top: 30px;
+  padding-left: 25px;
+}
+
+.perfume_about_details_text ul li::after {
+  position: absolute;
+  content: "";
+  top: 10px;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  background: #773F4E;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+
+.perfume_about_details_img {
+  height: 505px;
+}
+
+.perfume_price_details {
+  text-align: center;
+  margin-top: 40px;
+  padding: 50px 150px 60px;
+  border: 4px solid #A64914;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.perfume_price_details h5 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.perfume_price_details h5 del {
+  color: var(--colorRed);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.perfume_price_details h3 {
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--colorWhite);
+  padding: 12px 20px 12px;
+  background: var(--colorPurple);
+  margin-top: 30px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.perfume_price_details h3 span {
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--colorYellow);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.perfume_price_details h6 {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--colorWhite);
+  padding: 8px 20px 7px;
+  background: #FD003A;
+  margin-top: 25px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.perfume_details_btn {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.perfume_faq {
+  margin-top: 60px;
+  padding: 60px 0px;
+  background: var(--colorPurple);
+}
+
+.perfume_faq_area .perfume_heading {
+  border-top: 1px dashed #d3d0d0;
+  border-bottom: 1px dashed #d3d0d0;
+}
+
+.perfume_faq_area .perfume_heading h2 {
+  color: var(--colorWhite);
+}
+
+.perfume_faq_text {
+  margin-top: 40px;
+}
+
+.perfume_faq_text .accordion-item {
+  margin-top: 20px;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.perfume_faq_text .accordion-button {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--colorWhite);
+  background: #522F57;
+}
+
+.perfume_faq_text .accordion-body {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--colorWhite);
+  padding: 20px 0px 20px;
+}
+
+.perfume_faq_text .accordion-button:focus {
+  box-shadow: none;
+}
+
+.perfume_faq_text .accordion-button:not(.collapsed) {
+  color: var(--colorWhite);
+  background-color: transparent;
+  box-shadow: none;
+  background: linear-gradient(180deg, #FD003A 0%, #f2295b 100%);
+}
+
+.perfume_faq_text .accordion-button::after {
+  filter: invert(99%) sepia(32%) saturate(4%) hue-rotate(33deg) brightness(107%) contrast(100%);
+}
+
+.perfume_faq_text .accordion-item>.accordion-header .accordion-button {
+  border-radius: 10px !important;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -ms-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
+}
+
+.perfume_product {
+  margin-top: 60px;
+}
+
+.perfume_product_top {
+  text-align: center;
+  padding: 60px;
+  background: #F0F2F5;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.perfume_product_top .img {
+  width: 520px;
+  height: 520px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.perfume_product_top h4,
+.perfume_product_top h4 span {
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.perfume_product_top h4 span {
+  color: var(--colorRed);
+}
+
+.perfume_product_top a {
+  margin-top: 30px;
+}
+
+.perfume_product_bottom {
+  margin-top: 60px;
+  text-align: center;
+  padding: 55px 20px 60px;
+  background: var(--colorPurple);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.perfume_product_bottom h4 {
+  font-size: 35px;
+  font-weight: 500;
+  color: var(--colorWhite);
+}
+
+.perfume_product_bottom h5 {
+  display: inline-block;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 40px;
+  padding: 10px 120px;
+  margin-top: 35px;
+  color: var(--colorWhite);
+  background: #FD003A;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.perfume_review {
+  padding: 0;
+  margin-top: 60px;
+}
+
+.perfume_review .perfume_heading {
+  margin-bottom: 40px;
+}
+
+.perfume_form {
+  margin-top: 120px;
+}
+
+.perfume_form .billing_checkout_form {
+  margin-top: 40px;
+}
+
+.perfume_form .billing_checkout_form {
+  border-top: 12px solid #A64914;
+  border-right: 4px solid #A64914;
+  border-left: 4px solid #A64914;
+  border-bottom: 4px solid #A64914;
+}
+
+/*===================================
+  FERFUME PAGE END
+===================================*/
+
+
+/*===================================
+  BEAUTY PRODUCT START
+===================================*/
+
+.beauty_banner {
+  padding: 45px 0px 120px 0px;
+  background: linear-gradient(180deg, #CA03C6 0%, #F2295B00 100%);
+}
+
+.beauty_banner_logo {
+  text-align: center;
+}
+
+.beauty_banner_logo a {
+  width: 220px;
+  height: 70px;
+}
+
+.beauty_banner_area {
+  margin-top: 25px;
+}
+
+.beauty_banner_text h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 64px;
+  color: var(--colorWhite);
+}
+
+.beauty_banner_text h6,
+.beauty_banner_text h6 span {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 35px;
+  color: var(--colorWhite);
+  margin-top: 12px;
+}
+
+.beauty_banner_text h6 span {
+  color: #ffe16a;
+}
+
+.beauty_banner_text h3 {
+  font-size: 26px;
+  font-weight: 600;
+  position: relative;
+  margin-top: 25px;
+  padding-left: 35px;
+  padding-right: 35px;
+  display: inline-block;
+}
+
+.beauty_banner_text h3::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: url(../images/follower_1.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.beauty_banner_text h3::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background: url(../images/follower_1.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.beauty_banner_text ul {
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.beauty_banner_text ul li {
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  padding-left: 35px;
+  color: var(--colorBlack);
+}
+
+.beauty_banner_text ul li::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: url(../images/follower_2.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.beauty_banner_text .beauty_btn {
+  margin-top: 35px;
+}
+
+.beauty_btn {
+  font-size: 18px;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: var(--colorViolet);
+  padding: 18px 32px 14px 32px;
+  border-radius: 4px 4px 4px 4px;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.beauty_btn i {
+  margin-left: 10px;
+}
+
+.beauty_btn:hover {
+  background: #DD17D9;
+}
+
+.beauty_banner_img {
+  height: 420px;
+}
+
+.beauty_product .tshirt_single_product {
+  height: 420px;
+  border: 3px solid var(--colorViolet);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.beauty_product .tshirt_single_product img {
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+}
+
+.beauty_product .slick-dots {
+  gap: 8px;
+  display: flex;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  width: auto;
+  height: auto;
+  z-index: 3;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.beauty_product .slick-dots li button {
+  width: 14px;
+  height: 14px;
+  font-size: 0;
+  border-radius: 50%;
+  background: #d3d0d0;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.beauty_product .slick-dots button:hover,
+.beauty_product .slick-dots .slick-active button {
+  background: var(--colorViolet);
+}
+
+.beauty_video {
+  margin-top: 80px;
+}
+
+.beauty_video_ifrem iframe {
+  width: 100%;
+  height: 450px;
+  border: 3px solid var(--colorViolet);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.beauty_video_text {
+  text-align: center;
+  margin-top: 32px;
+  padding: 15px 20px 15px 20px;
+  border: 3px dashed var(--colorViolet);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.beauty_video_text p {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--colorBlack);
+}
+
+.beauty_quality {
+  margin-top: 40px;
+}
+
+.beauty_heading {
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  background: var(--colorBlack);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.beauty_heading h2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 35px;
+  color: var(--colorWhite);
+}
+
+.beauty_heading p {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--colorWhite);
+}
+
+.beauty_heading p span {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--colorViolet);
+}
+
+.beauty_quality_text {
+  margin-top: 30px;
+}
+
+.beauty_quality_text h3 {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.beauty_quality_text ul {
+  margin-top: 30px;
+}
+
+.beauty_quality_text ul li {
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 12px;
+  color: var(--colorBlack);
+}
+
+.beauty_quality_text ul li::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: url(../images/follower_2.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.beauty_benefits {
+  margin-top: 40px;
+}
+
+.beauty_benefits_area {
+  margin-top: 30px;
+}
+
+.beauty_benefits_text ul li {
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 12px;
+  color: var(--colorBlack);
+}
+
+.beauty_benefits_text ul li::before {
+  position: absolute;
+  content: "";
+  top: -3px;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: url(../images/follower_3.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.beauty_benefits_img {
+  height: 400px;
+  overflow: hidden;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.beauty_uses {
+  margin-top: 40px;
+}
+
+.beauty_uses_area {
+  margin-top: 32px;
+  padding: 12px 20px 20px 20px;
+  border: 3px dashed var(--colorViolet);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.beauty_uses_area ul li {
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 12px;
+  color: var(--colorBlack);
+}
+
+.beauty_uses_area ul li::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: url(../images/follower_2.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.beauty_review {
+  margin-top: 40px;
+}
+
+.beauty_review .beauty_heading {
+  margin-bottom: 30px;
+}
+
+.beauty_review .tshirt_single_review {
+  border: 3px dashed var(--colorViolet);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.beauty_review .tshirt_single_review img {
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+}
+
+.beauty_review .slick-dots {
+  gap: 8px;
+  display: flex;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  width: auto;
+  height: auto;
+  z-index: 3;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.beauty_review .slick-dots li button {
+  width: 14px;
+  height: 14px;
+  font-size: 0;
+  border-radius: 50%;
+  background: #d3d0d0;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.beauty_review .slick-dots button:hover,
+.beauty_review .slick-dots .slick-active button {
+  background: var(--colorViolet);
+}
+
+.beauty_form {
+  margin-top: 80px;
+}
+
+.beauty_form .billing_checkout_form {
+  margin-top: 40px;
+  padding: 75px 50px 50px 50px;
+  border-top: 4px solid var(--colorViolet);
+  border-right: 4px solid var(--colorViolet);
+  border-left: 4px solid var(--colorViolet);
+  border-bottom: 4px solid var(--colorViolet);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.beauty_form .product_payment_btn button {
+  background: var(--colorViolet);
+}
+
+/*===================================
+  BEAUTY PRODUCT END
+===================================*/
+
+
+/*===================================
+  FASHON PAGE START
+===================================*/
+
+.fashon_banner {
+  padding: 45px 0px 120px 0px;
+  background: linear-gradient(180deg, #FFEEA0 0%, #FFFBFC 100%);
+}
+
+.fashon_banner_logo {
+  text-align: center;
+}
+
+.fashon_banner_logo a {
+  width: 220px;
+  height: 70px;
+}
+
+.fashon_banner_area {
+  margin-top: 25px;
+}
+
+.fashon_banner_text {
+  margin-right: 40px;
+}
+
+.fashon_banner_text h1 {
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 64px;
+  color: var(--colorMaroon);
+}
+
+.fashon_banner_text h6,
+.fashon_banner_text h6 span {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 35px;
+  color: var(--colorBlack);
+  margin-top: 12px;
+}
+
+.fashon_banner_text h6 span {
+  color: var(--colorPink);
+}
+
+.fashon_banner_text h3 {
+  font-size: 26px;
+  font-weight: 600;
+  position: relative;
+  margin-top: 25px;
+  padding-left: 35px;
+  padding-right: 35px;
+  display: inline-block;
+}
+
+.fashon_banner_text h3::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: url(../images/follower_1.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.fashon_banner_text h3::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background: url(../images/follower_1.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.fashon_banner_text ul {
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.fashon_banner_text ul li {
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  padding-left: 35px;
+  color: var(--colorBlack);
+}
+
+.fashon_banner_text ul li::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: url(../images/follower_2.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.fashon_banner_text .fashon_btn {
+  margin-top: 35px;
+}
+
+.fashon_btn {
+  font-size: 18px;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: var(--colorPink);
+  border: 3px dashed var(--colorWhite);
+  padding: 18px 32px 14px 32px;
+  border-radius: 35px;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  -ms-border-radius: 35px;
+  -o-border-radius: 35px;
+}
+
+.fashon_btn i {
+  margin-right: 10px;
+}
+
+.fashon_btn:hover {
+  background: var(--colorMaroon);
+}
+
+.fashon_banner_img {
+  height: 690px;
+  position: relative;
+  z-index: 1;
+}
+
+.fashon_banner_img::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -68px;
+  width: 700px;
+  height: 700px;
+  background: url(../images/fashon_banner_shape.webp);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  z-index: -1;
+}
+
+.fashon_product .tshirt_single_product {
+  height: 520px !important;
+}
+
+.fashon_product .tshirt_single_product {
+  height: 420px;
+  border: 3px dashed var(--colorPink);
+  border-radius: 5px;
+}
+
+.fashon_product .tshirt_single_product img {
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+}
+
+.fashon_product .slick-dots {
+  gap: 8px;
+  display: flex;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  width: auto;
+  height: auto;
+  z-index: 3;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.fashon_product .slick-dots li button {
+  width: 14px;
+  height: 14px;
+  font-size: 0;
+  border-radius: 50%;
+  background: #d3d0d0;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.fashon_product .slick-dots button:hover,
+.fashon_product .slick-dots .slick-active button {
+  background: var(--colorPink);
+}
+
+.fashon_video {
+  margin-top: 120px;
+}
+
+.fashon_video_ifrem iframe {
+  width: 100%;
+  height: 450px;
+  border: 3px solid var(--colorPink);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.fashon_video_text {
+  text-align: center;
+  margin-top: 42px;
+  padding: 15px 20px 15px 20px;
+  border: 3px dashed var(--colorPink);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.fashon_video_text p {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--colorBlack);
+}
+
+.fashon_benefits {
+  margin-top: 70px;
+}
+
+.fashon_heading {
+  text-align: center;
+}
+
+.fashon_heading h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--colorMaroon);
+}
+
+.fashon_heading p {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--colorBlack);
+  margin-top: 10px;
+}
+
+.fashon_heading p span {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--colorPink);
+}
+
+.fashon_benefits_area {
+  margin-top: 40px;
+}
+
+.fashon_benefits_text ul li {
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 18px;
+  color: var(--colorBlack);
+}
+
+.fashon_benefits_text ul li::before {
+  position: absolute;
+  content: "";
+  top: 0px;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: url(../images/follower_2.png);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.fashon_benefits_img {
+  height: 580px;
+  overflow: hidden;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.fashon_faq {
+  margin-top: 80px;
+  padding: 80px 0px;
+  background: var(--colorMaroon);
+}
+
+.fashon_faq .fashon_heading h2 {
+  color: var(--colorWhite);
+}
+
+.fashon_review {
+  margin-top: 70px;
+}
+
+.fashon_review .fashon_heading {
+  margin-bottom: 40px;
+}
+
+.fashon_review .tshirt_single_review {
+  border: 3px dashed var(--colorPink);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.fashon_review .tshirt_single_review img {
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+}
+
+.fashon_review .slick-dots {
+  gap: 8px;
+  display: flex;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  width: auto;
+  height: auto;
+  z-index: 3;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.fashon_review .slick-dots li button {
+  width: 14px;
+  height: 14px;
+  font-size: 0;
+  border-radius: 50%;
+  background: #d3d0d0;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.fashon_review .slick-dots button:hover,
+.fashon_review .slick-dots .slick-active button {
+  background: var(--colorPink);
+}
+
+.fashon_form {
+  margin-top: 110px;
+}
+
+.fashon_form .billing_checkout_form {
+  margin-top: 40px;
+  border-top: 12px solid var(--colorPink);
+  border-right: 4px solid var(--colorPink);
+  border-left: 4px solid var(--colorPink);
+  border-bottom: 4px solid var(--colorPink);
+}
+
+.fashon_form .product_payment_btn button {
+  background: var(--colorPink);
+}
+
+/*===================================
+  FASHON PAGE END
+===================================*/

@@ -227,7 +227,7 @@
             @endif
 
             <!-- Courier Tracking Timeline -->
-            @if ($sale->courier_name || $sale->trackingEvents->isNotEmpty())
+            @if ($sale->courier_name || $sale->trackingEvents->isNotEmpty() || true)
                 <div class="bp-card mb-4">
                     <div class="bp-card-header d-flex justify-content-between align-items-center">
                         <h5 class="bp-card-title">
@@ -252,6 +252,44 @@
                         </div>
                     </div>
                     <div class="bp-card-body">
+
+                        {{-- ── Link / Fetch Consignment ID form ─────────────────── --}}
+                        @bpCan('sales.edit')
+                        <form id="linkConsignmentForm" class="mb-3"
+                              data-action="{{ route('sales.link-consignment', $sale) }}">
+                            @csrf
+                            <div class="d-flex gap-2 align-items-center flex-wrap">
+                                {{-- Courier Name --}}
+                                <div style="min-width:160px; max-width:200px;">
+                                    <select id="courierNameSelect" class="bp-form-control">
+                                        @foreach ($couriers as $courier)
+                                            <option value="{{ $courier->name }}"
+                                                {{ $sale->courier_name === $courier->name ? 'selected' : '' }}>
+                                                {{ $courier->name }}
+                                            </option>
+                                        @endforeach
+                                        {{-- Fallback if no couriers in DB --}}
+                                        @if ($couriers->isEmpty())
+                                            <option value="Steadfast Courier" selected>Steadfast Courier</option>
+                                        @endif
+                                    </select>
+                                </div>
+                                {{-- Consignment ID --}}
+                                <div style="flex:1; min-width:160px; max-width:260px;">
+                                    <input type="text" id="consignmentIdInput"
+                                        class="bp-form-control"
+                                        placeholder="Consignment ID"
+                                        value="{{ $sale->courier_consignment_id }}"
+                                        maxlength="100">
+                                </div>
+                                <button type="submit" id="fetchConsignmentBtn" class="bp-btn bp-btn-primary bp-btn-sm">
+                                    <i class="fa-solid fa-cloud-arrow-down me-1"></i> Fetch from Steadfast
+                                </button>
+                            </div>
+                            <div id="linkConsignmentMsg" class="mt-2 fs-12" style="display:none;"></div>
+                        </form>
+                        @endbpCan
+
                         @if ($sale->courier_consignment_id || $sale->courier_status)
                             <div class="mb-3 fs-12">
                                 @if ($sale->courier_consignment_id)
@@ -461,6 +499,8 @@
     <script>
         'use strict';
         $(function() {
+
+            /* ── Refresh existing courier status ── */
             $('#refreshCourierBtn').on('click', function() {
                 var $btn = $(this);
                 var oldHtml = $btn.html();
@@ -469,9 +509,7 @@
                 $.ajax({
                     url: $btn.data('action'),
                     method: 'POST',
-                    data: {
-                        _token: $('meta[name="csrf-token"]').attr('content')
-                    }
+                    data: { _token: $('meta[name="csrf-token"]').attr('content') }
                 }).done(function() {
                     location.reload();
                 }).fail(function(xhr) {
@@ -480,6 +518,56 @@
                     $btn.prop('disabled', false).html(oldHtml);
                 });
             });
+
+            /* ── Link / Fetch consignment ID from Steadfast ── */
+            $('#linkConsignmentForm').on('submit', function(e) {
+                e.preventDefault();
+
+                var cid         = $.trim($('#consignmentIdInput').val());
+                var courierName = $('#courierNameSelect').val();
+                if (!cid) {
+                    showLinkMsg('Please enter a Consignment ID.', 'danger');
+                    return;
+                }
+
+                var $btn    = $('#fetchConsignmentBtn');
+                var oldHtml = $btn.html();
+                $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>Fetching...');
+                hideLinkMsg();
+
+                $.ajax({
+                    url    : $(this).data('action'),
+                    method : 'POST',
+                    data   : {
+                        _token         : $('meta[name="csrf-token"]').attr('content'),
+                        consignment_id : cid,
+                        courier_name   : courierName
+                    }
+                }).done(function(res) {
+                    showLinkMsg(
+                        '<i class="fa-solid fa-circle-check me-1"></i>' + (res.message || 'Linked successfully.'),
+                        'success'
+                    );
+                    // Reload after a short delay so the user sees the success message.
+                    setTimeout(function() { location.reload(); }, 1200);
+                }).fail(function(xhr) {
+                    var msg = (xhr.responseJSON && xhr.responseJSON.message) || 'Failed to fetch consignment data.';
+                    showLinkMsg('<i class="fa-solid fa-circle-xmark me-1"></i>' + msg, 'danger');
+                    $btn.prop('disabled', false).html(oldHtml);
+                });
+            });
+
+            function showLinkMsg(html, type) {
+                $('#linkConsignmentMsg')
+                    .removeClass('text-success text-danger')
+                    .addClass(type === 'success' ? 'text-success' : 'text-danger')
+                    .html(html)
+                    .show();
+            }
+
+            function hideLinkMsg() {
+                $('#linkConsignmentMsg').hide().html('');
+            }
         });
     </script>
 @endpush

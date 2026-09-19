@@ -1,21 +1,20 @@
 <?php
-
 namespace Modules\Sale\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Modules\Sale\Services\SaleService;
-use Modules\Sale\Http\Requests\StoreSaleRequest;
-use Modules\Sale\Http\Requests\UpdateSaleRequest;
-use Modules\Sale\Models\Sale;
+use Modules\Branch\Models\Branch;
 use Modules\Customer\Models\Customer;
 use Modules\Customer\Models\CustomerGroup;
 use Modules\Customer\Services\CustomerService;
 use Modules\Location\Models\District;
 use Modules\Location\Models\Thana;
-use Modules\Product\Models\Product;
-use Modules\Branch\Models\Branch;
 use Modules\Payment\Models\PaymentAccount;
+use Modules\Product\Models\Product;
+use Modules\Sale\Http\Requests\StoreSaleRequest;
+use Modules\Sale\Http\Requests\UpdateSaleRequest;
+use Modules\Sale\Models\Sale;
+use Modules\Sale\Services\SaleService;
 
 class SaleController extends Controller
 {
@@ -47,11 +46,11 @@ class SaleController extends Controller
                 $filters['status'] = $status;
             }
         }
-        $stats = $this->saleService->getStats();
-        $sales = $this->saleService->list($filters);
-        $listTotals = $this->saleService->getListTotals($filters);
+        $stats        = $this->saleService->getStats();
+        $sales        = $this->saleService->list($filters);
+        $listTotals   = $this->saleService->getListTotals($filters);
         $statusCounts = $this->saleService->getStatusCounts();
-        $couriers = \Modules\Ecommerce\Models\CourierProvider::query()
+        $couriers     = \Modules\Ecommerce\Models\CourierProvider::query()
             ->where('is_active', true)
             ->whereNotNull('api_key')
             ->orderBy('sort_order')
@@ -74,7 +73,7 @@ class SaleController extends Controller
         ];
         $defaultCourierName = \Modules\Setting\Models\Setting::get('courier', 'default_courier');
         $defaultCourierSlug = $courierNameToSlug[$defaultCourierName] ?? null;
-        $defaultCourier = $defaultCourierSlug ? $couriers->firstWhere('slug', $defaultCourierSlug) : null;
+        $defaultCourier     = $defaultCourierSlug ? $couriers->firstWhere('slug', $defaultCourierSlug) : null;
 
         // Active web-guard users (admins/staff) assignable as sale owners.
         $assignableStaff = \App\Models\User::active()->orderBy('name')->get(['id', 'name']);
@@ -89,10 +88,10 @@ class SaleController extends Controller
     {
         bpAuthorize('sales.create');
         $customers = Customer::active()->get(['id', 'name', 'phone', 'address', 'shipping_address']);
-        $branches = Branch::all();
-        $products = Product::active()
+        $branches  = Branch::all();
+        $products  = Product::active()
             ->orderBy('name')
-            ->with(['variants' => fn ($q) => $q->active()->with('attributeValues.attribute')->withSum('warehouseStock as stock_qty', 'quantity')])
+            ->with(['variants' => fn($q) => $q->active()->with('attributeValues.attribute')->withSum('warehouseStock as stock_qty', 'quantity')])
             ->get();
 
         // Decorate with the same storefront pricing (campaign + flash deal +
@@ -107,14 +106,14 @@ class SaleController extends Controller
         }
 
         $paymentAccounts = PaymentAccount::where('is_active', true)->get();
-        $saleStatuses = Sale::selectableStatuses();
-        $districts = District::where('is_active', true)->orderBy('district_name')->get(['id', 'district_name']);
-        $customerGroups = CustomerGroup::active()->orderBy('name')->get();
+        $saleStatuses    = Sale::selectableStatuses();
+        $districts       = District::where('is_active', true)->orderBy('district_name')->get(['id', 'district_name']);
+        $customerGroups  = CustomerGroup::active()->orderBy('name')->get();
 
         // Rebuild the order line items after a validation failure (they're added
         // client-side, so withInput()/old() alone can't restore the rows).
         $prefillItems = collect(old('items', []))
-            ->filter(fn ($it) => !empty($it['product_id']))
+            ->filter(fn($it) => ! empty($it['product_id']))
             ->map(function ($it) use ($products) {
                 $product = $products->firstWhere('id', (int) $it['product_id']);
 
@@ -204,7 +203,7 @@ class SaleController extends Controller
         unset($validated['items'], $validated['payments']);
 
         // Map form field names to service field names
-        $items = array_map(fn ($item) => [
+        $items = array_map(fn($item) => [
             'product_id'      => $item['product_id'],
             'variant_id'      => $item['variant_id'] ?? null,
             'variant_label'   => $item['variant_label'] ?? null,
@@ -256,7 +255,13 @@ class SaleController extends Controller
         bpAuthorize('sales.view');
         $sale = $this->saleService->find($sale->id);
 
-        return view('sale::show', compact('sale'));
+        $couriers = \Modules\Ecommerce\Models\CourierProvider::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get(['id', 'name', 'slug']);
+
+        return view('sale::show', compact('sale', 'couriers'));
     }
 
     /**
@@ -295,15 +300,15 @@ class SaleController extends Controller
         bpAuthorize('sales.edit');
         $sale->load(['items.product.variants.attributeValues.attribute', 'items.variant', 'allocations.payment']);
         $customers = Customer::active()->get(['id', 'name', 'phone', 'address', 'shipping_address']);
-        $branches = Branch::all();
-        $products = Product::active()
+        $branches  = Branch::all();
+        $products  = Product::active()
             ->orderBy('name')
-            ->with(['variants' => fn ($q) => $q->active()->with('attributeValues.attribute')->withSum('warehouseStock as stock_qty', 'quantity')])
+            ->with(['variants' => fn($q) => $q->active()->with('attributeValues.attribute')->withSum('warehouseStock as stock_qty', 'quantity')])
             ->get();
 
         $payments = \Modules\Payment\Models\Payment::whereHas(
             'allocations',
-            fn ($q) => $q->where('allocatable_type', Sale::class)->where('allocatable_id', $sale->id)
+            fn($q) => $q->where('allocatable_type', Sale::class)->where('allocatable_id', $sale->id)
         )->with('paymentAccount')->orderBy('payment_date')->get();
 
         $paymentAccounts = \Modules\Payment\Models\PaymentAccount::active()
@@ -318,12 +323,12 @@ class SaleController extends Controller
         // "Select Account" and saving would strip the payment's account.
         $historicalAccounts = \Modules\Payment\Models\PaymentAccount::withTrashed()
             ->whereIn('id', $payments->pluck('payment_account_id')->filter()->unique()
-                ->diff($paymentAccounts->pluck('id')))
+                    ->diff($paymentAccounts->pluck('id')))
             ->get();
 
         $saleStatuses = Sale::selectableStatuses($sale->status);
-        $districts = District::where('is_active', true)->orderBy('district_name')->get(['id', 'district_name']);
-        $thanas = $sale->district_id
+        $districts    = District::where('is_active', true)->orderBy('district_name')->get(['id', 'district_name']);
+        $thanas       = $sale->district_id
             ? Thana::where('district_id', $sale->district_id)->where('is_active', true)->orderBy('thana_name')->get(['id', 'thana_name'])
             : collect();
         $customerGroups = CustomerGroup::active()->orderBy('name')->get();
@@ -333,52 +338,52 @@ class SaleController extends Controller
         // validation error, otherwise the sale's existing items.
         $prefillItems = collect(old('items'))->isNotEmpty()
             ? collect(old('items'))
-                ->filter(fn ($it) => !empty($it['product_id']))
-                ->map(function ($it) use ($products) {
-                    $product = $products->firstWhere('id', (int) $it['product_id']);
+            ->filter(fn($it) => ! empty($it['product_id']))
+            ->map(function ($it) use ($products) {
+                $product = $products->firstWhere('id', (int) $it['product_id']);
 
-                    return [
-                        'id'            => (int) $it['product_id'],
-                        'name'          => $product->name ?? ('Product #' . $it['product_id']),
-                        'image'         => $product && $product->display_image ? upload_url($product->display_image) : null,
-                        'model'         => $product->model ?? '',
-                        'sku'           => $product->sku ?? '',
-                        'price'         => $it['price'] ?? ($product->sell_price ?? 0),
-                        'quantity'      => $it['quantity'] ?? 1,
-                        'discount'      => $it['discount'] ?? 0,
-                        'variant_id'    => $it['variant_id'] ?? null,
-                        'variant_label' => $it['variant_label'] ?? null,
-                        'combo_id'      => $it['combo_id'] ?? null,
-                        'combo_group'   => $it['combo_group'] ?? null,
-                        'combo_name'    => $it['combo_name'] ?? null,
-                        'combo_price'   => $it['combo_price'] ?? null,
-                    ];
-                })
-                ->values()
-                ->all()
+                return [
+                    'id'            => (int) $it['product_id'],
+                    'name'          => $product->name ?? ('Product #' . $it['product_id']),
+                    'image'         => $product && $product->display_image ? upload_url($product->display_image) : null,
+                    'model'         => $product->model ?? '',
+                    'sku'           => $product->sku ?? '',
+                    'price'         => $it['price'] ?? ($product->sell_price ?? 0),
+                    'quantity'      => $it['quantity'] ?? 1,
+                    'discount'      => $it['discount'] ?? 0,
+                    'variant_id'    => $it['variant_id'] ?? null,
+                    'variant_label' => $it['variant_label'] ?? null,
+                    'combo_id'      => $it['combo_id'] ?? null,
+                    'combo_group'   => $it['combo_group'] ?? null,
+                    'combo_name'    => $it['combo_name'] ?? null,
+                    'combo_price'   => $it['combo_price'] ?? null,
+                ];
+            })
+            ->values()
+            ->all()
             : $sale->items
-                ->map(function ($item) {
-                    $product = $item->product;
+            ->map(function ($item) {
+                $product = $item->product;
 
-                    return [
-                        'id'            => $item->product_id,
-                        'name'          => $item->product_name ?: ($product->name ?? ('Product #' . $item->product_id)),
-                        'image'         => $product && $product->display_image ? upload_url($product->display_image) : null,
-                        'model'         => $product->model ?? '',
-                        'sku'           => $product->sku ?? '',
-                        'price'         => (float) $item->unit_price,
-                        'quantity'      => (int) $item->quantity,
-                        'discount'      => (float) $item->discount_amount,
-                        'variant_id'    => $item->variant_id,
-                        'variant_label' => $item->variant_label,
-                        'combo_id'      => $item->combo_id,
-                        'combo_group'   => $item->combo_group,
-                        'combo_name'    => $item->combo_name,
-                        'combo_price'   => $item->combo_price !== null ? (float) $item->combo_price : null,
-                    ];
-                })
-                ->values()
-                ->all();
+                return [
+                    'id'            => $item->product_id,
+                    'name'          => $item->product_name ?: ($product->name ?? ('Product #' . $item->product_id)),
+                    'image'         => $product && $product->display_image ? upload_url($product->display_image) : null,
+                    'model'         => $product->model ?? '',
+                    'sku'           => $product->sku ?? '',
+                    'price'         => (float) $item->unit_price,
+                    'quantity'      => (int) $item->quantity,
+                    'discount'      => (float) $item->discount_amount,
+                    'variant_id'    => $item->variant_id,
+                    'variant_label' => $item->variant_label,
+                    'combo_id'      => $item->combo_id,
+                    'combo_group'   => $item->combo_group,
+                    'combo_name'    => $item->combo_name,
+                    'combo_price'   => $item->combo_price !== null ? (float) $item->combo_price : null,
+                ];
+            })
+            ->values()
+            ->all();
 
         $comboCatalog = $this->buildComboCatalog();
 
@@ -399,8 +404,8 @@ class SaleController extends Controller
     {
         bpAuthorize('sales.edit');
         $validated = $request->validated();
-        $items = $validated['items'] ?? [];
-        $payments = $validated['payments'] ?? [];
+        $items     = $validated['items'] ?? [];
+        $payments  = $validated['payments'] ?? [];
         unset($validated['items'], $validated['payments'], $validated['action']);
 
         // Delivered is final — ignore any submitted status so the edit form
@@ -486,7 +491,7 @@ class SaleController extends Controller
 
         $email = $request->input('email') ?? $sale->customer?->email;
 
-        if (!$email) {
+        if (! $email) {
             return back()->with('error', __('No email address found for this customer.'));
         }
 
@@ -513,12 +518,12 @@ class SaleController extends Controller
         bpAuthorize('sales.edit');
         $phone = $request->input('phone') ?? $sale->customer?->phone;
 
-        if (!$phone) {
+        if (! $phone) {
             return back()->with('error', __('No phone number found for this customer.'));
         }
 
         $shareUrl = route('sales.share', $sale);
-        $message = "Invoice {$sale->invoice_number} — Total: " . currency_symbol() . " " . number_format($sale->grand_total) . ". View: {$shareUrl}";
+        $message  = "Invoice {$sale->invoice_number} — Total: " . currency_symbol() . " " . number_format($sale->grand_total) . ". View: {$shareUrl}";
 
         try {
             $gateway = app(\Modules\Marketing\Contracts\SmsGatewayInterface::class);
@@ -560,11 +565,11 @@ class SaleController extends Controller
         // Per-sale so stock is moved (deduct/restore) idempotently via the
         // service, rather than a bare mass column update. Delivered sales are
         // final — their status only moves via the Sale Return workflow.
-        $status = $request->input('status');
-        $sales = Sale::whereIn('id', $request->input('ids'))->get();
+        $status  = $request->input('status');
+        $sales   = Sale::whereIn('id', $request->input('ids'))->get();
         $skipped = $sales->where('status', 'delivered')->count();
         $sales->where('status', '!=', 'delivered')
-            ->each(fn (Sale $sale) => $this->saleService->changeStatus($sale, $status));
+            ->each(fn(Sale $sale) => $this->saleService->changeStatus($sale, $status));
 
         $message = __('Status updated successfully.');
         if ($skipped > 0) {
@@ -625,7 +630,7 @@ class SaleController extends Controller
         }
 
         $result = $this->dispatchSaleToCourier($sale, $provider);
-        if (!$result['success']) {
+        if (! $result['success']) {
             return back()->with('error', $result['message']);
         }
 
@@ -671,7 +676,7 @@ class SaleController extends Controller
     {
         bpAuthorize('sales.view');
         $phone = $sale->customer?->phone ?? $sale->customer_phone_snapshot;
-        if (!$phone) {
+        if (! $phone) {
             return response()->json([
                 'success' => false,
                 'message' => __('No phone number available for this sale.'),
@@ -679,9 +684,9 @@ class SaleController extends Controller
         }
 
         $service = app(\Modules\Ecommerce\Services\FraudCheckService::class);
-        $report = $service->check($phone, forceRefresh: $request->boolean('refresh'));
+        $report  = $service->check($phone, forceRefresh: $request->boolean('refresh'));
 
-        if (!$report) {
+        if (! $report) {
             return response()->json([
                 'success' => false,
                 'message' => __('Fraud check is unavailable. Set BD_COURIER_API_KEY or check the phone number.'),
@@ -712,7 +717,7 @@ class SaleController extends Controller
         }
 
         $steadfast = app(\Modules\Ecommerce\Services\SteadfastApiService::class);
-        if (!$steadfast->isConfigured()) {
+        if (! $steadfast->isConfigured()) {
             return response()->json([
                 'success' => false,
                 'message' => __('Steadfast is not configured.'),
@@ -727,6 +732,7 @@ class SaleController extends Controller
             } else {
                 return response()->json(['success' => false, 'message' => __('Sale has no consignment id or invoice.')], 422);
             }
+            \Illuminate\Support\Facades\Log::info('Steadfast Live Status Response', (array) $response);
         } catch (\Throwable $e) {
             return response()->json([
                 'success' => false,
@@ -734,8 +740,8 @@ class SaleController extends Controller
             ], 502);
         }
 
-        $status = $response['delivery_status'] ?? $response['status'] ?? null;
-        $cid = $response['consignment_id'] ?? $sale->courier_consignment_id;
+        $status   = $response['delivery_status'] ?? $response['status'] ?? null;
+        $cid      = $response['consignment_id'] ?? $sale->courier_consignment_id;
         $tracking = $response['tracking_code'] ?? $sale->courier_tracking_code;
 
         $updates = ['courier_status_updated_at' => now()];
@@ -773,6 +779,107 @@ class SaleController extends Controller
     }
 
     /**
+     * Manually link a Steadfast consignment ID to a sale, then immediately
+     * pull its current status from the Steadfast API and persist all data.
+     *
+     * POST /sales/{sale}/link-consignment
+     * Body: { consignment_id: "12345678", courier_name: "Steadfast Courier" }
+     */
+    public function linkConsignment(Request $request, Sale $sale)
+    {
+        bpAuthorize('sales.edit');
+
+        $request->validate([
+            'consignment_id' => ['required', 'string', 'max:100'],
+            'courier_name'   => ['nullable', 'string', 'max:50'],
+        ]);
+
+        $cid         = trim($request->input('consignment_id'));
+        $courierName = trim($request->input('courier_name', '')) ?: ($sale->courier_name ?: 'Steadfast Courier');
+
+        $steadfast = app(\Modules\Ecommerce\Services\SteadfastApiService::class);
+        if (! $steadfast->isConfigured()) {
+            return response()->json([
+                'success' => false,
+                'message' => __('Steadfast is not configured. Set the API key & secret in Settings → Courier Providers.'),
+            ], 422);
+        }
+
+        // Fetch live status from Steadfast by consignment ID.
+        try {
+            $response = $steadfast->client()->status()->getStatusByConsignmentId((int) $cid);
+            \Illuminate\Support\Facades\Log::info('Steadfast Manual Link Response', (array) $response);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'success' => false,
+                'message' => __('Steadfast API error: :err', ['err' => $e->getMessage()]),
+            ], 502);
+        }
+
+        // Steadfast wraps results in different keys depending on endpoint version.
+        $data      = $response['consignment'] ?? $response['data'] ?? $response;
+        $status    = $response['delivery_status'] ?? $data['delivery_status'] ?? $data['status'] ?? null;
+        $tracking  = $data['tracking_code'] ?? null;
+        $codAmount = isset($response['cod_amount']) && is_numeric($response['cod_amount'])
+            ? (float) $response['cod_amount']
+            : (isset($data['cod_amount']) && is_numeric($data['cod_amount']) ? (float) $data['cod_amount'] : null);
+        $deliveryCharge = isset($response['delivery_charge']) && is_numeric($response['delivery_charge'])
+            ? (float) $response['delivery_charge']
+            : (isset($data['delivery_charge']) && is_numeric($data['delivery_charge']) ? (float) $data['delivery_charge'] : null);
+
+        $updates = [
+            'courier_name'              => $courierName,
+            'courier_consignment_id'    => $cid,
+            'courier_tracking_url'      => 'https://steadfast.com.bd/user/consignment/' . $cid,
+            'courier_status_updated_at' => now(),
+        ];
+
+        if ($status !== null) {
+            $updates['courier_status'] = $status;
+        }
+        if ($tracking) {
+            $updates['courier_tracking_code'] = $tracking;
+        }
+        if ($deliveryCharge !== null) {
+            $updates['courier_delivery_charge'] = $deliveryCharge;
+        }
+
+        // Only record collected COD amount for terminal delivery states.
+        $deliveredStatuses = ['delivered', 'partial_delivered'];
+        if ($codAmount !== null && in_array(strtolower((string) $status), $deliveredStatuses, true)) {
+            $updates['courier_collected_amount'] = $codAmount;
+        }
+
+        $sale->update($updates);
+
+        // Move sale workflow status to 'courier' if it's still pre-courier and we have a consignment.
+        if (in_array($sale->status, ['pending', 'packing', 'draft', 'on_hold', 'incompleted'], true)) {
+            $this->saleService->changeStatus($sale, 'courier');
+        }
+
+        // Recompute paid/due after the data import.
+        $this->saleService->updatePaymentStatus($sale);
+
+        // Audit trail entry.
+        \Modules\Sale\Models\CourierTrackingEvent::create([
+            'sale_id'          => $sale->id,
+            'courier_provider' => 'steadfast',
+            'event_type'       => 'manual_link',
+            'status'           => $status,
+            'message'          => __('Consignment manually linked and data fetched from Steadfast.'),
+            'consignment_id'   => $cid,
+            'payload'          => $response,
+            'occurred_at'      => now(),
+        ]);
+
+        return response()->json([
+            'success'        => true,
+            'message'        => __('Consignment linked successfully. Status: :status', ['status' => $status ?? 'unknown']),
+            'courier_status' => $status,
+        ]);
+    }
+
+    /**
      * Bulk-assign multiple sales to a configured courier provider.
      */
     public function bulkSendToCourier(Request $request)
@@ -791,8 +898,8 @@ class SaleController extends Controller
             ], 422);
         }
 
-        $sales = Sale::whereIn('id', $request->input('ids'))->get();
-        $count = 0;
+        $sales    = Sale::whereIn('id', $request->input('ids'))->get();
+        $count    = 0;
         $failures = [];
 
         foreach ($sales as $sale) {
@@ -805,7 +912,7 @@ class SaleController extends Controller
         }
 
         $message = trans_choice(':count sale(s) sent to :courier.', $count, ['count' => $count, 'courier' => $provider->name]);
-        if (!empty($failures)) {
+        if (! empty($failures)) {
             $message .= ' Failures: ' . implode(' | ', array_slice($failures, 0, 5));
             if (count($failures) > 5) {
                 $message .= ' (+ ' . (count($failures) - 5) . ' more)';
@@ -846,7 +953,7 @@ class SaleController extends Controller
 
         if ($provider->slug === 'steadfast') {
             $steadfast = app(\Modules\Ecommerce\Services\SteadfastApiService::class);
-            if (!$steadfast->isConfigured()) {
+            if (! $steadfast->isConfigured()) {
                 return ['success' => false, 'message' => __('Steadfast is missing API key or secret. Configure it in Settings → Courier Providers.')];
             }
 
@@ -870,8 +977,8 @@ class SaleController extends Controller
 
             // Steadfast wraps the parcel in `consignment` (sometimes `data`).
             $consignment = $response['consignment'] ?? $response['data'] ?? $response;
-            $cid = $consignment['consignment_id'] ?? null;
-            $tracking = $consignment['tracking_code'] ?? null;
+            $cid         = $consignment['consignment_id'] ?? null;
+            $tracking    = $consignment['tracking_code'] ?? null;
 
             if ($cid) {
                 $updates['courier_consignment_id'] = (string) $cid;
@@ -882,7 +989,7 @@ class SaleController extends Controller
             if ($cid) {
                 $updates['courier_tracking_url'] = 'https://steadfast.com.bd/user/consignment/' . $cid;
             }
-            $updates['courier_status'] = $consignment['status'] ?? 'in_review';
+            $updates['courier_status']            = $consignment['status'] ?? 'in_review';
             $updates['courier_status_updated_at'] = now();
         }
 
@@ -903,7 +1010,7 @@ class SaleController extends Controller
      */
     private function buildSteadfastOrderPayload(Sale $sale): array
     {
-        $name = $sale->customer?->name ?? $sale->customer_name_snapshot ?? 'Walk-in Customer';
+        $name  = $sale->customer?->name ?? $sale->customer_name_snapshot ?? 'Walk-in Customer';
         $phone = preg_replace('/[^0-9]/', '', (string) ($sale->customer?->phone ?? $sale->customer_phone_snapshot ?? ''));
         if (strlen($phone) === 13 && str_starts_with($phone, '880')) {
             $phone = '0' . substr($phone, 3);
@@ -990,7 +1097,7 @@ class SaleController extends Controller
         ]);
 
         $provider = $activeCouriers->firstWhere('id', (int) $request->input('courier_provider_id'));
-        if (!$provider) {
+        if (! $provider) {
             return back()->with('error', __('Selected courier is not active or not configured.'));
         }
 
@@ -1003,7 +1110,7 @@ class SaleController extends Controller
     public function bulkPrint(Request $request)
     {
         bpAuthorize('sales.view');
-        $ids = explode(',', $request->input('ids', ''));
+        $ids   = explode(',', $request->input('ids', ''));
         $sales = Sale::with(['customer', 'items.product', 'items.variant.attributeValues.attribute'])
             ->whereIn('id', $ids)
             ->get();
@@ -1028,7 +1135,7 @@ class SaleController extends Controller
     public function bulkLabel(Request $request)
     {
         bpAuthorize('sales.view');
-        $ids = array_filter(explode(',', $request->input('ids', '')));
+        $ids   = array_filter(explode(',', $request->input('ids', '')));
         $sales = Sale::with('customer')->whereIn('id', $ids)->get();
 
         return view('sale::label-print', ['sales' => $sales, 'autoPrint' => false]);

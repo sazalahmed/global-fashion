@@ -18,6 +18,7 @@ Route::middleware('auth')->prefix('sales')->name('sales.')->group(function () {
     Route::get('/{sale}/fraud-check', [SaleController::class, 'fraudCheck'])->name('fraud-check');
     Route::get('/{sale}/quick-view', [SaleController::class, 'quickView'])->name('quick-view');
     Route::post('/{sale}/refresh-courier-status', [SaleController::class, 'refreshCourierStatus'])->name('refresh-courier-status');
+    Route::post('/{sale}/link-consignment', [SaleController::class, 'linkConsignment'])->name('link-consignment');
     Route::get('/{sale}', [SaleController::class, 'show'])->name('show');
     Route::get('/{sale}/edit', [SaleController::class, 'edit'])->name('edit');
     Route::put('/{sale}', [SaleController::class, 'update'])->name('update');

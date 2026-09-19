@@ -392,7 +392,9 @@
                                 {{-- Variant as "Attribute: value" pairs (e.g. "Size: M"); fall back to the stored label --}}
                                 @php($variantText = $item->variant ? $item->variant->attributeValues->map(fn($v) => trim(($v->attribute?->base_name ? $v->attribute->base_name . ': ' : '') . $v->value))->filter()->implode(', ') : $item->variant_label ?? '')
                                 <div class="mb-2">
-                                    <div class="fs-12 fw-700">{{ $title }}</div>
+                                    <div class="fs-12 fw-700">
+                                        <a href="{{ route('sales.show', $sale) }}" class="text-dark text-decoration-none">{{ $title }}</a>
+                                    </div>
                                     @if ($model)
                                         <div class="fs-11 text-muted">{{ __('Model') }}: {{ $model }}</div>
                                     @endif

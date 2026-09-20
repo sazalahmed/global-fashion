@@ -1105,6 +1105,82 @@ class SaleController extends Controller
     }
 
     /**
+     * Fetch status from Steadfast API and route it through the Webhook Handler.
+     */
+    public function syncCourier(Sale $sale)
+    {
+        bpAuthorize('sales.edit');
+        if (!$sale->courier_consignment_id) {
+            return back()->with('error', __('No consignment ID linked.'));
+        }
+
+        try {
+            $api = app(\Modules\Ecommerce\Services\SteadfastApiService::class);
+            $response = $api->client()->status()->getStatusByConsignmentId((int)$sale->courier_consignment_id);
+            
+            $status = $response['delivery_status'] ?? $response['status'] ?? null;
+            if (!$status) {
+                return back()->with('error', __('Could not parse delivery status from Steadfast.'));
+            }
+
+            $payload = [
+                'consignment_id' => $sale->courier_consignment_id,
+                'invoice' => $sale->invoice_number,
+                'status' => $status,
+                'cod_amount' => $response['cod_amount'] ?? 0,
+                'tracking_message' => 'Manual Sync via API',
+            ];
+
+            $fakeRequest = new \Illuminate\Http\Request();
+            $fakeRequest->merge($payload);
+
+            $webhook = app(\Modules\Ecommerce\Http\Controllers\Webhooks\SteadfastWebhookController::class)->handle($fakeRequest);
+
+            if ($webhook->getStatusCode() !== 200) {
+                $err = json_decode($webhook->getContent(), true)['message'] ?? 'Sync failed.';
+                return back()->with('error', $err);
+            }
+
+            return back()->with('success', __('Courier status synchronized successfully.'));
+        } catch (\Throwable $e) {
+            return back()->with('error', __('Courier sync failed: ') . $e->getMessage());
+        }
+    }
+
+    /**
+     * Submit a manual override for courier status, routed through Webhook Handler.
+     */
+    public function manualCourierUpdate(Request $request, Sale $sale)
+    {
+        bpAuthorize('sales.edit');
+        $request->validate([
+            'status' => 'required|string',
+            'cod_amount' => 'nullable|numeric|min:0',
+            'tracking_message' => 'nullable|string'
+        ]);
+
+        $payload = [
+            'consignment_id' => $sale->courier_consignment_id ?? $sale->id,
+            'invoice' => $sale->invoice_number,
+            'status' => $request->input('status'),
+            'cod_amount' => $request->input('cod_amount', 0),
+            'tracking_message' => $request->input('tracking_message', 'Manual Override from UI'),
+        ];
+
+        $simulatedRequest = new \Illuminate\Http\Request();
+        $simulatedRequest->merge($payload);
+
+        $webhook = app(\Modules\Ecommerce\Http\Controllers\Webhooks\SteadfastWebhookController::class)->handle($simulatedRequest);
+
+        if ($webhook->getStatusCode() !== 200) {
+            $err = json_decode($webhook->getContent(), true)['message'] ?? 'Update failed.';
+            return back()->with('error', $err);
+        }
+
+        return back()->with('success', __('Manual courier update applied successfully.'));
+    }
+
+    /**
      * Bulk print invoices.
      */
     public function bulkPrint(Request $request)

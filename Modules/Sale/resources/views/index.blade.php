@@ -530,10 +530,11 @@
                  (all pages), unlike the fixed today/this-month stat cards. --}}
             <tfoot>
                 <tr class="bp-table-total-row">
-                    <td colspan="13" class="text-end fw-800">
+                    <td colspan="12" class="text-end fw-800">
                         {{ __('Total') }} ({{ number_format($listTotals['sales_count']) }} {{ __('sales') }})</td>
                     <td class="fw-800">{{ money($listTotals['grand_total']) }}</td>
                     <td class="fw-800">{{ money($listTotals['paid_amount']) }}</td>
+                    <td class="fw-800 d-none">0</td>
                     <td class="{{ $listTotals['due_amount'] > 0 ? 'text-danger' : 'text-muted' }} fw-800">
                         {{ money($listTotals['due_amount']) }}</td>
                 </tr>

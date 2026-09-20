@@ -11,6 +11,17 @@
 @endsection
 
 @section('page-actions')
+    @if($sale->courier_consignment_id)
+        <button type="button" class="bp-btn bp-btn-info me-2" data-bs-toggle="modal" data-bs-target="#manualCourierSyncModal">
+            <i class="fa-solid fa-pen-to-square me-1"></i> {{ __('Manual Courier Update') }}
+        </button>
+        <form action="{{ route('sales.sync-courier', $sale) }}" method="POST" class="d-inline-block me-2">
+            @csrf
+            <button type="submit" class="bp-btn bp-btn-info" onclick="return confirm('{{ __('Fetch exact status from Steadfast API?') }}')">
+                <i class="fa-solid fa-cloud-arrow-down me-1"></i> {{ __('Sync Courier API') }}
+            </button>
+        </form>
+    @endif
     <a href="{{ route('sales.index') }}" class="bp-btn bp-btn-primary">
         <i class="fa-solid fa-arrow-left me-1"></i> {{ __('Back to Sales') }}
     </a>
@@ -21,6 +32,48 @@
 @endpush
 
 @section('content')
+
+    {{-- Manual Courier Update Modal --}}
+    @if($sale->courier_consignment_id)
+    <div class="modal fade" id="manualCourierSyncModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('sales.manual-courier-update', $sale) }}" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ __('Manual Courier Update') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="bp-form-label">{{ __('Delivery Status') }}</label>
+                            <select name="status" class="bp-form-select" required>
+                                <option value="delivered">{{ __('Delivered') }}</option>
+                                <option value="partial_delivered">{{ __('Partial Delivered') }}</option>
+                                <option value="cancelled">{{ __('Cancelled') }}</option>
+                                <option value="pending">{{ __('Pending / In Courier') }}</option>
+                                <option value="tracking_update">{{ __('Tracking Update (No status change)') }}</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="bp-form-label">{{ __('COD Amount Collected') }}</label>
+                            <input type="number" step="0.01" class="bp-form-control" name="cod_amount" value="{{ $sale->due_amount }}">
+                            <small class="text-muted">{{ __('Only applied when status is Delivered or Partial Delivered') }}</small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="bp-form-label">{{ __('Tracking Message (Note)') }}</label>
+                            <input type="text" class="bp-form-control" name="tracking_message" placeholder="{{ __('e.g., Manual update from admin') }}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="bp-btn bp-btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                        <button type="submit" class="bp-btn bp-btn-primary">{{ __('Save Update') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endif
 
     <div class="bp-sale-form-wrapper">
 

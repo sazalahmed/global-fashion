@@ -263,14 +263,16 @@
                                 <div style="min-width:160px; max-width:200px;">
                                     <select id="courierNameSelect" class="bp-form-control">
                                         @foreach ($couriers as $courier)
-                                            <option value="{{ $courier->name }}"
-                                                {{ $sale->courier_name === $courier->name ? 'selected' : '' }}>
-                                                {{ $courier->name }}
-                                            </option>
+                                            @if($courier->name == 'Steadfast')
+                                                <option value="{{ $courier->name }}"
+                                                    {{ $sale->courier_name === $courier->name ? 'selected' : '' }}>
+                                                    {{ $courier->name }}
+                                                </option>
+                                            @endif
                                         @endforeach
                                         {{-- Fallback if no couriers in DB --}}
                                         @if ($couriers->isEmpty())
-                                            <option value="Steadfast Courier" selected>Steadfast Courier</option>
+                                            <option value="Steadfast" selected>Steadfast Courier</option>
                                         @endif
                                     </select>
                                 </div>
@@ -283,7 +285,7 @@
                                         maxlength="100">
                                 </div>
                                 <button type="submit" id="fetchConsignmentBtn" class="bp-btn bp-btn-primary bp-btn-sm">
-                                    <i class="fa-solid fa-cloud-arrow-down me-1"></i> Fetch from Steadfast
+                                    <i class="fa-solid fa-cloud-arrow-down me-1"></i> Assign Consignment
                                 </button>
                             </div>
                             <div id="linkConsignmentMsg" class="mt-2 fs-12" style="display:none;"></div>

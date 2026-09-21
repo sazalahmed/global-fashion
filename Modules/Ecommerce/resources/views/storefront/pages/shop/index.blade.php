@@ -154,8 +154,7 @@
                             <div class="col-xl-6 col-md-5 col-12">
                                 <div class="product_page_top_button">
                                     @if (isset($products) && $products->total() > 0)
-                                        <p>Showing {{ $products->firstItem() }}-{{ $products->lastItem() }} of
-                                            {{ $products->total() }} results</p>
+                                        <p>Showing {{ $products->total() }} results</p>
                                     @else
                                         <p>No products found</p>
                                     @endif
@@ -179,21 +178,13 @@
                                                 {{ request('sort') == 'name_desc' ? 'selected' : '' }}>Name: Z-A</option>
                                         </select>
                                     </li>
-                                    <li>
-                                        <select class="select_js" id="shopPerPageSelect">
-                                            @foreach ($perPageOptions as $option)
-                                                <option value="{{ $option }}"
-                                                    {{ (int) ($perPage ?? 0) === $option ? 'selected' : '' }}>Show:
-                                                    {{ $option }}</option>
-                                            @endforeach
-                                        </select>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" id="product-list-container">
                         {{-- Products and combos are interleaved in $products by the
                              admin-defined per-category order; each item renders with
                              its matching card. --}}
@@ -227,11 +218,13 @@
             <div class="row">
                 <div class="col-xxl-2 col-lg-4 col-xl-3"></div>
                 <div class="col-xxl-10 col-lg-8 col-xl-9">
-                    {{-- Pagination --}}
+                    {{-- Infinite Scroll Trigger --}}
                     @if (isset($products) && $products->hasPages())
                         <div class="row">
-                            <div class="pagination_area">
-                                {{ $products->links('ecommerce::storefront.partials.pagination') }}
+                            <div class="col-12 text-center" id="infinite-scroll-trigger" data-next-page="{{ $products->nextPageUrl() }}">
+                                <div class="spinner-border text-primary my-4 d-none" role="status" id="infinite-scroll-spinner">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
                             </div>
                         </div>
                     @endif
@@ -249,22 +242,19 @@
             // Auto-apply filters on change (Apply button removed): submitting the
             // GET form reloads the product list with the new facet selection.
             $('#shopFilterForm').on('change', 'input[name="variants[]"], input[name="stock_status[]"]', function() {
+                sessionStorage.removeItem('shop_infinite_scroll_cache');
                 $('#shopFilterForm').trigger('submit');
             });
 
             $('#shopSortSelect').on('change', function() {
+                sessionStorage.removeItem('shop_infinite_scroll_cache');
                 var url = new URL(window.location.href);
                 url.searchParams.set('sort', $(this).val());
                 url.searchParams.delete('page');
                 window.location.href = url.toString();
             });
 
-            $('#shopPerPageSelect').on('change', function() {
-                var url = new URL(window.location.href);
-                url.searchParams.set('per_page', $(this).val());
-                url.searchParams.delete('page');
-                window.location.href = url.toString();
-            });
+
 
             // ── Price range slider ──
             // Dual-knob slider whose bounds are the lowest/highest active product
@@ -373,6 +363,103 @@
                     $kids.prop('hidden', false);
                     $btn.attr('aria-expanded', 'true').find('i').removeClass('fa-plus').addClass(
                         'fa-minus');
+                }
+            });
+
+            // ── Infinite Scroll Caching ──
+            var CACHE_KEY = 'shop_infinite_scroll_cache';
+            var CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+
+            // Restore cache on load
+            var cached = sessionStorage.getItem(CACHE_KEY);
+            if (cached) {
+                try {
+                    var cacheData = JSON.parse(cached);
+                    var now = new Date().getTime();
+                    // Check if cache is still valid
+                    if (now - cacheData.timestamp < CACHE_TTL_MS) {
+                        $('#product-list-container').html(cacheData.html);
+                        
+                        var $trigger = $('#infinite-scroll-trigger');
+                        if (cacheData.nextUrl) {
+                            $trigger.attr('data-next-page', cacheData.nextUrl);
+                        } else {
+                            $trigger.removeAttr('data-next-page');
+                            $trigger.remove();
+                        }
+                        
+                        // Restore scroll position after a short delay for DOM rendering
+                        setTimeout(function() {
+                            $(window).scrollTop(cacheData.scrollPos);
+                        }, 10);
+                    } else {
+                        // Expired
+                        sessionStorage.removeItem(CACHE_KEY);
+                    }
+                } catch (e) {
+                    console.error('Error restoring shop cache', e);
+                }
+            }
+
+            // Save cache when navigating to a product
+            $('#product-list-container').on('click', 'a', function() {
+                var $trigger = $('#infinite-scroll-trigger');
+                var cacheData = {
+                    html: $('#product-list-container').html(),
+                    nextUrl: $trigger.length ? $trigger.attr('data-next-page') : '',
+                    scrollPos: $(window).scrollTop(),
+                    timestamp: new Date().getTime()
+                };
+                sessionStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+            });
+
+            // ── Infinite Scroll ──
+            var isLoading = false;
+            $(window).on('scroll', function() {
+                var $trigger = $('#infinite-scroll-trigger');
+                if ($trigger.length === 0) return;
+
+                var nextPageUrl = $trigger.attr('data-next-page');
+                if (!nextPageUrl) return;
+
+                // Load more when user scrolls near the bottom of the page (approx 3 rows before)
+                if ($(window).scrollTop() + $(window).height() >= $(document).height() - 1200) {
+                    if (!isLoading) {
+                        isLoading = true;
+                        $('#infinite-scroll-spinner').removeClass('d-none');
+                        
+                        $.ajax({
+                            url: nextPageUrl,
+                            type: 'GET',
+                            success: function(response) {
+                                // Parse the new HTML
+                                var $html = $(response);
+                                var newProducts = $html.find('#product-list-container').html();
+                                
+                                // Remove wow classes from existing items to prevent re-animation flashing
+                                $('#product-list-container .wow').removeClass('wow fadeInUp');
+                                
+                                // Append new products
+                                $('#product-list-container').append(newProducts);
+                                
+                                // Update next page URL
+                                var newTrigger = $html.find('#infinite-scroll-trigger');
+                                if (newTrigger.length && newTrigger.attr('data-next-page')) {
+                                    $trigger.attr('data-next-page', newTrigger.attr('data-next-page'));
+                                } else {
+                                    $trigger.removeAttr('data-next-page'); // No more pages
+                                    $trigger.remove(); // Remove the trigger element
+                                }
+                                
+                                isLoading = false;
+                                $('#infinite-scroll-spinner').addClass('d-none');
+                            },
+                            error: function() {
+                                isLoading = false;
+                                $('#infinite-scroll-spinner').addClass('d-none');
+                            }
+                        });
+                    }
                 }
             });
         });

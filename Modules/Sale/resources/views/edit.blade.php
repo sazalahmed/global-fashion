@@ -66,8 +66,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="bp-btn bp-btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                        <button type="submit" class="bp-btn bp-btn-primary">{{ __('Save Update') }}</button>
+                        <button type="button" class="bp-btn bp-btn-danger" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                        <button type="submit" class="bp-btn bp-btn-success">{{ __('Save Update') }}</button>
                     </div>
                 </form>
             </div>

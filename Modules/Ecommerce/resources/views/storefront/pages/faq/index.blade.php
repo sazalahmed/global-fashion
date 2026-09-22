@@ -11,13 +11,13 @@
     <section class="faq_page mb_70">
         <div class="container">
             <div class="accordion" id="accordionExample">
-                <div class="row align-items-center">
-                    <div class="col-xxl-5 col-lg-6 col-md-10 mt_50 wow fadeInLeft">
+                <div class="row">
+                    <div class="col-xxl-5 col-lg-6 col-md-10 wow fadeInLeft">
                         <div class="faq_img pr_50">
                             <img src="{{ $faqHeader['image'] }}" alt="FAQ's" class="img-fluid w-100">
                         </div>
                     </div>
-                    <div class="col-xxl-7 col-lg-6 mt_70 wow fadeInRight">
+                    <div class="col-xxl-7 col-lg-6 wow fadeInRight">
                         <h6 class="faq_sub_title">{{ $faqHeader['sub_title'] }}</h6>
                         <h3 class="faq_title">{{ $faqHeader['title'] }}</h3>
 
@@ -37,7 +37,10 @@
                                     <div class="accordion-body">
                                         {{-- Rich-text answer (TinyMCE). Rendered through the same
                                              tag-allowlist strip_tags() used for pages/blog content. --}}
-                                        {!! strip_tags($faq->answer, '<p><br><strong><em><ul><ol><li><h2><h3><h4><h5><h6><a><img><table><thead><tbody><tr><td><th><blockquote><span><div>') !!}
+                                        {!! strip_tags(
+                                            $faq->answer,
+                                            '<p><br><strong><em><ul><ol><li><h2><h3><h4><h5><h6><a><img><table><thead><tbody><tr><td><th><blockquote><span><div>',
+                                        ) !!}
                                     </div>
                                 </div>
                             </div>

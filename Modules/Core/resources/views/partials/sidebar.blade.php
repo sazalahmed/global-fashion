@@ -358,6 +358,9 @@
         <li><a href="{{ route('ecommerce.faqs.index') }}" class="menu-link {{ request()->routeIs('ecommerce.faqs.*') ? 'active' : '' }}">FAQs</a></li>
         @endbpCan
         @bpCan('ecommerce.view')
+        <li><a href="{{ route('ecommerce.testimonials.index') }}" class="menu-link {{ request()->routeIs('ecommerce.testimonials.*') ? 'active' : '' }}">Testimonials</a></li>
+        @endbpCan
+        @bpCan('ecommerce.view')
         <li><a href="{{ route('ecommerce.pages.index') }}" class="menu-link {{ request()->routeIs('ecommerce.pages.*') ? 'active' : '' }}">Pages</a></li>
         @endbpCan
         @bpCan('ecommerce.view')

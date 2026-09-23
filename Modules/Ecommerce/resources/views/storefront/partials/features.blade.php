@@ -75,3 +75,5 @@
         </div>
     </div>
 </section>
+
+@include('ecommerce::storefront.partials.testimonials')

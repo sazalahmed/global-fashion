@@ -139,6 +139,15 @@ Route::middleware('auth')->prefix('ecommerce')->name('ecommerce.')->group(functi
     Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->name('faqs.destroy');
     Route::patch('/faqs/{faq}/toggle-status', [FaqController::class, 'toggleStatus'])->name('faqs.toggle-status');
 
+    // Testimonials
+    Route::get('/testimonials', [\Modules\Ecommerce\Http\Controllers\TestimonialController::class, 'index'])->name('testimonials.index');
+    Route::get('/testimonials/create', [\Modules\Ecommerce\Http\Controllers\TestimonialController::class, 'create'])->name('testimonials.create');
+    Route::post('/testimonials', [\Modules\Ecommerce\Http\Controllers\TestimonialController::class, 'store'])->name('testimonials.store');
+    Route::get('/testimonials/{testimonial}/edit', [\Modules\Ecommerce\Http\Controllers\TestimonialController::class, 'edit'])->name('testimonials.edit');
+    Route::put('/testimonials/{testimonial}', [\Modules\Ecommerce\Http\Controllers\TestimonialController::class, 'update'])->name('testimonials.update');
+    Route::delete('/testimonials/{testimonial}', [\Modules\Ecommerce\Http\Controllers\TestimonialController::class, 'destroy'])->name('testimonials.destroy');
+    Route::patch('/testimonials/{testimonial}/toggle-status', [\Modules\Ecommerce\Http\Controllers\TestimonialController::class, 'toggleStatus'])->name('testimonials.toggle-status');
+
     // Custom Pages
     Route::get('/pages', [PageController::class, 'index'])->name('pages.index');
     Route::get('/pages/create', [PageController::class, 'create'])->name('pages.create');

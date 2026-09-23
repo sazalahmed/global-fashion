@@ -14307,3 +14307,49 @@ input[type=number] {
     margin-top: 40px !important;
     margin-bottom: 35px !important;
 }
+
+.single_testimonial {
+    padding: 25px !important;
+    background: var(--lightBg2) !important;
+    border-radius: 10px !important;
+    margin-top: 25px;
+}
+
+.testimonial_img {
+    width: 100px;
+    margin: 0 auto !important;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.single_testimonial h4 {
+    font-size: 18px !important;
+    margin-top: 15px;
+}
+
+.testimonial_text .rating {
+    margin: 15px 0px 10px 0px !important;
+}
+
+.testimonial_text .description {
+    font-size: 16px;
+    margin: 0 !important;
+    height: 180px;
+}
+
+.testimonials .prevArrow,
+.testimonials .nextArrow {
+    position: absolute;
+    top: -40px;
+    right: 15px;
+}
+
+.testimonials .nextArrow {
+    background: var(--themeColorTwo);
+    border-color: var(--themeColorTwo);
+    color: var(--colorWhite);
+}
+
+.testimonials .prevArrow {
+    right: 65px;
+}

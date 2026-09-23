@@ -893,6 +893,10 @@
     .details_slider_nav_track {
         gap: 5px;
     }
+
+    .testimonial_text .description {
+        font-size: 15px;
+    }
 }
 
 @media (min-width: 1200px) and (max-width: 1399.99px) {
@@ -3009,6 +3013,10 @@
         gap: 10px;
     }
 
+    .testimonial_text .description {
+        font-size: 15px;
+    }
+
 }
 
 @media (min-width: 768px) and (max-width: 991.99px) {
@@ -4456,6 +4464,11 @@
 
     .sidebar_range {
         margin-top: 15px;
+    }
+
+    .testimonial_text .description {
+        font-size: 14px;
+        height: 120px;
     }
 }
 
@@ -6086,6 +6099,11 @@
 
     .sidebar_range {
         margin-top: 15px;
+    }
+
+    .testimonial_text .description {
+        font-size: 14px;
+        height: 135px;
     }
 
 }

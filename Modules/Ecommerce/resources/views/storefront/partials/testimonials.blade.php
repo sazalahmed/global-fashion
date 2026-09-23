@@ -55,14 +55,39 @@
                         nextArrow: '<i class="fas fa-arrow-right nextArrow"></i>',
                         prevArrow: '<i class="fas fa-arrow-left prevArrow"></i>',
                         responsive: [{
-                                breakpoint: 992,
+                                breakpoint: 1599,
+                                settings: {
+                                    slidesToShow: 4,
+                                }
+                            },
+                            {
+                                breakpoint: 1399,
+                                settings: {
+                                    slidesToShow: 3,
+                                }
+                            },
+                            {
+                                breakpoint: 1199,
+                                settings: {
+                                    slidesToShow: 3,
+                                }
+                            },
+                            {
+                                breakpoint: 991,
                                 settings: {
                                     slidesToShow: 2,
                                 }
                             },
                             {
-                                breakpoint: 768,
+                                breakpoint: 767,
                                 settings: {
+                                    slidesToShow: 2,
+                                }
+                            },
+                            {
+                                breakpoint: 575,
+                                settings: {
+                                    arrows: false,
                                     slidesToShow: 1,
                                 }
                             }

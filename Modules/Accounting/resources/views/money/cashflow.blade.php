@@ -199,6 +199,17 @@
                                     <td class="fw-600">{{ money($data['other_out']) }}</td>
                                 </tr>
                             @endif
+                            @if (isset($dueSalary) && $dueSalary > 0)
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="bp-memo-row"><i
+                                            class="fa-solid fa-user-clock text-warning me-2"></i>Due Salary (Payable)
+                                        <span class="fs-11 text-muted">(owed to employees — not yet paid)</span>
+                                    </td>
+                                    <td class="fw-600 bp-memo-row text-warning">{{ money($dueSalary) }}</td>
+                                </tr>
+                            @endif
                         </tbody>
                         <tfoot>
                             <tr class="bp-cf-total-row">

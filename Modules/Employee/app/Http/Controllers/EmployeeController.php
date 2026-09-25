@@ -15,6 +15,9 @@ use Modules\Employee\Models\SalaryIncrement;
 use Modules\Employee\Services\EmployeeService;
 use Modules\Employee\Services\EmployeeAdvanceService;
 use Modules\Payment\Models\PaymentAccount;
+use Modules\Payment\Models\Payment;
+use Modules\Accounting\Models\Account;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -203,6 +206,77 @@ class EmployeeController extends Controller
             'reference'          => 'nullable|string|max:100',
             'note'               => 'nullable|string|max:500',
         ]);
+    }
+
+    public function payDueSalary(Request $request, Employee $employee)
+    {
+        bpAuthorize('hr.create');
+        
+        $request->validate([
+            'amount'             => 'required|numeric|min:0.01|max:' . $employee->due_salary,
+            'payment_account_id' => 'required|exists:payment_accounts,id',
+            'payment_date'       => 'required|date',
+            'note'               => 'nullable|string|max:500'
+        ]);
+
+        try {
+            DB::transaction(function () use ($request, $employee) {
+                $amount = (float) $request->amount;
+                
+                // Create a Payment
+                $paymentAccount = PaymentAccount::find($request->payment_account_id);
+                $year = now()->format('Y');
+                $last = Payment::withTrashed()->whereYear('created_at', $year)->count() + 1;
+                $paymentNumber = 'PAY-' . $year . '-' . str_pad($last, 4, '0', STR_PAD_LEFT);
+
+                $payment = Payment::create([
+                    'payment_number'     => $paymentNumber,
+                    'direction'          => 'pay',
+                    'party_type'         => 'employee',
+                    'party_id'           => $employee->id,
+                    'payment_type'       => 'salary_payment',
+                    'amount'             => $amount,
+                    'payment_method'     => $paymentAccount->account_type,
+                    'payment_account_id' => $paymentAccount->id,
+                    'payment_date'       => $request->payment_date,
+                    'note'               => $request->note ?? 'Due Salary Payment',
+                    'created_by'         => auth()->id(),
+                ]);
+
+                // Create Journal Entry
+                $journalService = app(\Modules\Accounting\Services\JournalEntryService::class);
+                
+                // Debit: Salary Payable (2015)
+                // Credit: Asset Account
+                $payableId = Account::where('account_code', '2015')->value('id');
+                
+                $paymentService = app(\Modules\Payment\Services\PaymentService::class);
+                $assetAccountId = $paymentService->mapMethodToAccount($paymentAccount->account_type);
+
+                $lines = [
+                    ['account_id' => $payableId, 'debit_amount' => $amount, 'credit_amount' => 0, 'description' => "Due salary paid to Employee #{$employee->id}"],
+                    ['account_id' => $assetAccountId, 'debit_amount' => 0, 'credit_amount' => $amount, 'description' => "Due salary payment: {$paymentNumber}"],
+                ];
+
+                $je = $journalService->createFromSource(
+                    'payment',
+                    $payment->id,
+                    $lines,
+                    "Payment {$paymentNumber} — pay",
+                    $paymentNumber,
+                    $payment->payment_date,
+                );
+
+                $payment->update(['journal_entry_id' => $je->id]);
+
+                // Update Employee Due Salary
+                $employee->decrement('due_salary', $amount);
+            });
+
+            return back()->with('success', 'Due salary payment recorded successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function edit(Employee $employee)

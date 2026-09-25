@@ -13,10 +13,13 @@
 
 @section('page-actions')
     @bpCan('hr.edit')
+        @if($employee->due_salary > 0)
+            <button type="button" class="bp-btn bp-btn-warning" data-bs-toggle="modal" data-bs-target="#payDueSalaryModal">
+                <i class="fa-solid fa-money-bill-wave me-1"></i>Pay Due Salary
+            </button>
+        @endif
         <a href="{{ route('payroll.index') }}"
             class="bp-btn bp-btn-success"><i class="fa-solid fa-bangladeshi-taka-sign me-1"></i>Go to Payroll</a>
-        <a href="{{ route('payments.create', ['direction' => 'pay', 'party_type' => 'employee', 'party_id' => $employee->id, 'amount' => (int) $employee->salary]) }}"
-            class="bp-btn bp-btn-info"><i class="fa-solid fa-money-bill-transfer me-1"></i>Give Payment</a>
         <a href="{{ route('employee.edit', $employee) }}" class="bp-btn bp-btn-primary"><i class="fa-solid fa-pen"></i> Edit
             Employee</a>
         <a href="{{ route('employee.full-ledger', $employee) }}" class="bp-btn bp-btn-secondary"><i class="fa-solid fa-list me-1"></i> Full Ledger</a>
@@ -114,7 +117,7 @@
         <div class="col-lg-8">
             <!-- Stats Row -->
             <div class="row g-3 mb-4">
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-3 col-sm-6">
                     <div class="bp-stat-card">
                         <div class="bp-stat-icon icon-primary"><i class="fa-solid fa-bangladeshi-taka-sign"></i></div>
                         <div class="bp-stat-content">
@@ -124,7 +127,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-3 col-sm-6">
+                    <div class="bp-stat-card">
+                        <div class="bp-stat-icon icon-warning"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <div class="bp-stat-content">
+                            <div class="bp-stat-label">Due Salary</div>
+                            <div class="bp-stat-value">{{ currency_symbol() }}
+                                {{ number_format($employee->due_salary, 0) }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
                     <div class="bp-stat-card">
                         <div class="bp-stat-icon icon-danger"><i class="fa-solid fa-hand-holding-dollar"></i></div>
                         <div class="bp-stat-content">
@@ -134,7 +147,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-3 col-sm-6">
                     <div class="bp-stat-card">
                         <div class="bp-stat-icon icon-accent"><i class="fa-solid fa-clock"></i></div>
                         <div class="bp-stat-content">
@@ -462,6 +475,62 @@
                                 <button type="button" class="bp-btn bp-btn-danger" data-bs-dismiss="modal">Cancel</button>
                                 <button type="submit" class="bp-btn bp-btn-success"><i class="fa-solid fa-check me-1"></i>
                                     Record Recovery</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endif
+    @endbpCan
+
+    {{-- Pay Due Salary Modal --}}
+    @bpCan('hr.edit')
+        @if ($employee->due_salary > 0)
+            <div class="modal fade" id="payDueSalaryModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form action="{{ route('employee.pay-due-salary', $employee) }}" method="POST">
+                            @csrf
+                            <div class="modal-header">
+                                <h5 class="modal-title"><i class="fa-solid fa-money-bill-wave me-2"></i>Pay Due Salary —
+                                    {{ $employee->name }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="bp-info-row bp-info-row-last mb-2">
+                                    <div class="bp-info-label">Current Due Salary</div>
+                                    <div class="bp-info-value fw-800 text-warning">{{ currency_symbol() }}
+                                        {{ number_format($employee->due_salary, 0) }}</div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label class="bp-form-label">Payment Amount *</label>
+                                        <input type="number" step="0.01" min="0.01" max="{{ $employee->due_salary }}" class="bp-form-control"
+                                            name="amount" value="{{ (float) $employee->due_salary }}" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="bp-form-label">Payment Account *</label>
+                                        <select name="payment_account_id" class="bp-form-select" required>
+                                            <option value="">Select Account</option>
+                                            @foreach($paymentAccounts as $account)
+                                                <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="bp-form-label">Date *</label>
+                                        <input type="date" class="bp-form-control" name="payment_date" value="{{ now()->toDateString() }}" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="bp-form-label">Note (Optional)</label>
+                                        <input type="text" class="bp-form-control" name="note" placeholder="Any remarks...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="bp-btn bp-btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="bp-btn bp-btn-success"><i class="fa-solid fa-check me-1"></i>
+                                    Pay Now</button>
                             </div>
                         </form>
                     </div>

@@ -198,12 +198,15 @@ class SimpleMoneyService
         [$assetPayIn,     $assetPayOut]     = $sumSource('asset_payment');
         [$assetDispIn,    $assetDispOut]    = $sumSource('asset_disposal');
 
+        // Due Salary (Arrears) payouts
+        [$dueSalIn,       $dueSalOut]       = $pickPayment('employee', 'salary_payment');
+
         // Salary is netted across payments and undo-reversals. When a payment
         // made in an earlier period is undone in this one, the period's
         // payroll cash-in exceeds its cash-out — that surplus is real money
         // returning to the account and must show as Cash In (salary_refund),
         // not be clamped away by max(0, …).
-        $salaryNet = $payrollOut - $payrollIn;
+        $salaryNet = ($payrollOut + $dueSalOut) - ($payrollIn + $dueSalIn);
 
         // Cash from selling: the sale_payment collected against a sale, plus
         // any sale or online order that credited cash directly. Sales post to

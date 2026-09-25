@@ -85,7 +85,10 @@
           <tr><td>Overtime @if($item->overtime_hours > 0)<span class="ps-sub">({{ number_format($item->overtime_hours, 1) }} hrs)</span>@endif</td><td class="amt">{{ number_format($item->overtime, 2) }}</td></tr>
           <tr><td>Bonus</td><td class="amt">{{ number_format($item->bonus, 2) }}</td></tr>
           <tr><td>Commission</td><td class="amt">{{ number_format($item->commission, 2) }}</td></tr>
-          <tr><td class="fw-800">Gross</td><td class="amt fw-800">{{ number_format($item->gross_salary, 2) }}</td></tr>
+          @if ($item->arrears_addition > 0)
+          <tr><td>Arrears (Due Paid)</td><td class="amt">{{ number_format($item->arrears_addition, 2) }}</td></tr>
+          @endif
+          <tr><td class="fw-800">Total Earnings</td><td class="amt fw-800">{{ number_format($item->gross_salary + $item->arrears_addition, 2) }}</td></tr>
         </tbody>
       </table>
     </div>
@@ -105,6 +108,27 @@
     <span class="lbl">Net Payable</span>
     <span class="val">{{ $currency }} {{ number_format($item->net_salary, 2) }}</span>
   </div>
+
+  @if($item->payment_status === 'paid')
+    @php
+        $paidAmt = $item->paid_amount ?? $item->net_salary;
+    @endphp
+    @if($item->net_salary > $paidAmt)
+      <div class="ps-net" style="margin-top:8px; background: #fdf2f8; border-color: #fce7f3;">
+        <span class="lbl" style="color: #be185d;">Paid Amount</span>
+        <span class="val" style="color: #be185d;">{{ $currency }} {{ number_format($paidAmt, 2) }}</span>
+      </div>
+      <div class="ps-net" style="margin-top:8px; background: #fffbeb; border-color: #fef3c7;">
+        <span class="lbl" style="color: #b45309;">Due (Deferred Salary)</span>
+        <span class="val" style="color: #b45309;">{{ $currency }} {{ number_format($item->net_salary - $paidAmt, 2) }}</span>
+      </div>
+    @else
+      <div class="ps-net" style="margin-top:8px;">
+        <span class="lbl">Paid Amount</span>
+        <span class="val">{{ $currency }} {{ number_format($paidAmt, 2) }}</span>
+      </div>
+    @endif
+  @endif
 
   <div class="ps-sign">
     <div>Employee Signature</div>

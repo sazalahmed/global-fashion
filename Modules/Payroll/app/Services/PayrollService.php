@@ -99,10 +99,11 @@ class PayrollService
                 // Advance recovery suggestion — capped so net never goes negative.
                 $grossBeforeAdvance = $basicSalary + $overtime + $bonus + $commission - $absentDeduction;
                 $advanceDed = round(min((float) $employee->advance_balance, max(0, $grossBeforeAdvance)), 2);
+                $arrearsAddition = round(max(0, (float) $employee->due_salary), 2);
 
                 $gross = $basicSalary + $overtime + $bonus + $commission;
                 $totalDed = $advanceDed + $absentDeduction;
-                $netSalary = max(0, round($gross - $totalDed, 2));
+                $netSalary = max(0, round($gross + $arrearsAddition - $totalDed, 2));
 
                 PayrollItem::create([
                     'payroll_id'          => $payroll->id,
@@ -117,6 +118,7 @@ class PayrollService
                     'total_earnings'      => $gross,
                     'advance_deduction'   => $advanceDed,
                     'absent_deduction'    => $absentDeduction,
+                    'arrears_addition'    => $arrearsAddition,
                     'total_deductions'    => $totalDed,
                     'net_salary'          => $netSalary,
                     'status'              => 'pending',
@@ -152,6 +154,7 @@ class PayrollService
         $bonus = max(0, (float) ($data['bonus'] ?? $item->bonus));
         $commission = max(0, (float) ($data['commission'] ?? $item->commission));
         $absentDeduction = max(0, (float) ($data['absent_deduction'] ?? $item->absent_deduction));
+        $arrearsAddition = max(0, (float) ($data['arrears_addition'] ?? $item->arrears_addition));
 
         $advanceBalance = (float) ($item->employee->advance_balance ?? 0);
         $advanceDeduction = max(0, (float) ($data['advance_deduction'] ?? $item->advance_deduction));
@@ -167,10 +170,11 @@ class PayrollService
             'commission'        => $commission,
             'absent_deduction'  => $absentDeduction,
             'advance_deduction' => $advanceDeduction,
+            'arrears_addition'  => $arrearsAddition,
             'gross_salary'      => $gross,
             'total_earnings'    => $gross,
             'total_deductions'  => $totalDed,
-            'net_salary'        => max(0, round($gross - $totalDed, 2)),
+            'net_salary'        => max(0, round($gross + $arrearsAddition - $totalDed, 2)),
         ]);
 
         $this->recalculatePayrollTotals($item->payroll);
@@ -264,7 +268,7 @@ class PayrollService
      * Pay a single approved salary line (per-employee pay from the grid).
      * Same accounting as markAsPaid, just a one-item batch.
      */
-    public function payItem(PayrollItem $item, string $paymentMethod = 'bank_transfer', ?int $paymentAccountId = null): void
+    public function payItem(PayrollItem $item, string $paymentMethod = 'bank_transfer', ?int $paymentAccountId = null, ?float $paidAmount = null): void
     {
         if (! $item->isApproved()) {
             throw new \Exception('Only approved salaries can be paid.');
@@ -275,26 +279,58 @@ class PayrollService
 
         $item->loadMissing('employee', 'payroll');
 
-        $this->payItems($item->payroll, collect([$item]), $paymentMethod, $paymentAccountId);
+        $this->payItems($item->payroll, collect([$item]), $paymentMethod, $paymentAccountId, $paidAmount !== null ? [$item->id => $paidAmount] : null);
     }
 
     /**
      * @param \Illuminate\Support\Collection<int, PayrollItem> $items
      */
-    private function payItems(Payroll $payroll, $items, string $paymentMethod, ?int $paymentAccountId): void
+    private function payItems(Payroll $payroll, $items, string $paymentMethod, ?int $paymentAccountId, ?array $paidAmounts = null): void
     {
-        DB::transaction(function () use ($payroll, $items, $paymentMethod, $paymentAccountId) {
-            $totalNet = round($items->sum('net_salary'), 2);
-            $totalAdvance = round($items->sum('advance_deduction'), 2);
-            $totalEarned = round($items->sum(fn ($i) => (float) $i->gross_salary - (float) $i->absent_deduction), 2);
-
-            $je = $this->recordPayrollJournal($payroll, $totalEarned, $totalAdvance, $totalNet, $paymentAccountId);
+        DB::transaction(function () use ($payroll, $items, $paymentMethod, $paymentAccountId, $paidAmounts) {
+            $totalEarned = 0;
+            $totalAdvance = 0;
+            $totalArrears = 0;
+            $totalDeferred = 0;
+            $totalNetPaid = 0;
 
             foreach ($items as $item) {
+                $paidAmt = $paidAmounts[$item->id] ?? (float) $item->net_salary;
+                $deferred = (float) $item->net_salary - $paidAmt;
+
+                $totalNetPaid += $paidAmt;
+                $totalDeferred += $deferred;
+                $totalAdvance += (float) $item->advance_deduction;
+                $totalArrears += (float) $item->arrears_addition;
+                $totalEarned += ((float) $item->gross_salary - (float) $item->absent_deduction);
+            }
+
+            $je = $this->recordPayrollJournal($payroll, $totalEarned, $totalAdvance, $totalArrears, $totalDeferred, $totalNetPaid, $paymentAccountId);
+
+            foreach ($items as $item) {
+                $paidAmt = $paidAmounts[$item->id] ?? (float) $item->net_salary;
+                $deferred = (float) $item->net_salary - $paidAmt;
+
                 $item->update([
                     'payment_status' => 'paid',
                     'payment_method' => $paymentMethod,
+                    'paid_amount' => $paidAmt,
                 ]);
+
+                // Manage Due Salary
+                if ((float) $item->arrears_addition > 0 && $item->employee) {
+                    $arrears = (float) $item->arrears_addition;
+                    $dueBal = (float) $item->employee->due_salary;
+
+                    if ($arrears > $dueBal + 0.01) {
+                        throw new \Exception("Cannot pay Arrears of " . currency_symbol() . " {$arrears} for {$item->employee->name}. Their current Due Salary is only " . currency_symbol() . " {$dueBal}. Please unapprove and edit their salary line to fix the arrears addition.");
+                    }
+
+                    $item->employee->decrement('due_salary', $arrears);
+                }
+                if ($deferred > 0 && $item->employee) {
+                    $item->employee->increment('due_salary', $deferred);
+                }
 
                 // Recover advance: reduce the balance and log it on the advance
                 // ledger (linked to this payroll JE — no separate cash entry).
@@ -348,13 +384,23 @@ class PayrollService
         $payroll = $item->payroll;
 
         DB::transaction(function () use ($item, $payroll) {
-            $net = (float) $item->net_salary;
+            $paidAmt = $item->paid_amount ?? (float) $item->net_salary;
+            $deferred = (float) $item->net_salary - (float) $paidAmt;
             $advance = (float) $item->advance_deduction;
+            $arrears = (float) $item->arrears_addition;
             $earned = round((float) $item->gross_salary - (float) $item->absent_deduction, 2);
 
             // Reverse the payment journal for this line only (other lines paid
             // in the same batch keep their accounting untouched).
-            $this->recordPayrollReversalJournal($payroll, $item, $earned, $advance, $net);
+            $this->recordPayrollReversalJournal($payroll, $item, $earned, $advance, $arrears, $deferred, $paidAmt);
+
+            // Undo Due Salary
+            if ($arrears > 0 && $item->employee) {
+                $item->employee->increment('due_salary', $arrears);
+            }
+            if ($deferred > 0 && $item->employee) {
+                $item->employee->decrement('due_salary', $deferred);
+            }
 
             // Give back the recovered advance and drop its ledger row.
             if ($advance > 0 && $item->employee) {
@@ -367,6 +413,7 @@ class PayrollService
             $item->update([
                 'payment_status' => 'pending',
                 'payment_method' => null,
+                'paid_amount' => null,
             ]);
 
             // The payroll is no longer fully paid.
@@ -378,7 +425,7 @@ class PayrollService
         return $item->fresh();
     }
 
-    private function recordPayrollReversalJournal(Payroll $payroll, PayrollItem $item, float $earned, float $advance, float $net): ?\Modules\Accounting\Models\JournalEntry
+    private function recordPayrollReversalJournal(Payroll $payroll, PayrollItem $item, float $earned, float $advance, float $arrears, float $deferred, float $netPaid): ?\Modules\Accounting\Models\JournalEntry
     {
         try {
             $account = fn ($code) => \Modules\Accounting\Models\Account::where('account_code', $code)->value('id');
@@ -390,10 +437,16 @@ class PayrollService
 
             $employeeName = $item->employee->name ?? ('employee #' . $item->employee_id);
             $lines = [
-                ['account_id' => $cashAccountId, 'debit_amount' => $net, 'credit_amount' => 0, 'description' => "Salary payment undone ({$employeeName}): {$payroll->payroll_number}"],
+                ['account_id' => $cashAccountId, 'debit_amount' => $netPaid, 'credit_amount' => 0, 'description' => "Salary payment undone ({$employeeName}): {$payroll->payroll_number}"],
             ];
             if ($advance > 0) {
                 $lines[] = ['account_id' => $account('1015'), 'debit_amount' => $advance, 'credit_amount' => 0, 'description' => "Advance recovery reversed ({$employeeName}): {$payroll->payroll_number}"];
+            }
+            if ($deferred > 0) {
+                $lines[] = ['account_id' => $account('2015'), 'debit_amount' => $deferred, 'credit_amount' => 0, 'description' => "Salary deferral reversed ({$employeeName}): {$payroll->payroll_number}"];
+            }
+            if ($arrears > 0) {
+                $lines[] = ['account_id' => $account('2015'), 'debit_amount' => 0, 'credit_amount' => $arrears, 'description' => "Salary arrears payout reversed ({$employeeName}): {$payroll->payroll_number}"];
             }
             $lines[] = ['account_id' => $account('5110'), 'debit_amount' => 0, 'credit_amount' => $earned, 'description' => "Salary expense reversed ({$employeeName}): {$payroll->payroll_number}"];
 
@@ -411,7 +464,7 @@ class PayrollService
         }
     }
 
-    private function recordPayrollJournal(Payroll $payroll, float $earned, float $advance, float $net, ?int $paymentAccountId): ?\Modules\Accounting\Models\JournalEntry
+    private function recordPayrollJournal(Payroll $payroll, float $earned, float $advance, float $arrears, float $deferred, float $netPaid, ?int $paymentAccountId): ?\Modules\Accounting\Models\JournalEntry
     {
         try {
             $account = fn ($code) => \Modules\Accounting\Models\Account::where('account_code', $code)->value('id');
@@ -428,10 +481,16 @@ class PayrollService
             $lines = [
                 ['account_id' => $salaryAccountId, 'debit_amount' => $earned, 'credit_amount' => 0, 'description' => "Salary: {$payroll->payroll_number}"],
             ];
+            if ($arrears > 0) {
+                $lines[] = ['account_id' => $account('2015'), 'debit_amount' => $arrears, 'credit_amount' => 0, 'description' => "Arrears paid: {$payroll->payroll_number}"];
+            }
             if ($advance > 0) {
                 $lines[] = ['account_id' => $account('1015'), 'debit_amount' => 0, 'credit_amount' => $advance, 'description' => "Advance recovered: {$payroll->payroll_number}"];
             }
-            $lines[] = ['account_id' => $cashAccountId, 'debit_amount' => 0, 'credit_amount' => $net, 'description' => "Net paid: {$payroll->payroll_number}"];
+            if ($deferred > 0) {
+                $lines[] = ['account_id' => $account('2015'), 'debit_amount' => 0, 'credit_amount' => $deferred, 'description' => "Salary deferred: {$payroll->payroll_number}"];
+            }
+            $lines[] = ['account_id' => $cashAccountId, 'debit_amount' => 0, 'credit_amount' => $netPaid, 'description' => "Net paid: {$payroll->payroll_number}"];
 
             $journalService = app(\Modules\Accounting\Services\JournalEntryService::class);
 
@@ -466,6 +525,18 @@ class PayrollService
                         Employee::where('id', $item->employee_id)
                             ->increment('advance_balance', $item->advance_deduction);
                     }
+                    
+                    if ($item->payment_status === 'paid') {
+                        $paidAmount = $item->paid_amount ?? $item->net_salary;
+                        $deferred = (float) $item->net_salary - (float) $paidAmount;
+                        $arrears = (float) $item->arrears_addition;
+                        if ($deferred > 0) {
+                            Employee::where('id', $item->employee_id)->decrement('due_salary', $deferred);
+                        }
+                        if ($arrears > 0) {
+                            Employee::where('id', $item->employee_id)->increment('due_salary', $arrears);
+                        }
+                    }
                 }
 
                 // Remove the advance-recovery ledger rows created at payment time.
@@ -476,6 +547,7 @@ class PayrollService
                 $payroll->items()->update([
                     'payment_status' => 'pending',
                     'payment_method' => null,
+                    'paid_amount' => null,
                 ]);
 
                 // Void journal entry

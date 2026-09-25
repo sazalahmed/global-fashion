@@ -109,16 +109,17 @@
                 <table class="bp-table">
                     <thead>
                         <tr>
-                            <th>Employee</th>
-                            <th>Basic</th>
-                            <th>Overtime</th>
-                            <th>Bonus</th>
-                            <th>Commission</th>
-                            <th>Advance Ded.</th>
-                            <th>Absent Ded.</th>
-                            <th>Net Pay</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th title="Name and details of the employee">Employee</th>
+                            <th title="Fixed basic salary for the month">Basic</th>
+                            <th title="Extra pay for overtime hours worked">Overtime</th>
+                            <th title="Additional bonus amounts">Bonus</th>
+                            <th title="Performance or sales commissions">Commission</th>
+                            <th title="Unpaid due salary from previous months being added to this month">Arrears Add.</th>
+                            <th title="Deduction from salary to recover previous salary advances">Advance Ded.</th>
+                            <th title="Deduction for days absent or half-days">Absent Ded.</th>
+                            <th title="Final payable amount after all additions and deductions">Net Pay</th>
+                            <th title="Current payment status of this salary">Status</th>
+                            <th title="Available actions">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -165,6 +166,17 @@
                                 </td>
                                 <td>
                                     <input type="number" step="0.01" min="0" form="{{ $fid }}"
+                                        name="arrears_addition" value="{{ num_input($item->arrears_addition) }}"
+                                        class="bp-form-control bp-form-control-sm" style="max-width:110px"
+                                        {{ $locked ? 'disabled' : '' }}>
+                                    @if (($item->employee->due_salary ?? 0) > 0)
+                                        <div class="fs-11 text-warning fw-600 mt-1" title="Unpaid Due Salary">Due:
+                                            {{ number_format($item->employee->due_salary, 0) }}
+                                        </div>
+                                    @endif
+                                </td>
+                                <td>
+                                    <input type="number" step="0.01" min="0" form="{{ $fid }}"
                                         name="advance_deduction" value="{{ num_input($item->advance_deduction) }}"
                                         class="bp-form-control bp-form-control-sm" style="max-width:110px"
                                         {{ $locked ? 'disabled' : '' }}>
@@ -193,7 +205,8 @@
                                         @bpCan('hr.edit')
                                             @unless ($locked)
                                                 <form id="{{ $fid }}"
-                                                    action="{{ route('payroll.items.update', $item) }}" method="POST">
+                                                    action="{{ route('payroll.items.update', $item) }}" method="POST"
+                                                    onsubmit="return checkItemArrears('{{ $fid }}', {{ (float) ($item->employee->due_salary ?? 0) }});">
                                                     @csrf @method('PUT')
                                                     <button type="submit" class="bp-btn bp-btn-sm bp-btn-outline"
                                                         title="Save"><i class="fa-solid fa-floppy-disk"></i></button>
@@ -207,7 +220,8 @@
                                                 <button type="button" class="bp-btn bp-btn-sm bp-btn-primary pay-item-btn"
                                                     title="Pay" data-pay-url="{{ route('payroll.items.pay', $item) }}"
                                                     data-employee-name="{{ $item->employee->name ?? 'employee' }}"
-                                                    data-net-pay="{{ money($item->net_salary) }}">
+                                                    data-net-pay="{{ money($item->net_salary) }}"
+                                                    data-net-pay-raw="{{ $item->net_salary }}">
                                                     <i class="fa-solid fa-bangladeshi-taka-sign"></i>
                                                 </button>
                                                 <form action="{{ route('payroll.items.unapprove', $item) }}" method="POST">
@@ -243,7 +257,7 @@
                     <tfoot>
                         <tr class="bp-table-total-row">
                             <td class="fw-700">Totals</td>
-                            <td colspan="6" class="text-end text-muted fs-12">Gross {{ currency_symbol() }}
+                            <td colspan="7" class="text-end text-muted fs-12">Gross {{ currency_symbol() }}
                                 {{ number_format($payroll->total_gross, 0) }} &nbsp;•&nbsp; Deductions
                                 {{ currency_symbol() }} {{ number_format($payroll->total_deductions, 0) }}</td>
                             <td class="fw-800 bp-text-success">{{ currency_symbol() }}
@@ -273,6 +287,10 @@
                                 <div class="bp-info-label">Net Pay</div>
                                 <div class="bp-info-value fw-800 bp-text-success" id="payItemNet"></div>
                             </div>
+                            <div class="mb-3">
+                                <label class="bp-form-label">Amount Paying Now <span class="text-muted fw-400">(Reduce this to defer payment)</span></label>
+                                <input type="number" step="0.01" min="0" name="paid_amount" id="payItemAmount" class="bp-form-control" required>
+                            </div>
                             <label class="bp-form-label">Payment Account *</label>
                             <select name="payment_account_id" class="bp-form-select w-100" required>
                                 <option value="">Select Account</option>
@@ -296,6 +314,18 @@
     <script>
         'use strict';
         $(function() {
+            window.checkItemArrears = function(formId, dueBal) {
+                if (dueBal <= 0) return true;
+                
+                var input = document.querySelector('input[form="' + formId + '"][name="arrears_addition"]');
+                var inputVal = parseFloat(input ? input.value : 0) || 0;
+                
+                if (inputVal < dueBal) {
+                    return window.confirm('This employee has an unpaid Due Salary of ' + dueBal.toLocaleString() + '.\n\nYou are only adding ' + inputVal.toLocaleString() + ' as Arrears (Due Paid) to this payroll.\n\nDo you want to proceed anyway?');
+                }
+                return true;
+            };
+
             $(document).on('submit', '.undo-pay-form', function(e) {
                 var name = $(this).data('employee-name');
                 var net = $(this).data('net-pay');
@@ -313,6 +343,7 @@
                 $('#payItemForm').attr('action', $(this).data('pay-url'));
                 $('#payItemEmployee').text($(this).data('employee-name'));
                 $('#payItemNet').text($(this).data('net-pay'));
+                $('#payItemAmount').val($(this).data('net-pay-raw')).attr('max', $(this).data('net-pay-raw'));
                 payModal.show();
             });
         });

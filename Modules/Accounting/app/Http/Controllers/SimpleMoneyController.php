@@ -35,6 +35,7 @@ class SimpleMoneyController extends Controller
 
         return view('accounting::money.cashflow', [
             'courierReceivable' => $courierBalance->isConfigured() ? $courierBalance->get() : null,
+            'dueSalary'      => \Modules\Employee\Models\Employee::sum('due_salary'),
             'data'           => $result['data'],
             'totalReceive'   => $result['totalReceive'],
             'totalPay'       => $result['totalPay'],

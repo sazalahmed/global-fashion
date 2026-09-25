@@ -144,6 +144,7 @@ class PayrollController extends Controller
             'overtime'          => 'nullable|numeric|min:0',
             'bonus'             => 'nullable|numeric|min:0',
             'commission'        => 'nullable|numeric|min:0',
+            'arrears_addition'  => 'nullable|numeric|min:0|max:' . ($item->employee->due_salary ?? 0),
             'absent_deduction'  => 'nullable|numeric|min:0',
             'advance_deduction' => 'nullable|numeric|min:0',
         ]);
@@ -185,12 +186,13 @@ class PayrollController extends Controller
         bpAuthorize('hr.edit');
         $data = $request->validate([
             'payment_account_id' => 'required|exists:payment_accounts,id',
+            'paid_amount' => 'nullable|numeric|min:0|max:' . $item->net_salary,
         ]);
 
         try {
             $paymentAccountId = (int) $data['payment_account_id'];
             $paymentMethod = \Modules\Payment\Models\PaymentAccount::where('id', $paymentAccountId)->value('account_type') ?? 'bank_transfer';
-            $this->service->payItem($item, $paymentMethod, $paymentAccountId);
+            $this->service->payItem($item, $paymentMethod, $paymentAccountId, isset($data['paid_amount']) ? (float) $data['paid_amount'] : null);
 
             return back()->with('success', 'Salary paid for ' . ($item->employee->name ?? 'employee') . '.');
         } catch (\Exception $e) {

@@ -39,6 +39,7 @@ Route::middleware('auth')->prefix('employees')->name('employee.')->group(functio
     Route::get('/{employee}/full-ledger', [EmployeeController::class, 'fullLedger'])->name('full-ledger');
     Route::post('/{employee}/advance', [EmployeeController::class, 'giveAdvance'])->name('advance.store');
     Route::post('/{employee}/advance-recovery', [EmployeeController::class, 'recordRecovery'])->name('advance-recovery.store');
+    Route::post('/{employee}/pay-due-salary', [EmployeeController::class, 'payDueSalary'])->name('pay-due-salary');
 
     Route::get('/{employee}', [EmployeeController::class, 'show'])->name('show');
     Route::get('/{employee}/edit', [EmployeeController::class, 'edit'])->name('edit');

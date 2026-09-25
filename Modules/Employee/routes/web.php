@@ -36,6 +36,7 @@ Route::middleware('auth')->prefix('employees')->name('employee.')->group(functio
 
     // Employee advances (money given ahead of salary, recovered later)
     Route::get('/{employee}/advance-ledger', [EmployeeController::class, 'advanceLedger'])->name('advance-ledger');
+    Route::get('/{employee}/full-ledger', [EmployeeController::class, 'fullLedger'])->name('full-ledger');
     Route::post('/{employee}/advance', [EmployeeController::class, 'giveAdvance'])->name('advance.store');
     Route::post('/{employee}/advance-recovery', [EmployeeController::class, 'recordRecovery'])->name('advance-recovery.store');
 

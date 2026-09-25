@@ -13,10 +13,13 @@
 
 @section('page-actions')
     @bpCan('hr.edit')
+        <a href="{{ route('payroll.index') }}"
+            class="bp-btn bp-btn-success"><i class="fa-solid fa-bangladeshi-taka-sign me-1"></i>Go to Payroll</a>
         <a href="{{ route('payments.create', ['direction' => 'pay', 'party_type' => 'employee', 'party_id' => $employee->id, 'amount' => (int) $employee->salary]) }}"
-            class="bp-btn bp-btn-success"><i class="fa-solid fa-bangladeshi-taka-sign me-1"></i>Pay Salary</a>
+            class="bp-btn bp-btn-info"><i class="fa-solid fa-money-bill-transfer me-1"></i>Give Payment</a>
         <a href="{{ route('employee.edit', $employee) }}" class="bp-btn bp-btn-primary"><i class="fa-solid fa-pen"></i> Edit
             Employee</a>
+        <a href="{{ route('employee.full-ledger', $employee) }}" class="bp-btn bp-btn-secondary"><i class="fa-solid fa-list me-1"></i> Full Ledger</a>
     @endbpCan
 @endsection
 

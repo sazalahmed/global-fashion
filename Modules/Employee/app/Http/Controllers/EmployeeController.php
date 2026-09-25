@@ -104,9 +104,6 @@ class EmployeeController extends Controller
         }
     }
 
-    /**
-     * Per-employee advance ledger.
-     */
     public function advanceLedger(Employee $employee)
     {
         bpAuthorize('hr.view');
@@ -120,6 +117,81 @@ class EmployeeController extends Controller
             'totalRecovered' => $ledger['totalRecovered'],
             'currentBalance' => $ledger['currentBalance'],
         ]);
+    }
+
+    /**
+     * Unified ledger for all employee transactions (salaries, advances, payments).
+     */
+    public function fullLedger(Request $request, Employee $employee)
+    {
+        bpAuthorize('hr.view');
+        $employee = $this->service->find($employee->id);
+
+        $payrolls = \Illuminate\Support\Facades\DB::table('payroll_items')
+            ->join('payrolls', 'payroll_items.payroll_id', '=', 'payrolls.id')
+            ->selectRaw("
+                'salary' as type,
+                payroll_items.id as source_id,
+                payrolls.month as date,
+                payrolls.payroll_number as reference,
+                CONCAT('Salary for ', payrolls.month) as note,
+                payroll_items.net_salary as amount,
+                payroll_items.payment_method as method,
+                payroll_items.created_at
+            ")
+            ->where('payroll_items.employee_id', $employee->id)
+            ->where('payroll_items.payment_status', 'paid');
+
+        $advances = \Illuminate\Support\Facades\DB::table('employee_advances')
+            ->selectRaw("
+                type,
+                id as source_id,
+                advance_date as date,
+                advance_number as reference,
+                note,
+                amount,
+                NULL as method,
+                created_at
+            ")
+            ->where('employee_id', $employee->id);
+
+        $payments = \Illuminate\Support\Facades\DB::table('payments')
+            ->selectRaw("
+                'payment' as type,
+                id as source_id,
+                payment_date as date,
+                payment_number as reference,
+                note,
+                amount,
+                payment_method as method,
+                created_at
+            ")
+            ->where('party_type', 'employee')
+            ->where('party_id', $employee->id);
+
+        $query = $payrolls->unionAll($advances)->unionAll($payments);
+        
+        $unified = \Illuminate\Support\Facades\DB::query()
+            ->fromSub($query, 'combined');
+
+        if ($request->filled('month')) {
+            $unified->where('date', 'like', $request->month . '%');
+        }
+
+        if ($request->filled('search')) {
+            $s = '%' . $request->search . '%';
+            $unified->where(function($q) use ($s) {
+                $q->where('note', 'like', $s)
+                  ->orWhere('reference', 'like', $s);
+            });
+        }
+
+        $transactions = $unified->orderByDesc('date')
+            ->orderByDesc('created_at')
+            ->paginate(20)
+            ->withQueryString();
+
+        return view('employee::full-ledger', compact('employee', 'transactions'));
     }
 
     private function advanceRules(Request $request): array

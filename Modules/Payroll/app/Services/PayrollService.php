@@ -299,7 +299,14 @@ class PayrollService
                 // Recover advance: reduce the balance and log it on the advance
                 // ledger (linked to this payroll JE — no separate cash entry).
                 if ((float) $item->advance_deduction > 0 && $item->employee) {
-                    $item->employee->decrement('advance_balance', (float) $item->advance_deduction);
+                    $deduction = (float) $item->advance_deduction;
+                    $balance = (float) $item->employee->advance_balance;
+                    
+                    if ($deduction > $balance + 0.01) {
+                        throw new \Exception("Cannot recover " . currency_symbol() . " {$deduction} for {$item->employee->name}. Their current advance balance is only " . currency_symbol() . " {$balance}. Please unapprove and edit their salary line to fix the deduction.");
+                    }
+                    
+                    $item->employee->decrement('advance_balance', $deduction);
                     \Modules\Employee\Models\EmployeeAdvance::create([
                         'employee_id'      => $item->employee_id,
                         'advance_number'   => 'PAYREC-' . $payroll->payroll_number . '-' . $item->id,

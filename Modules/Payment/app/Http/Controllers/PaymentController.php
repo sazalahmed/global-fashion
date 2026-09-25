@@ -328,7 +328,7 @@ class PaymentController extends Controller
 
         $results = $this->service->searchParties(
             $request->input('type'),
-            $request->input('q', ''),
+            (string) $request->input('q', ''),
             $duesOnly,
         );
 

@@ -163,6 +163,8 @@
                                     @bpCan('hr.view')
                                         <li><a class="dropdown-item" href="{{ route('employee.show', $emp) }}"><i
                                                     class="fa-solid fa-eye"></i> View Profile</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('employee.full-ledger', $emp) }}"><i
+                                                    class="fa-solid fa-list"></i> Full Ledger</a></li>
                                     @endbpCan
                                     @bpCan('hr.edit')
                                         <li><a class="dropdown-item" href="{{ route('employee.edit', $emp) }}"><i

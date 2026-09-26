@@ -179,7 +179,12 @@ class ReportController extends Controller
     public function profitLoss(\Modules\Report\Http\Requests\DateRangeRequest $request)
     {
         bpAuthorize('reports.view');
-        $filters = $request->only(['from_date', 'to_date']);
+        $filters = $request->only(['from_date', 'to_date', 'only_delivered']);
+        
+        // Default to "Only Delivered" on initial load (when no filters are applied yet)
+        if (!$request->has('from_date') && !$request->has('only_delivered') && !$request->has('all_sales')) {
+            $filters['only_delivered'] = 1;
+        }
         $filters['from_date'] = $filters['from_date'] ?? now()->startOfMonth()->toDateString();
         $filters['to_date']   = $filters['to_date'] ?? now()->endOfMonth()->toDateString();
 

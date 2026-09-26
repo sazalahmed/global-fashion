@@ -105,24 +105,44 @@ class FinancialReportService
     {
         $from = Carbon::parse($filters['from_date'] ?? now()->startOfMonth()->toDateString())->startOfDay();
         $to   = Carbon::parse($filters['to_date'] ?? now()->endOfMonth()->toDateString())->endOfDay();
+        $onlyDelivered = !empty($filters['only_delivered']);
 
         $pl = $this->accountingReportService->getProfitAndLoss($from, $to);
 
         $totalSales = (float) $pl['total_revenue'];
-        // Gross profit already nets out COGS, so "Total Expenses" here is
-        // operating + other only — matching the view's
-        // "Gross Profit − Total Expenses = Net Profit" arithmetic without
-        // subtracting COGS a second time.
+        $totalCogs = (float) $pl['total_cogs'];
+        $grossProfit = (float) $pl['gross_profit'];
         $totalExpenses = (float) $pl['total_operating_expenses'] + (float) $pl['total_other_expenses'];
-        $netProfit = (float) $pl['net_profit'];
+
+        if ($onlyDelivered) {
+            $totalSales = (float) DB::table('sales')
+                ->where('status', 'delivered')
+                ->whereBetween('sale_date', [$from, $to])
+                ->whereNull('deleted_at')
+                ->sum('grand_total');
+
+            $totalCogs = (float) DB::table('sale_items as si')
+                ->join('sales as s', 's.id', '=', 'si.sale_id')
+                ->join('products as p', 'p.id', '=', 'si.product_id')
+                ->leftJoin('product_variants as pv', 'pv.id', '=', 'si.variant_id')
+                ->where('s.status', 'delivered')
+                ->whereBetween('s.sale_date', [$from, $to])
+                ->whereNull('s.deleted_at')
+                ->sum(DB::raw('si.quantity * COALESCE(NULLIF(pv.cost_price, 0), p.cost_price, 0)'));
+
+            $grossProfit = $totalSales - $totalCogs;
+        }
+
+        $netProfit = $grossProfit - $totalExpenses;
+        $netMargin = $totalSales > 0 ? round(($netProfit / $totalSales) * 100, 1) : 0;
 
         return [
             'total_sales'    => $totalSales,
-            'total_cogs'     => (float) $pl['total_cogs'],
-            'gross_profit'   => (float) $pl['gross_profit'],
+            'total_cogs'     => $totalCogs,
+            'gross_profit'   => $grossProfit,
             'total_expenses' => $totalExpenses,
             'net_profit'     => $netProfit,
-            'margin_percent' => (float) $pl['net_margin'],
+            'margin_percent' => $netMargin,
             'is_loss'        => $netProfit < 0,
         ];
     }

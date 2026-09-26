@@ -11,9 +11,29 @@
 @endsection
 
 @section('page-actions')
-    <a href="{{ route('reports.index') }}" class="bp-btn bp-btn-primary">
-        <i class="fa-solid fa-arrow-left"></i> Back to Reports
-    </a>
+    <div class="d-flex align-items-center gap-2">
+        <form action="{{ route('reports.profit-loss') }}" method="GET" class="mb-0">
+            <input type="hidden" name="from_date" value="{{ $filters['from_date'] }}">
+            <input type="hidden" name="to_date" value="{{ $filters['to_date'] }}">
+            <input type="hidden" name="all_sales" value="1"> 
+            
+            @if(!empty($filters['only_delivered']))
+                <!-- Button is active, clicking it will remove the only_delivered filter -->
+                <button type="submit" class="bp-btn bp-btn-success" title="Click to show all sales">
+                    <i class="fa-solid fa-toggle-on me-1"></i> Only Delivered
+                </button>
+            @else
+                <!-- Button is inactive, clicking it will add the only_delivered filter -->
+                <input type="hidden" name="only_delivered" value="1">
+                <button type="submit" class="bp-btn bp-btn-outline" title="Click to show only delivered">
+                    <i class="fa-solid fa-toggle-off me-1"></i> Only Delivered
+                </button>
+            @endif
+        </form>
+        <a href="{{ route('reports.index') }}" class="bp-btn bp-btn-primary">
+            <i class="fa-solid fa-arrow-left"></i> Back to Reports
+        </a>
+    </div>
 @endsection
 
 @section('content')
@@ -21,6 +41,11 @@
     <div class="bp-card mb-3">
         <div class="bp-card-body">
             <form action="{{ route('reports.profit-loss') }}" method="GET" class="row g-3 align-items-end">
+                @if(!empty($filters['only_delivered']))
+                    <input type="hidden" name="only_delivered" value="1">
+                @else
+                    <input type="hidden" name="all_sales" value="1">
+                @endif
                 <div class="col-md-4">
                     <label class="bp-form-label">From</label>
                     <input type="date" class="bp-form-control" name="from_date" value="{{ $filters['from_date'] }}">

@@ -429,10 +429,26 @@ class PaymentService
             ? "{$payment->party_type} #{$payment->party_id}"
             : 'walk-in';
 
-        return [
-            ['account_id' => $counterAccountId, 'debit_amount' => $payment->amount, 'credit_amount' => 0, 'description' => "Paid to {$partyLabel}"],
-            ['account_id' => $assetAccountId, 'debit_amount' => 0, 'credit_amount' => $payment->amount, 'description' => "Payment made: {$payment->payment_number}"],
-        ];
+        $discount = (float) $payment->discount_amount;
+        $cashAmount = (float) $payment->amount;
+
+        $lines = [];
+
+        if ($cashAmount > 0) {
+            $lines[] = ['account_id' => $assetAccountId, 'debit_amount' => 0, 'credit_amount' => $cashAmount, 'description' => "Payment made: {$payment->payment_number}"];
+        }
+
+        if ($discount > 0) {
+            $discountIncomeId = Account::where('account_code', '4120')->value('id') // Discount Received
+                ?? Account::where('account_type', 'income')->value('id')
+                ?? $fallback;
+
+            $lines[] = ['account_id' => $discountIncomeId, 'debit_amount' => 0, 'credit_amount' => $discount, 'description' => "Discount received: {$payment->payment_number}"];
+        }
+
+        $lines[] = ['account_id' => $counterAccountId, 'debit_amount' => $cashAmount + $discount, 'credit_amount' => 0, 'description' => "Paid to {$partyLabel}"];
+
+        return $lines;
     }
 
     /**

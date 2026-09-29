@@ -39,6 +39,8 @@ class Purchase extends Model implements SearchableInterface
         'shipping_cost',
         'grand_total',
         'paid_amount',
+        'return_amount',
+        'due_discount_amount',
         'due_amount',
         'status',
         'payment_status',
@@ -63,6 +65,8 @@ class Purchase extends Model implements SearchableInterface
         'shipping_cost' => 'decimal:2',
         'grand_total' => 'decimal:2',
         'paid_amount' => 'decimal:2',
+        'return_amount' => 'decimal:2',
+        'due_discount_amount' => 'decimal:2',
         'due_amount' => 'decimal:2',
     ];
 

@@ -238,6 +238,18 @@
                                 <span>Total Paid</span>
                                 <span>{{ currency_symbol() }} {{ number_format($purchase->paid_amount, 0) }}</span>
                             </div>
+                            @if (($purchase->return_amount ?? 0) > 0)
+                                <div class="bp-cart-summary-row">
+                                    <span>Total Returned</span>
+                                    <span>{{ currency_symbol() }} {{ number_format($purchase->return_amount, 0) }}</span>
+                                </div>
+                            @endif
+                            @if (($purchase->due_discount_amount ?? 0) > 0)
+                                <div class="bp-cart-summary-row">
+                                    <span>Discount / Write-off</span>
+                                    <span>{{ currency_symbol() }} {{ number_format($purchase->due_discount_amount, 0) }}</span>
+                                </div>
+                            @endif
                             @if ($purchase->due_amount > 0)
                                 <div class="bp-cart-summary-row">
                                     <span>Balance Due</span>
@@ -435,6 +447,20 @@
                             <span class="fw-700 text-success">{{ currency_symbol() }}
                                 {{ number_format($purchase->paid_amount, 0) }}</span>
                         </div>
+                        @if (($purchase->return_amount ?? 0) > 0)
+                            <div class="d-flex justify-content-between fs-13 mb-1">
+                                <span class="text-muted">Total Returned</span>
+                                <span class="fw-700 text-info">{{ currency_symbol() }}
+                                    {{ number_format($purchase->return_amount, 0) }}</span>
+                            </div>
+                        @endif
+                        @if (($purchase->due_discount_amount ?? 0) > 0)
+                            <div class="d-flex justify-content-between fs-13 mb-1">
+                                <span class="text-muted">Discount / Write-off</span>
+                                <span class="fw-700 text-info">{{ currency_symbol() }}
+                                    {{ number_format($purchase->due_discount_amount, 0) }}</span>
+                            </div>
+                        @endif
                         @if ($purchase->due_amount > 0)
                             <div class="d-flex justify-content-between fs-14 fw-800 mt-2 pt-2 border-top">
                                 <span>Balance Due</span>

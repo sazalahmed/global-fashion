@@ -502,7 +502,11 @@ class PurchaseService
 
         $shipping = (float) ($purchase->shipping_cost ?? 0);
         $grandTotal = round($lineTotalSum - $orderDiscount + $orderTax + $shipping, 2);
-        $dueAmount = $grandTotal - (float) $purchase->paid_amount;
+        
+        $paid = (float) $purchase->paid_amount;
+        $returned = (float) ($purchase->return_amount ?? 0);
+        $discount = (float) ($purchase->due_discount_amount ?? 0);
+        $dueAmount = $grandTotal - $paid - $returned - $discount;
 
         $purchase->update([
             'subtotal' => $subtotal,
@@ -514,6 +518,7 @@ class PurchaseService
             'due_amount' => max(0, $dueAmount),
         ]);
 
+        $this->updatePaymentStatus($purchase);
         $this->updateSupplierTotals($purchase->supplier_id);
     }
 
@@ -552,11 +557,15 @@ class PurchaseService
     public function updatePaymentStatus(Purchase $purchase): void
     {
         $paid = (float) $purchase->paid_amount;
+        $returned = (float) ($purchase->return_amount ?? 0);
+        $discount = (float) ($purchase->due_discount_amount ?? 0);
         $total = (float) $purchase->grand_total;
 
-        if ($paid <= 0) {
+        $cleared = $paid + $returned + $discount;
+
+        if ($cleared <= 0) {
             $status = Purchase::PAYMENT_UNPAID;
-        } elseif ($paid >= $total) {
+        } elseif ($cleared >= $total) {
             $status = Purchase::PAYMENT_PAID;
         } else {
             $status = Purchase::PAYMENT_PARTIAL;
@@ -564,7 +573,7 @@ class PurchaseService
 
         $purchase->update([
             'payment_status' => $status,
-            'due_amount' => max(0, $total - $paid),
+            'due_amount' => max(0, $total - $cleared),
         ]);
     }
 

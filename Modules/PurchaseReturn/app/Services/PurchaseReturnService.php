@@ -224,6 +224,11 @@ class PurchaseReturnService
                 $supplier->decrement('due_balance', min($returnTotal, (float) $supplier->due_balance));
             }
 
+            if ($return->purchase) {
+                $return->purchase->increment('return_amount', $returnTotal);
+                app(\Modules\Purchase\Services\PurchaseService::class)->calculateTotals($return->purchase);
+            }
+
             $return->update(['status' => PurchaseReturn::STATUS_COMPLETED]);
 
             return $return;
@@ -276,6 +281,11 @@ class PurchaseReturnService
                     $this->accountingService->voidJournalEntry('purchase_return', $return->id);
                 } catch (\Throwable $e) {
                     \Log::warning("Failed to void journal entry for purchase return cancel: {$e->getMessage()}");
+                }
+                
+                if ($return->purchase) {
+                    $return->purchase->decrement('return_amount', $returnTotal);
+                    app(\Modules\Purchase\Services\PurchaseService::class)->calculateTotals($return->purchase);
                 }
             }
 

@@ -454,8 +454,8 @@
             });
 
             // The discount write-off only makes sense collecting a customer's
-            // due (direction=receive, payment_type=against_invoice). Hidden
-            // otherwise so a $0 discount is always what's actually submitted.
+            // due (direction=receive) or paying a supplier's due (direction=pay).
+            // Hidden otherwise so a $0 discount is always what's actually submitted.
             function cpToggleDiscountField() {
                 var isReceive = $('input[name="direction"]:checked').val() ||
                     $('input[name="direction"][type=hidden]').val();
@@ -464,7 +464,10 @@
                 var paymentType = $('input[name="payment_type"]:checked').val() ||
                     $('input[name="payment_type"][type=hidden]').val();
 
-                var show = isReceive === 'receive' && partyType === 'customer' && paymentType === 'against_invoice';
+                var showCustomerDiscount = isReceive === 'receive' && partyType === 'customer' && paymentType === 'against_invoice';
+                var showSupplierDiscount = isReceive === 'pay' && partyType === 'supplier' && paymentType === 'against_invoice';
+                var show = showCustomerDiscount || showSupplierDiscount;
+
                 $('#cpDiscountGroup').toggleClass('d-none', !show);
                 if (!show) {
                     $('#cpDiscountAmount').val(0);

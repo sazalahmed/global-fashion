@@ -173,8 +173,16 @@ class FinancialReportService
             ->whereNull('deleted_at')
             ->sum('grand_total');
 
-        $totalCogs = 0;
-        $grossProfit = $totalSales;
+        $totalCogs = (float) DB::table('sale_items')
+            ->join('sales', 'sale_items.sale_id', '=', 'sales.id')
+            ->leftJoin('products', 'sale_items.product_id', '=', 'products.id')
+            ->leftJoin('product_variants', 'sale_items.variant_id', '=', 'product_variants.id')
+            ->where('sales.status', 'delivered')
+            ->whereBetween('sales.sale_date', [$from, $to])
+            ->whereNull('sales.deleted_at')
+            ->sum(DB::raw('sale_items.quantity * COALESCE(product_variants.cost_price, products.cost_price, 0)'));
+
+        $grossProfit = $totalSales - $totalCogs;
 
         // Breakdown of expenses as requested (Matched exactly with Cashflow)
         $cashflow = app(\Modules\Accounting\Services\SimpleMoneyService::class)->cashFlow($from, $to);

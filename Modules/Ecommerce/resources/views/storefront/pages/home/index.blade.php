@@ -23,9 +23,9 @@
         $bpHeroPreloadUrl = $bpFirstHeroBanner ? upload_url($bpFirstHeroBanner->image) : asset('website/assets/images/slider_1.jpg');
     @endphp
     @if($bpHeroWebp)
-        <link rel="preload" as="image" href="{{ $bpHeroWebp }}" type="image/webp">
+        <link rel="preload" as="image" href="{{ $bpHeroWebp }}" type="image/webp" fetchpriority="high">
     @elseif($bpHeroPreloadUrl)
-        <link rel="preload" as="image" href="{{ $bpHeroPreloadUrl }}">
+        <link rel="preload" as="image" href="{{ $bpHeroPreloadUrl }}" fetchpriority="high">
     @endif
 @endpush
 

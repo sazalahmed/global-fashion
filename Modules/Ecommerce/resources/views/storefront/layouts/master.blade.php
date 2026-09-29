@@ -154,19 +154,15 @@
         'use strict';
         window.BP_PRICE_SEP = {{ storefront_price_separator() ? 'true' : 'false' }};
         window.bdPrice = function(amount) {
-            amount = Number(amount) || 0;
+            amount = Math.round(Number(amount) || 0);
             var negative = amount < 0;
-            var decimals = (Math.abs(amount) % 1 === 0) ? 0 : 2;
-            var fixed = Math.abs(amount).toFixed(decimals);
-            var parts = fixed.split('.');
-            var intPart = parts[0];
-            var frac = parts[1] ? '.' + parts[1] : '';
+            var intPart = Math.abs(amount).toString();
             if (window.BP_PRICE_SEP && intPart.length > 3) {
                 var last3 = intPart.slice(-3);
                 var rest = intPart.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ',');
                 intPart = rest + ',' + last3;
             }
-            return (negative ? '-' : '') + intPart + frac;
+            return (negative ? '-' : '') + intPart;
         };
         // Configured currency symbol (admin → Localization). Use bdMoney() to get
         // a fully formatted, symbol-prefixed price string in JS.

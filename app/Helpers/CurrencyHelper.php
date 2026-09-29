@@ -155,8 +155,8 @@ if (! function_exists('bd_price')) {
      */
     function bd_price($amount): string
     {
-        $amount   = (float) $amount;
-        $decimals = (fmod($amount, 1.0) === 0.0) ? 0 : 2;
+        $amount   = round((float) $amount);
+        $decimals = 0;
 
         return storefront_price_separator()
             ? bd_number_group($amount, $decimals)

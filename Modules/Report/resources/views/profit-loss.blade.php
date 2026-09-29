@@ -126,12 +126,10 @@
                             <td class="fw-600">Total Sales (Revenue)</td>
                             <td class="text-end fw-700 fs-15">{{ money($report['total_sales']) }}</td>
                         </tr>
-                        @if(!isset($report['manual_expenses']))
-                            <tr>
-                                <td class="text-muted ps-4">Less: Cost of Goods Sold (COGS)</td>
-                                <td class="text-end text-muted">({{ money($report['total_cogs']) }})</td>
-                            </tr>
-                        @endif
+                        <tr>
+                            <td class="text-muted ps-4">Less: Cost of Goods Sold (COGS)</td>
+                            <td class="text-end text-muted">({{ money($report['total_cogs']) }})</td>
+                        </tr>
                         <tr class="bg-light">
                             <td class="fw-700">Gross Profit</td>
                             <td class="text-end fw-800 fs-15 text-success">{{ money($report['gross_profit']) }}</td>
@@ -183,7 +181,7 @@
             <div class="fs-11 text-muted">
                 <i class="fa-solid fa-circle-info me-1"></i>
                 @if(isset($report['manual_expenses']))
-                    Net Profit is calculated as <code>Delivered Sales - (Total Expense + Salary + COD Charge + Courier)</code> based on Cashflow data. Product costs (COGS) are excluded.
+                    Net Profit is calculated as <code>Gross Profit (Delivered Sales - COGS) - (Total Expense + Salary + COD Charge + Courier)</code> based on Cashflow data.
                 @else
                     <strong>Standard Calculation:</strong> Net Profit is calculated as <code>Total Sales - (Cost of Goods Sold + All Approved Operating Expenses)</code> based on standard accounting rules. Cost of Goods Sold (COGS) is determined by multiplying the quantity of each item sold by its cost price. Cancelled sales are excluded.
                 @endif

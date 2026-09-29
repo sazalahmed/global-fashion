@@ -29,7 +29,7 @@
     data-category="{{ optional($product->category)->name }}">
     <div class="product_img">
         <a href="{{ route('storefront.shop.show', $product->slug) }}" aria-label="{{ $product->name }}">
-            <x-webp :src="$productImage" :default="asset('website/assets/images/product_placeholder.png')" alt="{{ $product->name }}" class="img-fluid w-100" loading="lazy" />
+            <x-webp :src="$productImage" :default="asset('website/assets/images/product_placeholder.png')" alt="{{ $product->name }}" class="img-fluid w-100" style="aspect-ratio: 1/1; object-fit: cover;" width="300" height="300" loading="lazy" />
         </a>
         @if($hasDiscount || $isNew || $campaignBadge)
         <ul class="discount_list">

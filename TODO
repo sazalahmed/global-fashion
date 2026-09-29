@@ -1,6 +1,14 @@
 Todo:
-  ☑ Add testimonial in admin inside website
-  ☐ Remove pagination and sorting (default 14)
-  ☐ On load pagination product/category/combo package/flash deals/blogpages
-  ☐ update breadcrum (remove image/heading)
-  ☐ lightspeed test and fix possible mobile score issues
+  Fixed:
+    ✔ Add testimonial in admin inside website @done(26-09-28 21:49)
+    ✔ Remove pagination and sorting (default 14) @done(26-09-28 21:49)
+    ✔ On load pagination product/category/combo package/flash deals/blogpages @done(26-09-28 21:49)
+    ✔ update breadcrum (remove image/heading) @done(26-09-28 21:49)
+
+  TODO:
+    ✔ Shop Default sorting latest first but for category use sorting @done(26-09-29 19:07)
+    ✔ cache on shop category loading @done(26-09-29 19:00)
+    ☐ currency should be rounded no decimal allowex
+    ✔ Expance mismatched check ss in wp (see note for formul) @done(26-09-29 18:49)
+    ✔ update salary data of auguest to the date of auguest in server database (aug 30k , sept 20k) @done(26-09-29 18:23)
+    ☐ lightspeed test and fix possible mobile score issues fix console errors

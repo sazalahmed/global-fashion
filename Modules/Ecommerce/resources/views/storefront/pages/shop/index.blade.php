@@ -222,8 +222,13 @@
                     @if (isset($products) && $products->hasPages())
                         <div class="row">
                             <div class="col-12 text-center" id="infinite-scroll-trigger" data-next-page="{{ $products->nextPageUrl() }}">
-                                <div class="spinner-border text-primary my-4 d-none" role="status" id="infinite-scroll-spinner">
-                                    <span class="visually-hidden">Loading...</span>
+                                <div class="my-5 d-none" id="infinite-scroll-spinner">
+                                    <div class="d-inline-flex align-items-center bg-white shadow-sm rounded-pill px-4 py-2 border" style="animation: fadeIn 0.3s ease-in-out;">
+                                        <div class="spinner-border spinner-border-sm text-primary me-3" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                        <span class="text-muted fw-medium fs-15">Loading more items...</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -367,7 +372,7 @@
             });
 
             // ── Infinite Scroll Caching ──
-            var CACHE_KEY = 'shop_infinite_scroll_cache';
+            var CACHE_KEY = 'shop_infinite_scroll_cache_' + btoa(window.location.pathname + window.location.search);
             var CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 
             // Restore cache on load

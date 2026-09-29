@@ -115,35 +115,32 @@ class FinancialReportService
         $totalExpenses = (float) $pl['total_operating_expenses'] + (float) $pl['total_other_expenses'];
 
         if ($onlyDelivered) {
-            $totalSales = (float) DB::table('sales')
-                ->where('status', 'delivered')
-                ->whereBetween('sale_date', [$from, $to])
-                ->whereNull('deleted_at')
-                ->sum('grand_total');
-
-            $totalCogs = (float) DB::table('sale_items as si')
-                ->join('sales as s', 's.id', '=', 'si.sale_id')
-                ->join('products as p', 'p.id', '=', 'si.product_id')
-                ->leftJoin('product_variants as pv', 'pv.id', '=', 'si.variant_id')
-                ->where('s.status', 'delivered')
-                ->whereBetween('s.sale_date', [$from, $to])
-                ->whereNull('s.deleted_at')
-                ->sum(DB::raw('si.quantity * COALESCE(NULLIF(pv.cost_price, 0), p.cost_price, 0)'));
-
-            $grossProfit = $totalSales - $totalCogs;
+            $deliveredData = $this->getOnlyDeliveredProfitAndLossData($from, $to);
+            $totalSales = $deliveredData['total_sales'];
+            $totalCogs = $deliveredData['total_cogs'];
+            $grossProfit = $deliveredData['gross_profit'];
+            $totalExpenses = $deliveredData['total_expenses'];
+            $manualExpenses = $deliveredData['manual_expenses'];
+            $salaryGiven = $deliveredData['salary_given'];
+            $codCharge = $deliveredData['cod_charge'];
+            $courierDelivery = $deliveredData['courier_delivery'];
         }
 
         $netProfit = $grossProfit - $totalExpenses;
         $netMargin = $totalSales > 0 ? round(($netProfit / $totalSales) * 100, 1) : 0;
 
         return [
-            'total_sales'    => $totalSales,
-            'total_cogs'     => $totalCogs,
-            'gross_profit'   => $grossProfit,
-            'total_expenses' => $totalExpenses,
-            'net_profit'     => $netProfit,
-            'margin_percent' => $netMargin,
-            'is_loss'        => $netProfit < 0,
+            'total_sales'      => $totalSales,
+            'total_cogs'       => $totalCogs,
+            'gross_profit'     => $grossProfit,
+            'total_expenses'   => $totalExpenses,
+            'manual_expenses'  => $manualExpenses ?? null,
+            'salary_given'     => $salaryGiven ?? null,
+            'cod_charge'       => $codCharge ?? null,
+            'courier_delivery' => $courierDelivery ?? null,
+            'net_profit'       => $netProfit,
+            'margin_percent'   => $netMargin,
+            'is_loss'          => $netProfit < 0,
         ];
     }
 
@@ -162,5 +159,43 @@ class FinancialReportService
             ->groupBy('accounts.id', 'accounts.account_code', 'accounts.account_name', 'accounts.account_type')
             ->orderBy('accounts.account_code')
             ->get();
+    }
+
+    /**
+     * Custom formula for "Only Delivered" filter.
+     * Note: This was done as requested by the owner Sazal Ahmed.
+     */
+    private function getOnlyDeliveredProfitAndLossData(string $from, string $to): array
+    {
+        $totalSales = (float) DB::table('sales')
+            ->where('status', 'delivered')
+            ->whereBetween('sale_date', [$from, $to])
+            ->whereNull('deleted_at')
+            ->sum('grand_total');
+
+        $totalCogs = 0;
+        $grossProfit = $totalSales;
+
+        // Breakdown of expenses as requested (Matched exactly with Cashflow)
+        $cashflow = app(\Modules\Accounting\Services\SimpleMoneyService::class)->cashFlow($from, $to);
+        $cashflowData = $cashflow['data'];
+
+        $manualExpenses = $cashflowData['expense'] ?? 0;
+        $salaryGiven = $cashflowData['salary'] ?? 0;
+        $codCharge = $cashflowData['courier_cod_charge'] ?? 0;
+        $courierDelivery = $cashflowData['courier_delivery_charge'] ?? 0;
+
+        $totalExpenses = $manualExpenses + $salaryGiven + $codCharge + $courierDelivery;
+
+        return [
+            'total_sales'      => $totalSales,
+            'total_cogs'       => $totalCogs,
+            'gross_profit'     => $grossProfit,
+            'total_expenses'   => $totalExpenses,
+            'manual_expenses'  => $manualExpenses,
+            'salary_given'     => $salaryGiven,
+            'cod_charge'       => $codCharge,
+            'courier_delivery' => $courierDelivery,
+        ];
     }
 }

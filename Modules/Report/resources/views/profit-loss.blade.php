@@ -126,18 +126,43 @@
                             <td class="fw-600">Total Sales (Revenue)</td>
                             <td class="text-end fw-700 fs-15">{{ money($report['total_sales']) }}</td>
                         </tr>
-                        <tr>
-                            <td class="text-muted ps-4">Less: Cost of Goods Sold (COGS)</td>
-                            <td class="text-end text-muted">({{ money($report['total_cogs']) }})</td>
-                        </tr>
+                        @if(!isset($report['manual_expenses']))
+                            <tr>
+                                <td class="text-muted ps-4">Less: Cost of Goods Sold (COGS)</td>
+                                <td class="text-end text-muted">({{ money($report['total_cogs']) }})</td>
+                            </tr>
+                        @endif
                         <tr class="bg-light">
                             <td class="fw-700">Gross Profit</td>
                             <td class="text-end fw-800 fs-15 text-success">{{ money($report['gross_profit']) }}</td>
                         </tr>
-                        <tr>
-                            <td class="text-muted ps-4">Less: Operating Expenses</td>
-                            <td class="text-end text-muted">({{ money($report['total_expenses']) }})</td>
-                        </tr>
+                        @if(isset($report['manual_expenses']))
+                            <tr>
+                                <td class="text-muted ps-4">Less: Total Expense</td>
+                                <td class="text-end text-muted">({{ money($report['manual_expenses']) }})</td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted ps-4">Less: Total Salary given</td>
+                                <td class="text-end text-muted">({{ money($report['salary_given']) }})</td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted ps-4">Less: COD Charge</td>
+                                <td class="text-end text-muted">({{ money($report['cod_charge']) }})</td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted ps-4">Less: Courier Delivery charges</td>
+                                <td class="text-end text-muted">({{ money($report['courier_delivery']) }})</td>
+                            </tr>
+                            <tr class="bg-light">
+                                <td class="fw-700">Total Deductions</td>
+                                <td class="text-end fw-700 text-muted">({{ money($report['total_expenses']) }})</td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td class="text-muted ps-4">Less: Operating Expenses</td>
+                                <td class="text-end text-muted">({{ money($report['total_expenses']) }})</td>
+                            </tr>
+                        @endif
                         <tr class="bg-light">
                             <td class="fw-800 fs-15">{{ $report['is_loss'] ? 'Net Loss' : 'Net Profit' }}</td>
                             <td class="text-end fw-800 fs-18 {{ $report['is_loss'] ? 'text-danger' : 'text-success' }}">
@@ -157,8 +182,12 @@
         <div class="bp-card-footer">
             <div class="fs-11 text-muted">
                 <i class="fa-solid fa-circle-info me-1"></i>
-                COGS calculated as <code>SUM(sale_items.quantity × products.cost_price)</code> at the current cost price.
-                Excludes cancelled sales and unapproved expenses. Period:
+                @if(isset($report['manual_expenses']))
+                    Net Profit is calculated as <code>Delivered Sales - (Total Expense + Salary + COD Charge + Courier)</code> based on Cashflow data. Product costs (COGS) are excluded.
+                @else
+                    <strong>Standard Calculation:</strong> Net Profit is calculated as <code>Total Sales - (Cost of Goods Sold + All Approved Operating Expenses)</code> based on standard accounting rules. Cost of Goods Sold (COGS) is determined by multiplying the quantity of each item sold by its cost price. Cancelled sales are excluded.
+                @endif
+                Period:
                 {{ \Carbon\Carbon::parse($filters['from_date'])->format('d M Y') }} →
                 {{ \Carbon\Carbon::parse($filters['to_date'])->format('d M Y') }}.
             </div>

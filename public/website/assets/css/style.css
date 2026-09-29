@@ -14353,3 +14353,7 @@ input[type=number] {
 .testimonials .prevArrow {
     right: 65px;
 }
+
+.product_item .product_img a img {
+    object-fit: contain !important;
+}

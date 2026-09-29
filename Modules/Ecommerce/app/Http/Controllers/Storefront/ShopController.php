@@ -73,14 +73,14 @@ class ShopController extends Controller
         if ($isBrowse) {
             $products = $this->storefrontService->getCatalogListing([
                 'category_slug' => $filters['category'] ?? null,
-                'sort'          => $filters['sort'] ?? 'featured',
+                'sort'          => $filters['sort'] ?? (empty($filters['category']) ? 'latest' : 'featured'),
             ], $perPage);
         } else {
             $products = $this->storefrontService->getShopProducts([
                 'category_slug'  => $filters['category'] ?? null,
                 'brand_slug'     => $filters['brand'] ?? null,
                 'q'              => $filters['q'] ?? null,
-                'sort'           => $filters['sort'] ?? 'featured',
+                'sort'           => $filters['sort'] ?? (empty($filters['category']) ? 'latest' : 'featured'),
                 // The view's price-range form posts min_price / max_price; the
                 // service reads price_min / price_max. Bridge here so query
                 // params and DB-facing filter keys stay consistent with both.

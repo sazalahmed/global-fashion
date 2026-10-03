@@ -121,6 +121,10 @@ window.BizPOS.track = function (eventName, params, options) {
         var fbData = options.fbData || {};
         var fbOpts = options.eventID ? { eventID: options.eventID } : undefined;
 
+        if (!isCustom && fbData.currency && (typeof fbData.currency !== 'string' || !/^[A-Z]{3}$/.test(fbData.currency.trim()))) {
+            fbData.currency = 'BDT';
+        }
+
         if (isCustom) {
             fbq('trackCustom', fbEvent, fbData, fbOpts);
         } else {

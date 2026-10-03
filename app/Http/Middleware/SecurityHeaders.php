@@ -26,20 +26,20 @@ class SecurityHeaders
             // relay (Meta CAPI / GA4 / TikTok forwarding). The wildcard covers
             // track.pixelfly.io and CDN subdomains; the apex must be listed
             // separately because CSP wildcards don't match the bare domain.
-            "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.facebook.com https://server.globalfashion.com.bd https://capi-automation.s3.us-east-2.amazonaws.com https://pixelfly.io https://*.pixelfly.io",
-            "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net https://graph.facebook.com https://server.globalfashion.com.bd https://pixelfly.io https://*.pixelfly.io",
+            "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.facebook.com https://server.globalfashion.com.bd https://capi-automation.s3.us-east-2.amazonaws.com https://pixelfly.io https://*.pixelfly.io https://www.clarity.ms https://*.clarity.ms https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com https://*.google.com",
+            "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net https://graph.facebook.com https://server.globalfashion.com.bd https://pixelfly.io https://*.pixelfly.io https://www.clarity.ms https://*.clarity.ms https://www.google.com https://*.google.com https://ad.doubleclick.net https://*.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.conversionsapigateway.com https://*.a.run.app",
             // blob: lets client-side previews render a just-selected file via
             // URL.createObjectURL (e.g. the expense/sale receipt image preview)
             // before it's uploaded. These are same-origin object URLs the page
             // builds from the user's own file, so they carry no external risk.
-            "img-src 'self' data: blob: https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://www.facebook.com https://connect.facebook.net https://server.globalfashion.com.bd https://pixelfly.io https://*.pixelfly.io",
+            "img-src 'self' data: blob: https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://www.facebook.com https://connect.facebook.net https://server.globalfashion.com.bd https://pixelfly.io https://*.pixelfly.io https://www.clarity.ms https://*.clarity.ms https://www.google.com https://*.google.com https://*.google.com.bd https://googleads.g.doubleclick.net https://ad.doubleclick.net https://www.googleadservices.com https://c.bing.com",
             "style-src 'self' 'unsafe-inline'",
             // data: needed by vendored Swiper CSS, which embeds its icon font
             // (next/prev arrows) as a base64 data URI.
             "font-src 'self' data:",
             // blob: allows the PDF receipt preview (iframe src = object URL of
             // the selected file) to render before upload — same-origin, safe.
-            "frame-src 'self' blob: https://www.googletagmanager.com https://www.google.com https://maps.google.com https://server.globalfashion.com.bd https://pixelfly.io https://*.pixelfly.io",
+            "frame-src 'self' blob: https://www.googletagmanager.com https://www.google.com https://maps.google.com https://server.globalfashion.com.bd https://pixelfly.io https://*.pixelfly.io https://googleads.g.doubleclick.net https://td.doubleclick.net",
         ]) . ';');
 
         // HTML pages embed a per-session CSRF token (<meta> + @csrf fields), so

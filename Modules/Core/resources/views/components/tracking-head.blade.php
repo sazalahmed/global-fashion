@@ -13,6 +13,17 @@
 
     window.BizPOSTracking = window.BizPOSTracking || {};
     window.BizPOSTracking.fbPixelEnabled = {{ $fbEnabled && $fbId ? 'true' : 'false' }};
+
+    @if (app()->environment('production'))
+        // Silence console logs/info/debug in production while leaving console.error intact
+        (function() {
+            var noop = function() {};
+            window.console.log = noop;
+            window.console.info = noop;
+            window.console.debug = noop;
+            window.console.warn = noop;
+        })();
+    @endif
 </script>
 
 @if ($gtmEnabled && $gtmId)

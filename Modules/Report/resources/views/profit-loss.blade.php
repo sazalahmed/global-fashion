@@ -12,7 +12,7 @@
 
 @section('page-actions')
     <div class="d-flex align-items-center gap-2">
-        <form action="{{ route('reports.profit-loss') }}" method="GET" class="mb-0">
+        {{-- <form action="{{ route('reports.profit-loss') }}" method="GET" class="mb-0">
             <input type="hidden" name="from_date" value="{{ $filters['from_date'] }}">
             <input type="hidden" name="to_date" value="{{ $filters['to_date'] }}">
             <input type="hidden" name="all_sales" value="1"> 
@@ -29,7 +29,7 @@
                     <i class="fa-solid fa-toggle-off me-1"></i> Only Delivered
                 </button>
             @endif
-        </form>
+        </form> --}}
         <a href="{{ route('reports.index') }}" class="bp-btn bp-btn-primary">
             <i class="fa-solid fa-arrow-left"></i> Back to Reports
         </a>
